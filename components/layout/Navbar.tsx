@@ -3,23 +3,32 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, FileText } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Menu, X } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 
 export const navLinks = [
   { name: 'About', href: '/about' },
   { name: 'Work', href: '/projects' },
+  { name: 'Resume', href: '/resume' },
   { name: 'Contact', href: '/contact' },
 ];
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,112 +52,138 @@ export const Navbar: React.FC = () => {
   }, [isOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#e6e1da] bg-[#faf8f5]/90 backdrop-blur-md transition-all">
-      <Container size="lg">
-        <div className="flex h-16 sm:h-20 items-center justify-between">
-          {/* Brand Name */}
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        hasScrolled
+          ? 'bg-[#0a0a0b]/80 backdrop-blur-xl border-b border-[#1e1e22]'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
+      <Container size="xl">
+        <div className="flex h-16 sm:h-18 items-center justify-between">
+          {/* Brand */}
           <Link
             href="/"
-            className="flex items-center group font-serif text-lg sm:text-xl font-normal tracking-tight text-[#1a1918] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7a4a2e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8f5] rounded-md px-1 py-0.5"
+            className="flex items-center group font-mono text-sm font-medium tracking-tight text-[#e8e6e3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] rounded-md px-1 py-0.5"
           >
-            <span className="group-hover:text-[#7a4a2e] transition-colors">Chaitanya Jindal</span>
+            <span className="text-[#c8a45e] mr-1.5">◆</span>
+            <span className="group-hover:text-[#c8a45e] transition-colors">
+              chaitanya
+            </span>
+            <span className="text-[#6b6966] group-hover:text-[#a3a1a0] transition-colors">
+              .dev
+            </span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6 font-sans text-sm font-medium" aria-label="Main Navigation">
+          {/* Desktop Nav */}
+          <nav
+            className="hidden md:flex items-center gap-1 font-sans text-sm"
+            aria-label="Main Navigation"
+          >
             {navLinks.map((link) => {
-              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              const isActive =
+                pathname === link.href ||
+                (link.href !== '/' && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition-colors py-1 ${
+                  className={`relative px-3.5 py-2 rounded-lg transition-all duration-200 ${
                     isActive
-                      ? 'text-[#1a1918] border-b-2 border-[#7a4a2e] font-semibold'
-                      : 'text-[#57524d] hover:text-[#1a1918]'
+                      ? 'text-[#c8a45e] bg-[rgba(200,164,94,0.06)]'
+                      : 'text-[#a3a1a0] hover:text-[#e8e6e3] hover:bg-[#1e1e22]'
                   }`}
                 >
                   {link.name}
                 </Link>
               );
             })}
-
-            <Button
-              href="https://github.com/JindalChaitanya/portfolio/blob/main/Docs/ChaitanyaJindal_Resume.pdf"
-              isExternal
-              variant="secondary"
-              size="sm"
-              icon={<FileText className="w-3.5 h-3.5" />}
-            >
-              Resume
-            </Button>
           </nav>
 
-          {/* Mobile Hamburger Toggle Button */}
+          {/* Mobile Toggle */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2.5 min-w-[44px] min-h-[44px] rounded-md text-[#242220] hover:bg-[#f4f0e9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7a4a2e]"
+            className="md:hidden inline-flex items-center justify-center p-2.5 min-w-[44px] min-h-[44px] rounded-lg text-[#a3a1a0] hover:text-[#e8e6e3] hover:bg-[#1e1e22] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] transition-colors"
             aria-expanded={isOpen}
             aria-controls="mobile-navigation-drawer"
             aria-label={isOpen ? 'Close menu' : 'Open navigation menu'}
           >
-            {isOpen ? <X className="w-6 h-6 text-[#1a1918]" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
           </button>
         </div>
       </Container>
 
-      {/* Mobile Navigation Drawer */}
-      {isOpen && (
-        <div
-          id="mobile-navigation-drawer"
-          className="fixed inset-x-0 top-16 sm:top-20 bottom-0 z-40 bg-[#faf8f5] border-b border-[#e6e1da] md:hidden flex flex-col justify-between p-6 overflow-y-auto"
-          aria-label="Mobile Menu"
-        >
-          <div className="space-y-6">
-            <nav className="flex flex-col space-y-3">
-              <Link
-                href="/"
-                className={`flex items-center min-h-[44px] text-lg font-serif ${
-                  pathname === '/' ? 'text-[#7a4a2e] font-semibold' : 'text-[#242220]'
-                }`}
-              >
-                Home
-              </Link>
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`flex items-center min-h-[44px] text-lg font-serif ${
-                      isActive ? 'text-[#7a4a2e] font-semibold' : 'text-[#242220]'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
-
-          <div className="pt-6 border-t border-[#e6e1da] space-y-4">
-            <div className="text-xs font-mono text-[#807a75]">
-              Chaitanya Jindal • Noida, India
-            </div>
-            <Button
-              href="https://github.com/JindalChaitanya/portfolio/blob/main/Docs/ChaitanyaJindal_Resume.pdf"
-              isExternal
-              variant="primary"
-              size="md"
-              icon={<FileText className="w-4 h-4" />}
-              className="w-full justify-center"
+      {/* Mobile Drawer */}
+      <div
+        id="mobile-navigation-drawer"
+        className={`fixed inset-0 top-16 z-40 bg-[#0a0a0b]/98 backdrop-blur-xl md:hidden flex flex-col transition-all duration-300 ${
+          isOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
+        aria-label="Mobile Menu"
+      >
+        <div className="flex-1 flex flex-col justify-center px-8">
+          <nav className="flex flex-col space-y-2">
+            <Link
+              href="/"
+              className={`text-3xl font-serif py-3 transition-all duration-300 ${
+                isOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              } ${
+                pathname === '/'
+                  ? 'text-[#c8a45e]'
+                  : 'text-[#e8e6e3] hover:text-[#c8a45e]'
+              }`}
+              style={{ transitionDelay: isOpen ? '100ms' : '0ms' }}
             >
-              Resume (PDF)
-            </Button>
-          </div>
+              Home
+            </Link>
+            {navLinks.map((link, i) => {
+              const isActive =
+                pathname === link.href ||
+                (link.href !== '/' && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-3xl font-serif py-3 transition-all duration-300 ${
+                    isOpen
+                      ? 'translate-y-0 opacity-100'
+                      : 'translate-y-4 opacity-0'
+                  } ${
+                    isActive
+                      ? 'text-[#c8a45e]'
+                      : 'text-[#e8e6e3] hover:text-[#c8a45e]'
+                  }`}
+                  style={{
+                    transitionDelay: isOpen ? `${(i + 2) * 60}ms` : '0ms',
+                  }}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
         </div>
-      )}
+
+        <div
+          className={`px-8 pb-10 border-t border-[#1e1e22] pt-6 transition-all duration-300 ${
+            isOpen
+              ? 'translate-y-0 opacity-100'
+              : 'translate-y-4 opacity-0'
+          }`}
+          style={{ transitionDelay: isOpen ? '350ms' : '0ms' }}
+        >
+          <p className="text-xs font-mono text-[#6b6966]">
+            Chaitanya Jindal • AI/ML Engineer • Noida, India
+          </p>
+        </div>
+      </div>
     </header>
   );
 };

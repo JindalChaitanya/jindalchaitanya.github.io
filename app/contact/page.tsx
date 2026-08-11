@@ -1,143 +1,121 @@
+'use client';
+
 import { Section } from '@/components/ui/Section';
-import { Card } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { Mail, FileText, MapPin, ArrowUpRight } from 'lucide-react';
+import { AnimateIn } from '@/components/ui/AnimateIn';
+import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import { IconGithub, IconLinkedin } from '@/components/ui/Icons';
 
 export default function ContactPage() {
   return (
     <div>
       <Section
-        label="Communication Channels"
-        heading="Contact & Communications"
-        description="Direct contact channels, verified professional profiles, and official PDF resume access."
+        label="Communication"
+        heading="Get In Touch"
+        description="Direct contact channels and verified professional profiles."
       >
-        <div className="max-w-4xl space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Email Contact Card */}
-            <Card variant="interactive" className="p-6 space-y-4">
+        <div className="max-w-4xl space-y-8">
+          {/* Primary Email CTA */}
+          <AnimateIn variant="fadeUp">
+            <div className="relative rounded-xl border border-[rgba(200,164,94,0.15)] bg-[rgba(200,164,94,0.03)] p-8 sm:p-10 space-y-5">
               <div className="flex items-center gap-3">
-                <div className="p-3 rounded-md bg-cyan-950/60 border border-cyan-500/30 text-cyan-400">
-                  <Mail className="w-6 h-6" />
+                <div className="p-3 rounded-lg bg-[rgba(200,164,94,0.1)] border border-[rgba(200,164,94,0.2)]">
+                  <Mail className="w-6 h-6 text-[#c8a45e]" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-bold text-slate-100">Primary Email</h2>
-                  <p className="text-xs font-mono text-slate-400">Direct Inquiries & Opportunities</p>
+                  <h2 className="text-xl font-semibold text-[#e8e6e3]">
+                    Direct Email
+                  </h2>
+                  <p className="text-xs font-mono text-[#6b6966]">
+                    Preferred for inquiries & opportunities
+                  </p>
                 </div>
               </div>
-              <p className="text-sm font-mono text-cyan-300 bg-slate-900/60 p-3 rounded border border-slate-800 break-all">
+              <p className="text-lg sm:text-xl font-mono text-[#c8a45e] break-all">
                 chaitanya.jindal2002@gmail.com
               </p>
               <Button
                 href="mailto:chaitanya.jindal2002@gmail.com"
                 variant="primary"
-                size="sm"
-                className="w-full justify-center"
+                size="lg"
               >
-                Send Direct Email
+                Send Email
               </Button>
-            </Card>
-
-            {/* LinkedIn Card */}
-            <Card variant="interactive" className="p-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-md bg-cyan-950/60 border border-cyan-500/30 text-cyan-400">
-                  <IconLinkedin className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-bold text-slate-100">LinkedIn Profile</h2>
-                  <p className="text-xs font-mono text-slate-400">Professional Network</p>
-                </div>
-              </div>
-              <p className="text-sm font-mono text-cyan-300 bg-slate-900/60 p-3 rounded border border-slate-800 break-all">
-                linkedin.com/in/jindalchaitanya
-              </p>
-              <Button
-                href="https://linkedin.com/in/jindalchaitanya"
-                isExternal
-                variant="secondary"
-                size="sm"
-                icon={<ArrowUpRight className="w-4 h-4" />}
-                iconPosition="right"
-                className="w-full justify-center"
-              >
-                Connect on LinkedIn
-              </Button>
-            </Card>
-
-            {/* GitHub Profile Card */}
-            <Card variant="interactive" className="p-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-md bg-cyan-950/60 border border-cyan-500/30 text-cyan-400">
-                  <IconGithub className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-bold text-slate-100">GitHub Repositories</h2>
-                  <p className="text-xs font-mono text-slate-400">Open-Source Code & Repos</p>
-                </div>
-              </div>
-              <p className="text-sm font-mono text-cyan-300 bg-slate-900/60 p-3 rounded border border-slate-800 break-all">
-                github.com/JindalChaitanya
-              </p>
-              <Button
-                href="https://github.com/JindalChaitanya"
-                isExternal
-                variant="secondary"
-                size="sm"
-                icon={<ArrowUpRight className="w-4 h-4" />}
-                iconPosition="right"
-                className="w-full justify-center"
-              >
-                View GitHub Repositories
-              </Button>
-            </Card>
-
-            {/* Location & Status Card */}
-            <Card variant="default" className="p-6 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-md bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div>
-                  <h2 className="text-lg font-bold text-slate-100">Location & Availability</h2>
-                  <p className="text-xs font-mono text-slate-400">Current Base</p>
-                </div>
-              </div>
-              <div className="space-y-2 text-xs font-mono">
-                <p className="text-slate-200 flex items-center justify-between bg-slate-900/60 p-3 rounded border border-slate-800">
-                  <span>Location:</span>
-                  <span className="text-cyan-400">Noida, Uttar Pradesh, India</span>
-                </p>
-                <p className="text-slate-200 flex items-center justify-between bg-slate-900/60 p-3 rounded border border-slate-800">
-                  <span>Role Target:</span>
-                  <span className="text-emerald-400">AI / ML Engineering</span>
-                </p>
-              </div>
-            </Card>
-          </div>
-
-          {/* Official PDF Resume Card */}
-          <Card variant="glass" className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-cyan-400" />
-                <h2 className="text-xl font-bold text-slate-100">Official PDF Curriculum Vitae</h2>
-              </div>
-              <p className="text-xs font-mono text-slate-400">
-                Direct view/download access to the official resume document.
-              </p>
             </div>
-            <Button
-              href="https://github.com/JindalChaitanya/portfolio/blob/main/Docs/ChaitanyaJindal_Resume.pdf"
-              isExternal
-              variant="primary"
-              icon={<ArrowUpRight className="w-4 h-4" />}
-              iconPosition="right"
-            >
-              Open PDF Resume
-            </Button>
-          </Card>
+          </AnimateIn>
+
+          {/* Contact Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* LinkedIn */}
+            <AnimateIn variant="fadeUp" delay={100}>
+              <a
+                href="https://linkedin.com/in/jindalchaitanya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-4 hover:border-[#2a2a2e] hover:bg-[#151517] transition-all group"
+              >
+                <div className="flex items-center justify-between">
+                  <IconLinkedin className="w-6 h-6 text-[#6b6966] group-hover:text-[#e8e6e3] transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 text-[#3d3b39] group-hover:text-[#c8a45e] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[#e8e6e3] text-sm">
+                    LinkedIn
+                  </h3>
+                  <p className="text-xs font-mono text-[#6b6966] mt-1 break-all">
+                    /in/jindalchaitanya
+                  </p>
+                </div>
+              </a>
+            </AnimateIn>
+
+            {/* GitHub */}
+            <AnimateIn variant="fadeUp" delay={200}>
+              <a
+                href="https://github.com/JindalChaitanya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-4 hover:border-[#2a2a2e] hover:bg-[#151517] transition-all group"
+              >
+                <div className="flex items-center justify-between">
+                  <IconGithub className="w-6 h-6 text-[#6b6966] group-hover:text-[#e8e6e3] transition-colors" />
+                  <ArrowUpRight className="w-4 h-4 text-[#3d3b39] group-hover:text-[#c8a45e] transition-colors" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[#e8e6e3] text-sm">
+                    GitHub
+                  </h3>
+                  <p className="text-xs font-mono text-[#6b6966] mt-1 break-all">
+                    /JindalChaitanya
+                  </p>
+                </div>
+              </a>
+            </AnimateIn>
+
+            {/* Location */}
+            <AnimateIn variant="fadeUp" delay={300}>
+              <div className="rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-4">
+                <div className="flex items-center justify-between">
+                  <MapPin className="w-6 h-6 text-[#6b6966]" />
+                  <span className="text-[10px] font-mono text-[#4ade80] flex items-center gap-1.5">
+                    <span className="relative flex h-1.5 w-1.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-75" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4ade80]" />
+                    </span>
+                    Open to work
+                  </span>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[#e8e6e3] text-sm">
+                    Noida, India
+                  </h3>
+                  <p className="text-xs font-mono text-[#6b6966] mt-1">
+                    AI / ML Engineering
+                  </p>
+                </div>
+              </div>
+            </AnimateIn>
+          </div>
         </div>
       </Section>
     </div>

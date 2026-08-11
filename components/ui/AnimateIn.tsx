@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import React, { useEffect, useRef, useState } from 'react';
 
 type AnimateVariant = 'fadeUp' | 'fadeLeft' | 'fadeRight' | 'scaleIn' | 'blur';
 
@@ -10,7 +9,6 @@ interface AnimateInProps {
   variant?: AnimateVariant;
   delay?: number;
   className?: string;
-  as?: keyof React.JSX.IntrinsicElements;
   threshold?: number;
 }
 
@@ -27,20 +25,50 @@ export const AnimateIn: React.FC<AnimateInProps> = ({
   variant = 'fadeUp',
   delay = 0,
   className = '',
-  as: Component = 'div',
   threshold = 0.1,
 }) => {
-  const { ref, isVisible } = useScrollReveal({ threshold, triggerOnce: true });
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setIsVisible(true);
+      return;
+    }
+
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      { threshold, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [threshold]);
 
   return (
-    <Component
-      ref={ref as React.Ref<HTMLElement>}
+    <div
+      ref={ref}
       className={`${variantClasses[variant]} ${
         isVisible ? 'reveal-visible' : ''
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
-    </Component>
+    </div>
   );
 };
