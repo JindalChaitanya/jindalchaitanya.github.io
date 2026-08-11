@@ -11,6 +11,7 @@ import { SelectedWorkSection } from '@/components/home/SelectedWorkSection';
 import { ExperienceSection } from '@/components/home/ExperienceSection';
 import { ArrowRight, Mail, FileText } from 'lucide-react';
 import { IconGithub, IconLinkedin } from '@/components/ui/Icons';
+import { profileData } from '@/data/profile';
 
 export const HomeContent: React.FC = () => {
   const [highlightedSlugs, setHighlightedSlugs] = useState<string[] | null>(
@@ -43,7 +44,7 @@ export const HomeContent: React.FC = () => {
               </Button>
               <div className="flex items-center gap-2 border-l border-[#1e1e22] pl-4 ml-1">
                 <a
-                  href="https://github.com/JindalChaitanya"
+                  href={profileData.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
@@ -52,7 +53,7 @@ export const HomeContent: React.FC = () => {
                   <IconGithub className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/jindalchaitanya"
+                  href={profileData.linkedinUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -74,17 +75,16 @@ export const HomeContent: React.FC = () => {
               Philosophy
             </span>
             <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-[#e8e6e3] leading-relaxed font-normal">
-              &ldquo;I build AI systems that ship — not notebooks that score
-              well in isolation and never see production.&rdquo;
+              &ldquo;{profileData.philosophyQuote}&rdquo;
             </blockquote>
             <p className="text-sm text-[#6b6966] font-mono">
-              — Focus: retrieval platforms, CV automation, production ML
+              — Focus: GraphRAG retrieval platforms, CV automation, production MLOps
             </p>
           </div>
         </AnimateIn>
       </Section>
 
-      {/* ─── 3. Background ─── */}
+      {/* ─── 3. Background Preview ─── */}
       <Section
         label="Background"
         heading="Engineering Journey"
@@ -92,21 +92,8 @@ export const HomeContent: React.FC = () => {
       >
         <AnimateIn variant="fadeUp">
           <div className="max-w-3xl space-y-5 text-base sm:text-lg text-[#a3a1a0] leading-relaxed">
-            <p>
-              My engineering foundation began during my B.Tech in Computer
-              Science & Engineering at JSSATE Noida (78.1% aggregate). At
-              Droisys, I worked hands-on as a Python AI Intern and later as an
-              Associate Data Analyst, engineering automated image cropping
-              pipelines and Python template-matching tools that cut dataset
-              preparation turnaround by 40–50%.
-            </p>
-            <p>
-              Currently completing the 6-month full-time PGCP-AI program at CDAC
-              Noida (CCAT AIR 286), I am deepening my specialization in Agentic
-              AI design patterns, LLMOps, and cloud-native ML deployments while
-              building GraphReg — a hybrid GraphRAG platform for complex
-              regulatory compliance text.
-            </p>
+            <p>{profileData.bioNarrative.foundation}</p>
+            <p>{profileData.bioNarrative.specialization}</p>
             <div className="pt-2">
               <Link
                 href="/about"
@@ -120,7 +107,7 @@ export const HomeContent: React.FC = () => {
         </AnimateIn>
       </Section>
 
-      {/* ─── 4. Capabilities ─── */}
+      {/* ─── 4. Capabilities Preview ─── */}
       <Section
         label="Capabilities"
         heading="What I Do"
@@ -151,7 +138,7 @@ export const HomeContent: React.FC = () => {
         </AnimateIn>
       </Section>
 
-      {/* ─── 6. Experience ─── */}
+      {/* ─── 6. Experience Preview ─── */}
       <Section
         label="Timeline"
         heading="Experience & Credentials"
@@ -182,11 +169,11 @@ export const HomeContent: React.FC = () => {
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Button
-                href="mailto:chaitanya.jindal2002@gmail.com"
+                href={`mailto:${profileData.email}`}
                 variant="primary"
                 icon={<Mail className="w-4 h-4" />}
               >
-                chaitanya.jindal2002@gmail.com
+                {profileData.email}
               </Button>
               <Button href="/contact" variant="secondary">
                 All Contact Channels

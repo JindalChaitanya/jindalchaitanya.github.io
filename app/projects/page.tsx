@@ -1,6 +1,4 @@
-'use client';
-
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import { Section } from '@/components/ui/Section';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -8,6 +6,12 @@ import { AnimateIn } from '@/components/ui/AnimateIn';
 import { projectsData } from '@/data/projects';
 import { ArrowRight } from 'lucide-react';
 import { IconGithub } from '@/components/ui/Icons';
+
+export const metadata: Metadata = {
+  title: 'Projects — Chaitanya Jindal',
+  description:
+    'Engineering catalog of production AI systems, computer vision desktop applications, and dataset engineering toolkits.',
+};
 
 export default function ProjectsPage() {
   return (

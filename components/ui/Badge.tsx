@@ -17,22 +17,22 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center font-mono font-normal rounded-md tracking-normal transition-colors duration-150 select-none';
+    'inline-flex items-center font-mono font-normal rounded-full tracking-normal backdrop-blur-md transition-colors duration-200 select-none';
 
   const variantStyles = {
     accent:
-      'bg-[rgba(200,164,94,0.1)] text-[#c8a45e] border border-[rgba(200,164,94,0.2)]',
+      'bg-[rgba(200,164,94,0.12)] text-[#c8a45e] border border-[rgba(200,164,94,0.25)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]',
     muted:
-      'bg-[#1e1e22] text-[#a3a1a0] border border-[#2a2a2e]',
+      'bg-white/[0.04] text-[#a8a5a0] border border-white/10 hover:border-white/20',
     outline:
-      'bg-transparent text-[#a3a1a0] border border-[#2a2a2e] hover:border-[#3d3b39]',
+      'bg-transparent text-[#a8a5a0] border border-white/10 hover:border-white/30',
     success:
-      'bg-[rgba(74,222,128,0.08)] text-[#4ade80] border border-[rgba(74,222,128,0.2)]',
+      'bg-[rgba(74,222,128,0.1)] text-[#4ade80] border border-[rgba(74,222,128,0.25)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]',
   };
 
   const sizeStyles = {
-    sm: 'text-[10px] px-2 py-0.5 gap-1',
-    md: 'text-[11px] px-2.5 py-1 gap-1.5',
+    sm: 'text-[10px] px-2.5 py-0.5 gap-1',
+    md: 'text-[11px] px-3 py-1 gap-1.5',
   };
 
   return (

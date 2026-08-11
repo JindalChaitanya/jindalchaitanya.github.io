@@ -1,10 +1,16 @@
-'use client';
-
+import type { Metadata } from 'next';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
 import { AnimateIn } from '@/components/ui/AnimateIn';
 import { Mail, MapPin, ArrowUpRight } from 'lucide-react';
 import { IconGithub, IconLinkedin } from '@/components/ui/Icons';
+import { profileData } from '@/data/profile';
+
+export const metadata: Metadata = {
+  title: 'Contact — Chaitanya Jindal',
+  description:
+    'Direct communication channels and verified professional profiles for Chaitanya Jindal.',
+};
 
 export default function ContactPage() {
   return (
@@ -32,10 +38,10 @@ export default function ContactPage() {
                 </div>
               </div>
               <p className="text-lg sm:text-xl font-mono text-[#c8a45e] break-all">
-                chaitanya.jindal2002@gmail.com
+                {profileData.email}
               </p>
               <Button
-                href="mailto:chaitanya.jindal2002@gmail.com"
+                href={`mailto:${profileData.email}`}
                 variant="primary"
                 size="lg"
               >
@@ -49,7 +55,7 @@ export default function ContactPage() {
             {/* LinkedIn */}
             <AnimateIn variant="fadeUp" delay={100}>
               <a
-                href="https://linkedin.com/in/jindalchaitanya"
+                href={profileData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-4 hover:border-[#2a2a2e] hover:bg-[#151517] transition-all group"
@@ -72,7 +78,7 @@ export default function ContactPage() {
             {/* GitHub */}
             <AnimateIn variant="fadeUp" delay={200}>
               <a
-                href="https://github.com/JindalChaitanya"
+                href={profileData.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-4 hover:border-[#2a2a2e] hover:bg-[#151517] transition-all group"
@@ -102,12 +108,12 @@ export default function ContactPage() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-75" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4ade80]" />
                     </span>
-                    Open to work
+                    Available
                   </span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#e8e6e3] text-sm">
-                    Noida, India
+                    {profileData.location}
                   </h3>
                   <p className="text-xs font-mono text-[#6b6966] mt-1">
                     AI / ML Engineering

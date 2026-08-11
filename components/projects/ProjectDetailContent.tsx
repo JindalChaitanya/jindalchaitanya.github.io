@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+import { notFound } from 'next/navigation';
 import { Section } from '@/components/ui/Section';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { AnimateIn } from '@/components/ui/AnimateIn';
-import { projectsData, Project } from '@/data/projects';
+import { projectsData } from '@/data/projects';
 import { ArrowLeft, AlertTriangle } from 'lucide-react';
 import { IconGithub } from '@/components/ui/Icons';
 
@@ -16,7 +17,11 @@ interface ProjectDetailContentProps {
 export const ProjectDetailContent: React.FC<ProjectDetailContentProps> = ({
   slug,
 }) => {
-  const project = projectsData.find((p) => p.slug === slug) as Project;
+  const project = projectsData.find((p) => p.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
 
   return (
     <div>

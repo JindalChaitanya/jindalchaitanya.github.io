@@ -1,20 +1,34 @@
-export interface SkillCategory {
+export interface SkillGroup {
+  id: string;
   category: string;
-  skills: string[];
+  description: string;
+  technologies: string[];
+  relatedProjectSlugs?: string[];
 }
 
-export const skillsData: SkillCategory[] = [
+export const skillsData: SkillGroup[] = [
   {
-    category: 'Core Languages',
-    skills: ['Python', 'SQL', 'C++', 'JavaScript', 'HTML/CSS']
+    id: 'ai-ml',
+    category: 'AI / Machine Learning',
+    description:
+      'Building practical machine learning models, deep learning architectures, and production-oriented pipelines.',
+    technologies: ['PyTorch', 'TensorFlow', 'Scikit-Learn'],
+    relatedProjectSlugs: ['graphreg', 'quickdraw', 'cropvision'],
   },
   {
-    category: 'AI / Machine Learning & CV',
-    skills: ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'YOLO (v8/11)', 'OpenCV', 'SIFT/FLANN', 'U²-Net', 'ONNX Runtime']
+    id: 'computer-vision',
+    category: 'Computer Vision',
+    description:
+      'Object detection, semi-automated annotation tools, dataset preprocessing, and edge deployment.',
+    technologies: ['YOLO (v8/11)', 'OpenCV', 'SIFT / FLANN', 'U²-Net', 'ONNX Runtime'],
+    relatedProjectSlugs: ['quickdraw', 'cropvision', 'ai-cutout-pro'],
   },
   {
-    category: 'LLMs, RAG & GenAI',
-    skills: [
+    id: 'graphrag-retrieval',
+    category: 'GraphRAG / Retrieval',
+    description:
+      'Combining property knowledge graphs, dense vector search, neural entity extraction, and cross-encoder reranking.',
+    technologies: [
       'GraphRAG',
       'Neo4j (Cypher)',
       'Qdrant',
@@ -23,19 +37,45 @@ export const skillsData: SkillCategory[] = [
       'GLiNER Zero-Shot Extraction',
       'ms-marco-MiniLM Reranking',
       'IBM Docling',
-      'LlamaIndex / LangChain (verify implementation)'
-    ]
+    ],
+    relatedProjectSlugs: ['graphreg'],
   },
   {
-    category: 'Data, Infrastructure & MLOps',
-    skills: ['Docker', 'Kubernetes (CDAC curriculum)', 'MLflow', 'Apache Spark / PySpark', 'Pandas', 'NumPy', 'HDF5', 'Git', 'Linux']
+    id: 'mlops-infra',
+    category: 'MLOps / Infrastructure',
+    description:
+      'Containerized deployments, automated data validation pipelines, dataset curation, and reproducible tooling.',
+    technologies: [
+      'Docker',
+      'Kubernetes (CDAC curriculum)',
+      'MLflow',
+      'Apache Spark / PySpark',
+      'Pandas',
+      'NumPy',
+      'HDF5',
+      'Git',
+      'Linux',
+    ],
+    relatedProjectSlugs: ['graphreg', 'cropvision', 'home-lab-private-cloud'],
   },
   {
-    category: 'Web & GUI Frameworks',
-    skills: ['FastAPI', 'Django', 'Flask', 'PyQt / PyQt6', 'React', 'Tailwind CSS']
+    id: 'languages-frameworks',
+    category: 'Languages / Tools',
+    description:
+      'Core programming languages, RESTful API frameworks, GUI toolkits, and web frontends.',
+    technologies: [
+      'Python',
+      'SQL',
+      'C++',
+      'JavaScript',
+      'HTML/CSS',
+      'FastAPI',
+      'Django',
+      'Flask',
+      'PyQt / PyQt6',
+      'React',
+      'Tailwind CSS',
+    ],
+    relatedProjectSlugs: ['django-recommendation-engine', 'quickdraw', 'graphreg'],
   },
-  {
-    category: 'Spoken Languages',
-    skills: ['Hindi (Native/Bilingual)', 'English (Professional Working)', 'German (Elementary)']
-  }
 ];

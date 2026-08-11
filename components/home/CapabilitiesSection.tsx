@@ -4,56 +4,7 @@ import React, { useState } from 'react';
 import { Badge } from '@/components/ui/Badge';
 import { AnimateIn } from '@/components/ui/AnimateIn';
 import { ChevronRight } from 'lucide-react';
-
-export interface CapabilityCategory {
-  id: string;
-  title: string;
-  description: string;
-  technologies: string[];
-  relatedProjects: string[];
-}
-
-const CAPABILITIES: CapabilityCategory[] = [
-  {
-    id: 'ai-ml',
-    title: 'AI & Machine Learning',
-    description:
-      'Building practical machine learning models, deep learning architectures, and production-oriented pipelines.',
-    technologies: ['PyTorch', 'TensorFlow', 'Scikit-Learn'],
-    relatedProjects: ['graphreg', 'quickdraw', 'cropvision'],
-  },
-  {
-    id: 'computer-vision',
-    title: 'Computer Vision',
-    description:
-      'Object detection, semi-automated annotation tools, dataset preprocessing, and edge deployment.',
-    technologies: ['YOLO', 'OpenCV', 'SIFT / FLANN', 'U²-Net', 'ONNX Runtime'],
-    relatedProjects: ['quickdraw', 'cropvision', 'ai-cutout-pro'],
-  },
-  {
-    id: 'graphrag-retrieval',
-    title: 'GraphRAG & Retrieval',
-    description:
-      'Combining property knowledge graphs, dense vector search, neural entity extraction, and cross-encoder reranking.',
-    technologies: [
-      'GraphRAG',
-      'Neo4j',
-      'Qdrant',
-      'BGE-M3',
-      'GLiNER',
-      'IBM Docling',
-    ],
-    relatedProjects: ['graphreg'],
-  },
-  {
-    id: 'ml-infra',
-    title: 'ML Infrastructure & MLOps',
-    description:
-      'Containerized deployments, automated data validation pipelines, dataset curation, and reproducible tooling.',
-    technologies: ['Docker', 'Kubernetes (CDAC)', 'MLflow', 'Spark', 'Pandas'],
-    relatedProjects: ['graphreg', 'cropvision', 'home-lab-private-cloud'],
-  },
-];
+import { skillsData, SkillGroup } from '@/data/skills';
 
 interface CapabilitiesSectionProps {
   onHoverCategory?: (relatedProjectSlugs: string[] | null) => void;
@@ -64,23 +15,23 @@ export const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({
 }) => {
   const [activeId, setActiveId] = useState<string | null>(null);
 
-  const toggleCapability = (cap: CapabilityCategory) => {
-    if (activeId === cap.id) {
+  const toggleCapability = (group: SkillGroup) => {
+    if (activeId === group.id) {
       setActiveId(null);
       onHoverCategory?.(null);
     } else {
-      setActiveId(cap.id);
-      onHoverCategory?.(cap.relatedProjects);
+      setActiveId(group.id);
+      onHoverCategory?.(group.relatedProjectSlugs || null);
     }
   };
 
   return (
     <div className="space-y-1">
-      {CAPABILITIES.map((cap, i) => {
-        const isActive = activeId === cap.id;
+      {skillsData.map((group, i) => {
+        const isActive = activeId === group.id;
 
         return (
-          <AnimateIn key={cap.id} variant="fadeUp" delay={i * 80}>
+          <AnimateIn key={group.id} variant="fadeUp" delay={i * 80}>
             <div
               className={`border-b border-[#1e1e22] transition-all duration-300 ${
                 isActive ? 'bg-[#111113]' : ''
@@ -89,9 +40,9 @@ export const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({
               {/* Accordion Header */}
               <button
                 type="button"
-                onClick={() => toggleCapability(cap)}
+                onClick={() => toggleCapability(group)}
                 onMouseEnter={() => {
-                  if (!activeId) onHoverCategory?.(cap.relatedProjects);
+                  if (!activeId) onHoverCategory?.(group.relatedProjectSlugs || null);
                 }}
                 onMouseLeave={() => {
                   if (!activeId) onHoverCategory?.(null);
@@ -110,7 +61,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({
                         : 'text-[#e8e6e3] group-hover:text-[#c8a45e]'
                     }`}
                   >
-                    {cap.title}
+                    {group.category}
                   </h3>
                 </div>
                 <ChevronRight
@@ -128,10 +79,10 @@ export const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({
               >
                 <div className="px-2 sm:px-4 pb-5 sm:pb-6 pl-12 sm:pl-14 space-y-3">
                   <p className="text-sm text-[#a3a1a0] leading-relaxed max-w-2xl">
-                    {cap.description}
+                    {group.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
-                    {cap.technologies.map((tech) => (
+                    {group.technologies.map((tech) => (
                       <Badge key={tech} variant="accent" size="sm">
                         {tech}
                       </Badge>

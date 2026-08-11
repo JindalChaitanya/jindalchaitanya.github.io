@@ -15,17 +15,17 @@ export const Card: React.FC<CardProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'rounded-xl transition-all duration-300 relative';
+    'rounded-2xl transition-all duration-300 relative overflow-hidden';
 
   const variantStyles = {
     default:
-      'bg-[#111113] border border-[#1e1e22]',
+      'glass-panel',
     interactive:
-      'bg-[#111113] border border-[#1e1e22] hover:border-[#2a2a2e] hover:bg-[#151517] cursor-pointer group',
+      'glass-panel-interactive cursor-pointer group',
     glass:
-      'backdrop-blur-xl bg-white/[0.03] border border-[#1e1e22] shadow-[0_0_40px_rgba(200,164,94,0.04)]',
+      'backdrop-blur-2xl bg-white/[0.04] border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.37)] inset-ring inset-ring-white/10',
     bordered:
-      'bg-transparent border border-[#1e1e22] hover:border-[#2a2a2e]',
+      'bg-transparent border border-white/10 hover:border-[#c8a45e]/30',
   };
 
   return (

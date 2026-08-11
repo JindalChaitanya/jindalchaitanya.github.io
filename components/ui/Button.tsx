@@ -33,20 +33,20 @@ export const Button = React.forwardRef<
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[44px] rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0b] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none select-none';
+      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[44px] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080a] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none select-none active:scale-[0.98]';
 
     const variantStyles = {
       primary:
-        'bg-[#c8a45e] text-[#0a0a0b] font-semibold hover:bg-[#d4b36e] active:bg-[#b8943e] shadow-[0_0_20px_rgba(200,164,94,0.15)]',
+        'bg-[#c8a45e] text-[#08080a] font-semibold hover:bg-[#d4b36e] active:bg-[#b8943e] shadow-[0_0_25px_rgba(200,164,94,0.25)] border border-[rgba(255,255,255,0.2)]',
       secondary:
-        'bg-transparent text-[#e8e6e3] border border-[#2a2a2e] hover:border-[#c8a45e]/40 hover:text-[#c8a45e] active:bg-[#1e1e22]',
+        'backdrop-blur-xl bg-white/[0.04] text-[#f3f2ef] border border-white/10 hover:border-[#c8a45e]/40 hover:bg-white/[0.08] hover:text-[#c8a45e] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]',
       ghost:
-        'bg-transparent text-[#a3a1a0] hover:text-[#e8e6e3] hover:bg-[#1e1e22] active:bg-[#2a2a2e]',
+        'bg-transparent text-[#a8a5a0] hover:text-[#f3f2ef] hover:bg-white/[0.06] backdrop-blur-md',
       link: 'bg-transparent text-[#c8a45e] hover:text-[#d4b36e] hover:underline p-0 min-h-0 h-auto font-sans tracking-normal border-0',
     };
 
     const sizeStyles = {
-      sm: 'text-xs px-3.5 py-2 gap-1.5',
+      sm: 'text-xs px-4 py-2 gap-1.5',
       md: 'text-sm px-5 py-2.5 gap-2',
       lg: 'text-base px-6 py-3 gap-2.5',
     };

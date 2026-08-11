@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { IconGithub, IconLinkedin } from '@/components/ui/Icons';
+import { profileData } from '@/data/profile';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -21,7 +22,7 @@ export const Footer: React.FC = () => {
               <span className="text-[#6b6966]">.dev</span>
             </Link>
             <p className="text-xs text-[#6b6966] font-mono">
-              AI / ML Engineer • Noida, India
+              {profileData.name} • {profileData.location}
             </p>
           </div>
 
@@ -57,7 +58,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col items-start md:items-end gap-3">
             <div className="flex items-center gap-3">
               <a
-                href="https://github.com/JindalChaitanya"
+                href={profileData.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -66,7 +67,7 @@ export const Footer: React.FC = () => {
                 <IconGithub className="w-4.5 h-4.5" />
               </a>
               <a
-                href="https://linkedin.com/in/jindalchaitanya"
+                href={profileData.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -75,15 +76,15 @@ export const Footer: React.FC = () => {
                 <IconLinkedin className="w-4.5 h-4.5" />
               </a>
               <a
-                href="mailto:chaitanya.jindal2002@gmail.com"
+                href={`mailto:${profileData.email}`}
                 aria-label="Email"
                 className="text-xs font-mono text-[#6b6966] hover:text-[#c8a45e] transition-colors"
               >
-                chaitanya.jindal2002@gmail.com
+                {profileData.email}
               </a>
             </div>
             <p className="text-[10px] font-mono text-[#3d3b39]">
-              © {currentYear} Chaitanya Jindal — Built with Next.js
+              © {currentYear} {profileData.name} — Built with Next.js
             </p>
           </div>
         </div>
