@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   title: 'Chaitanya Jindal — AI Systems Engineer',
   description:
     'Portfolio of Chaitanya Jindal: AI Systems Engineer building production-oriented AI systems across GraphRAG, computer vision, and ML infrastructure.',
-  metadataBase: new URL('https://chaitanyajindal.dev'),
+  metadataBase: new URL('https://jindalchaitanya.github.io'),
   openGraph: {
     title: 'Chaitanya Jindal — AI Systems Engineer',
     description:
