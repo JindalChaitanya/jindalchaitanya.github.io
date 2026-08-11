@@ -29,12 +29,13 @@ export const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({
     <div className="space-y-1">
       {skillsData.map((group, i) => {
         const isActive = activeId === group.id;
+        const panelId = `capability-panel-${group.id}`;
 
         return (
-          <AnimateIn key={group.id} variant="fadeUp" delay={i * 80}>
+          <AnimateIn key={group.id} variant="fadeUp" delay={i * 60}>
             <div
-              className={`border-b border-[#1e1e22] transition-all duration-300 ${
-                isActive ? 'bg-[#111113]' : ''
+              className={`border-b border-[#e6e2da] transition-colors duration-200 ${
+                isActive ? 'bg-[#f4f1ea] rounded-xl border border-[#e6e2da] my-2' : ''
               }`}
             >
               {/* Accordion Header */}
@@ -47,41 +48,42 @@ export const CapabilitiesSection: React.FC<CapabilitiesSectionProps> = ({
                 onMouseLeave={() => {
                   if (!activeId) onHoverCategory?.(null);
                 }}
-                className="w-full flex items-center justify-between py-5 sm:py-6 px-2 sm:px-4 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] rounded-lg"
+                className="w-full flex items-center justify-between py-5 sm:py-6 px-4 sm:px-6 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] rounded-xl"
                 aria-expanded={isActive}
+                aria-controls={panelId}
               >
-                <div className="flex items-center gap-4 sm:gap-6">
-                  <span className="text-xs font-mono text-[#6b6966] font-medium w-6 shrink-0">
-                    0{i + 1}
-                  </span>
+                <div className="flex items-center gap-4">
                   <h3
-                    className={`text-lg sm:text-xl font-serif font-normal transition-colors duration-200 ${
+                    className={`text-lg sm:text-xl font-sans font-medium transition-colors duration-200 ${
                       isActive
-                        ? 'text-[#c8a45e]'
-                        : 'text-[#e8e6e3] group-hover:text-[#c8a45e]'
+                        ? 'text-[#8c6d46]'
+                        : 'text-[#1a1917] group-hover:text-[#8c6d46]'
                     }`}
                   >
                     {group.category}
                   </h3>
                 </div>
                 <ChevronRight
-                  className={`w-4 h-4 text-[#6b6966] transition-transform duration-300 shrink-0 ${
-                    isActive ? 'rotate-90 text-[#c8a45e]' : ''
+                  className={`w-4 h-4 text-[#6e6a62] transition-transform duration-300 shrink-0 ${
+                    isActive ? 'rotate-90 text-[#8c6d46]' : ''
                   }`}
                 />
               </button>
 
               {/* Accordion Content */}
               <div
+                id={panelId}
+                role="region"
+                aria-label={group.category}
                 className={`overflow-hidden transition-all duration-300 ease-out ${
                   isActive ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-2 sm:px-4 pb-5 sm:pb-6 pl-12 sm:pl-14 space-y-3">
-                  <p className="text-sm text-[#a3a1a0] leading-relaxed max-w-2xl">
+                <div className="px-4 sm:px-6 pb-5 sm:pb-6 space-y-3">
+                  <p className="text-sm text-[#57544e] leading-relaxed max-w-2xl font-sans">
                     {group.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {group.technologies.map((tech) => (
                       <Badge key={tech} variant="accent" size="sm">
                         {tech}

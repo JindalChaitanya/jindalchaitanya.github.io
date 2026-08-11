@@ -33,20 +33,20 @@ export const Button = React.forwardRef<
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[44px] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08080a] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none select-none active:scale-[0.98]';
+      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[44px] rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fbf9f5] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none select-none active:scale-[0.98]';
 
     const variantStyles = {
       primary:
-        'bg-[#c8a45e] text-[#08080a] font-semibold hover:bg-[#d4b36e] active:bg-[#b8943e] shadow-[0_0_25px_rgba(200,164,94,0.25)] border border-[rgba(255,255,255,0.2)]',
+        'bg-[#1a1917] text-[#fbf9f5] font-semibold hover:bg-[#33312e] active:bg-[#000000] border border-[#1a1917] shadow-sm',
       secondary:
-        'backdrop-blur-xl bg-white/[0.04] text-[#f3f2ef] border border-white/10 hover:border-[#c8a45e]/40 hover:bg-white/[0.08] hover:text-[#c8a45e] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]',
+        'bg-[#ffffff] text-[#1a1917] border border-[#e6e2da] hover:border-[#8c6d46]/40 hover:text-[#8c6d46] active:bg-[#f4f1ea] shadow-sm',
       ghost:
-        'bg-transparent text-[#a8a5a0] hover:text-[#f3f2ef] hover:bg-white/[0.06] backdrop-blur-md',
-      link: 'bg-transparent text-[#c8a45e] hover:text-[#d4b36e] hover:underline p-0 min-h-0 h-auto font-sans tracking-normal border-0',
+        'bg-transparent text-[#57544e] hover:text-[#1a1917] hover:bg-[#f4f1ea]',
+      link: 'bg-transparent text-[#8c6d46] hover:text-[#705534] hover:underline p-0 min-h-0 h-auto font-sans tracking-normal border-0',
     };
 
     const sizeStyles = {
-      sm: 'text-xs px-4 py-2 gap-1.5',
+      sm: 'text-xs px-3.5 py-2 gap-1.5',
       md: 'text-sm px-5 py-2.5 gap-2',
       lg: 'text-base px-6 py-3 gap-2.5',
     };

@@ -1,123 +1,142 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { profileData } from '@/data/profile';
 
-const PHRASES = [
-  'AI Systems Engineer...',
-  'GraphRAG Developer...',
-  'Computer Vision Engineer...',
-  'MLOps Practitioner...',
+const HERO_PHRASES = [
+  'retrieval platforms.',
+  'computer vision tools.',
+  'dataset pipelines.',
+  'production AI systems.',
+  'useful software.',
 ];
 
-const TYPING_SPEED = 55;
-const DELETING_SPEED = 30;
-const PAUSE_AFTER_TYPE = 1500;
-const PAUSE_AFTER_DELETE = 350;
+const TYPING_SPEED_MS = 75;
+const PAUSE_TYPED_MS = 2200;
+const DELETING_SPEED_MS = 40;
+const PAUSE_DELETED_MS = 350;
 
 export const HeroIntro: React.FC = () => {
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [displayText, setDisplayText] = useState('');
+  const [charIndex, setCharIndex] = useState(HERO_PHRASES[0].length);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
+  const [isReducedMotion, setIsReducedMotion] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const firstName = profileData.name.split(' ')[0];
+  const currentPhrase = HERO_PHRASES[phraseIndex];
+
+  // 1. Detect mounted state & reduced motion preference
   useEffect(() => {
     setMounted(true);
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
+    setIsReducedMotion(mediaQuery.matches);
 
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
+    const handleMotionChange = (e: MediaQueryListEvent) => {
+      setIsReducedMotion(e.matches);
     };
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    mediaQuery.addEventListener('change', handleMotionChange);
+    return () => mediaQuery.removeEventListener('change', handleMotionChange);
   }, []);
 
+  // 2. Typewriter State Machine logic
   useEffect(() => {
-    if (prefersReducedMotion) {
-      setDisplayText(PHRASES[0]);
-      return;
-    }
+    if (isReducedMotion || !mounted) return;
 
-    const currentPhrase = PHRASES[phraseIndex];
-    let timeout: ReturnType<typeof setTimeout>;
+    const currentFullText = HERO_PHRASES[phraseIndex];
 
-    if (!isDeleting && displayText === currentPhrase) {
-      timeout = setTimeout(() => setIsDeleting(true), PAUSE_AFTER_TYPE);
-    } else if (isDeleting && displayText === '') {
-      timeout = setTimeout(() => {
-        setIsDeleting(false);
-        setPhraseIndex((prev) => (prev + 1) % PHRASES.length);
-      }, PAUSE_AFTER_DELETE);
+    if (isPaused) {
+      const pauseDuration = isDeleting ? PAUSE_DELETED_MS : PAUSE_TYPED_MS;
+      timerRef.current = setTimeout(() => {
+        setIsPaused(false);
+        if (!isDeleting) {
+          setIsDeleting(true);
+        } else {
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % HERO_PHRASES.length);
+          setCharIndex(0);
+        }
+      }, pauseDuration);
+    } else if (isDeleting) {
+      if (charIndex > 0) {
+        timerRef.current = setTimeout(() => {
+          setCharIndex((prev) => prev - 1);
+        }, DELETING_SPEED_MS);
+      } else {
+        setIsPaused(true);
+      }
     } else {
-      const next = isDeleting
-        ? currentPhrase.slice(0, displayText.length - 1)
-        : currentPhrase.slice(0, displayText.length + 1);
-      timeout = setTimeout(
-        () => setDisplayText(next),
-        isDeleting ? DELETING_SPEED : TYPING_SPEED
-      );
+      if (charIndex < currentFullText.length) {
+        timerRef.current = setTimeout(() => {
+          setCharIndex((prev) => prev + 1);
+        }, TYPING_SPEED_MS);
+      } else {
+        setIsPaused(true);
+      }
     }
 
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, phraseIndex, prefersReducedMotion]);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [charIndex, isDeleting, isPaused, phraseIndex, isReducedMotion, mounted]);
 
-  const firstName = profileData.name.split(' ')[0];
+  const displayedText = isReducedMotion
+    ? HERO_PHRASES[0]
+    : currentPhrase.substring(0, charIndex);
 
   return (
     <div className="relative">
-      {/* Gradient Glow Orb — decorative background */}
-      <div
-        className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(200,164,94,0.08)_0%,transparent_70%)] animate-glow-drift pointer-events-none select-none"
-        aria-hidden="true"
-      />
-
-      <div className="relative space-y-6 max-w-4xl">
-        {/* Status Badge */}
+      <div className="relative space-y-6 max-w-3xl">
+        {/* Contextual Status Tag */}
         <div
-          className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#1e1e22] bg-[#111113] text-xs font-mono text-[#a3a1a0] transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-            }`}
+          className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#e6e2da] bg-[#f4f1ea] text-xs font-sans text-[#57544e] transition-all duration-500 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+          }`}
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ade80]" />
-          </span>
+          <span className="w-2 h-2 rounded-full bg-[#5e6653] inline-block" />
           <span>{profileData.statusText}</span>
         </div>
 
-        {/* Main Heading */}
+        {/* Main Title (Lora serif) */}
         <h1
-          className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-normal tracking-tight text-[#e8e6e3] leading-[1.1] transition-all duration-700 delay-100 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
+          className={`text-4xl sm:text-6xl md:text-7xl font-serif font-normal tracking-tight text-[#1a1917] leading-[1.1] transition-all duration-500 delay-100 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+          }`}
         >
-          Hi, I&apos;m{' '}
-          <span className="text-[#c8a45e]">{firstName}</span>
-          <span className="text-[#c8a45e]">.</span>
+          Hi, I&apos;m <span className="text-[#8c6d46]">{firstName}</span>.
         </h1>
 
-        {/* Role Typewriter */}
+        {/* Typewriter Hero Sentence */}
         <div
-          className={`text-xl sm:text-2xl md:text-3xl font-sans text-[#a3a1a0] font-light flex items-baseline flex-wrap gap-x-2 min-h-[1.4em] transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
+          className={`text-2xl sm:text-4xl md:text-5xl font-serif font-normal text-[#1a1917] leading-snug tracking-tight min-h-[1.4em] flex flex-wrap items-baseline transition-all duration-500 delay-200 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+          }`}
         >
-          <span>I&apos;m a </span>
-          <span className="text-[#e8e6e3] font-normal" aria-live="polite" aria-atomic="true">
-            {displayText}
-            <span
-              className="inline-block w-[2px] h-[0.9em] bg-[#c8a45e] ml-1 align-middle animate-pulse"
-              aria-hidden="true"
-            />
+          <span className="mr-2">I build</span>
+          {/* Animated Visual Layer (Hidden from screen reader repetition) */}
+          <span className="font-sans font-normal text-[#8c6d46] inline-flex items-baseline" aria-hidden="true">
+            <span>{displayedText}</span>
+            {!isReducedMotion && (
+              <span className="inline-block w-[2.5px] h-[0.85em] bg-[#8c6d46] ml-1.5 align-baseline animate-pulse rounded-full" />
+            )}
+          </span>
+          {/* Accessible Screen Reader Static Summary */}
+          <span className="sr-only">
+            I build retrieval platforms, computer vision tools, dataset pipelines, and production AI systems.
           </span>
         </div>
 
-        {/* Brief intro line */}
+        {/* Supporting Detail Statement (Space Grotesk sans) */}
         <p
-          className={`text-base sm:text-lg text-[#6b6966] max-w-2xl leading-relaxed font-sans transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
+          className={`text-base sm:text-lg text-[#57544e] max-w-2xl leading-relaxed font-sans transition-all duration-500 delay-300 ${
+            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+          }`}
         >
-          {profileData.shortSummary}
+          CDAC PGCP-AI Specialist (AIR 286) with hands-on industry experience at Droisys engineering automated dataset pipelines and object detection tools.
         </p>
       </div>
     </div>

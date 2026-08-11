@@ -26,7 +26,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#08080a',
+  themeColor: '#fbf9f5',
 };
 
 export const metadata: Metadata = {
@@ -50,26 +50,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${lora.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} overflow-x-hidden`}
     >
-      <body className="bg-[#08080a] text-[#f3f2ef] antialiased min-h-screen flex flex-col relative selection:bg-[rgba(200,164,94,0.35)] selection:text-[#ffffff] overflow-x-hidden">
-        {/* Ambient Glass background light orbs */}
-        <div
-          className="fixed top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(200,164,94,0.06)_0%,transparent_70%)] animate-glow-slow pointer-events-none z-0"
-          aria-hidden="true"
-        />
-        <div
-          className="fixed bottom-1/3 right-10 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,rgba(74,222,128,0.03)_0%,transparent_70%)] animate-glow-reverse pointer-events-none z-0"
-          aria-hidden="true"
-        />
-        <div
-          className="fixed top-1/2 -left-40 w-[550px] h-[550px] rounded-full bg-[radial-gradient(circle,rgba(96,165,250,0.03)_0%,transparent_70%)] animate-glow-slow pointer-events-none z-0"
-          aria-hidden="true"
-        />
-
+      <body className="bg-[#fbf9f5] text-[#1a1917] antialiased min-h-screen flex flex-col relative selection:bg-[rgba(140,109,70,0.2)] selection:text-[#1a1917] overflow-x-hidden">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <div className="relative z-10 flex flex-col min-h-screen w-full">
           <Navbar />
-          <main className="flex-1 w-full">{children}</main>
+          <main id="main-content" className="flex-1 w-full">{children}</main>
           <Footer />
         </div>
       </body>

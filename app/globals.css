@@ -7,11 +7,11 @@
   --color-bg-elevated: #ede8df;
   --color-bg-subtle: #f0ebe1;
 
-  /* ── Text Hierarchy ── */
+  /* ── Text Hierarchy (Improved contrast: --color-text-muted meets WCAG AA 4.5:1) ── */
   --color-text-primary: #1a1917;
   --color-text-secondary: #57544e;
-  --color-text-muted: #8c8880;
-  --color-text-faint: #b0aba0;
+  --color-text-muted: #6e6a62;
+  --color-text-faint: #9c978e;
 
   /* ── Accent: Muted Coffee & Warm Amber ── */
   --color-accent: #8c6d46;
@@ -43,7 +43,7 @@
 
     --text-primary: #1a1917;
     --text-secondary: #57544e;
-    --text-muted: #8c8880;
+    --text-muted: #6e6a62;
 
     --accent: #8c6d46;
     --accent-dim: #705534;
@@ -88,6 +88,27 @@
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+  }
+
+  /* ── Skip Link for Keyboard Accessibility ── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.25rem;
+    background-color: #1a1917;
+    color: #fbf9f5;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: top 0.2s ease-in-out;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 
   /* ── Custom WebKit Scrollbar ── */
@@ -148,9 +169,9 @@
   /* ── Scroll Reveal Animation Classes ── */
   .reveal-hidden {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-visible {
@@ -160,30 +181,30 @@
 
   .reveal-left {
     opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-right {
     opacity: 0;
-    transform: translateX(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-scale {
     opacity: 0;
-    transform: scale(0.97);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scale(0.98);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-blur {
     opacity: 0;
-    filter: blur(6px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: blur(4px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .reveal-left.reveal-visible,
@@ -201,14 +222,5 @@
     opacity: 1;
     filter: blur(0);
   }
-
-  /* ── Pulse Indicator ── */
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-
-  .animate-pulse-dot {
-    animation: pulse-dot 2s ease-in-out infinite;
-  }
 }
+

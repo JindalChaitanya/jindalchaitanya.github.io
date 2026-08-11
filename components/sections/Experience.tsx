@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { AnimateIn } from '@/components/ui/AnimateIn';
+import { Badge } from '@/components/ui/Badge';
 import { workExperienceData, educationData } from '@/data/experience';
 
 interface ExperienceProps {
@@ -16,131 +17,114 @@ export const Experience: React.FC<ExperienceProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`space-y-14 ${className}`}>
+    <div className={`space-y-12 ${className}`}>
       {/* Work History */}
       {showWork && (
-        <div className="space-y-1">
+        <div className="space-y-6">
           <AnimateIn variant="fadeUp">
-            <h3 className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#c8a45e] mb-6 px-2">
-              Work Experience — Droisys
+            <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46] px-1">
+              Work Experience
             </h3>
           </AnimateIn>
 
-          <div className="relative">
-            {/* Vertical timeline line */}
-            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-[#c8a45e]/40 via-[#1e1e22] to-transparent" />
+          <div className="relative pl-6 border-l border-[#e6e2da] space-y-8 ml-2">
+            {workExperienceData.map((exp, i) => (
+              <AnimateIn key={`${exp.company}-${exp.role}`} variant="fadeUp" delay={i * 80}>
+                <div className="relative group space-y-2">
+                  {/* Timeline dot */}
+                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[#e6e2da] bg-[#fbf9f5] group-hover:border-[#8c6d46] transition-colors" />
 
-            <div className="space-y-8">
-              {workExperienceData.map((exp, i) => (
-                <AnimateIn key={`${exp.company}-${exp.role}`} variant="fadeUp" delay={i * 120}>
-                  <div className="relative pl-8 group">
-                    {/* Timeline dot */}
-                    <div className="absolute left-0 top-2 w-[14px] h-[14px] rounded-full border-2 border-[#1e1e22] bg-[#0a0a0b] group-hover:border-[#c8a45e] transition-colors z-10">
-                      <div className="absolute inset-1 rounded-full bg-[#2a2a2e] group-hover:bg-[#c8a45e] transition-colors" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                        <h4 className="font-serif text-lg sm:text-xl font-normal text-[#e8e6e3] group-hover:text-[#c8a45e] transition-colors">
-                          {exp.role}
-                        </h4>
-                        <span className="text-[10px] font-mono text-[#6b6966] tracking-wider">
-                          {exp.startDate} — {exp.endDate}
-                        </span>
-                      </div>
-                      <p className="text-xs font-mono text-[#c8a45e]/70">
-                        {exp.company} • {exp.location}
-                      </p>
-                      {exp.highlights && exp.highlights.length > 0 && (
-                        <ul className="space-y-2 pt-1.5">
-                          {exp.highlights.map((highlight, hi) => (
-                            <li
-                              key={hi}
-                              className="flex items-start gap-2.5 text-sm text-[#a3a1a0] leading-relaxed"
-                            >
-                              <span className="text-[#c8a45e] font-mono text-xs shrink-0 pt-1">
-                                ›
-                              </span>
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {exp.technologies && exp.technologies.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 pt-2">
-                          {exp.technologies.map((tech) => (
-                            <span
-                              key={tech}
-                              className="inline-flex items-center text-[10px] font-mono px-2 py-0.5 rounded bg-[#1e1e22] text-[#a3a1a0] border border-[#2a2a2e]"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                    <h4 className="font-serif text-lg sm:text-xl font-normal text-[#1a1917] group-hover:text-[#8c6d46] transition-colors">
+                      {exp.role} <span className="text-[#8c6d46]">@ {exp.company}</span>
+                    </h4>
+                    <span className="text-xs font-sans text-[#6e6a62]">
+                      {exp.startDate} — {exp.endDate}
+                    </span>
                   </div>
-                </AnimateIn>
-              ))}
-            </div>
+
+                  <p className="text-xs font-sans text-[#6e6a62]">
+                    {exp.location}
+                  </p>
+
+                  {exp.highlights && exp.highlights.length > 0 && (
+                    <ul className="space-y-2 pt-1">
+                      {exp.highlights.map((highlight, hi) => (
+                        <li
+                          key={hi}
+                          className="flex items-start gap-2 text-sm text-[#57544e] font-sans leading-relaxed"
+                        >
+                          <span className="text-[#8c6d46] shrink-0 pt-0.5">•</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {exp.technologies && exp.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {exp.technologies.map((tech) => (
+                        <Badge key={tech} variant="accent" size="sm">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </AnimateIn>
+            ))}
           </div>
         </div>
       )}
 
       {/* Education */}
       {showEducation && (
-        <div className="space-y-1">
+        <div className="space-y-6">
           <AnimateIn variant="fadeUp">
-            <h3 className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#c8a45e] mb-6 px-2">
-              Education & Certification
+            <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46] px-1">
+              Education & Specialization
             </h3>
           </AnimateIn>
 
-          <div className="relative">
-            {/* Vertical timeline line */}
-            <div className="absolute left-[7px] top-2 bottom-2 w-px bg-gradient-to-b from-[#c8a45e]/40 via-[#1e1e22] to-transparent" />
+          <div className="relative pl-6 border-l border-[#e6e2da] space-y-8 ml-2">
+            {educationData.map((edu, i) => (
+              <AnimateIn key={edu.institution} variant="fadeUp" delay={i * 80}>
+                <div className="relative group space-y-2">
+                  {/* Timeline dot */}
+                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[#e6e2da] bg-[#fbf9f5] group-hover:border-[#8c6d46] transition-colors" />
 
-            <div className="space-y-8">
-              {educationData.map((edu, i) => (
-                <AnimateIn key={edu.institution} variant="fadeUp" delay={i * 120}>
-                  <div className="relative pl-8 group">
-                    {/* Timeline dot */}
-                    <div className="absolute left-0 top-2 w-[14px] h-[14px] rounded-full border-2 border-[#1e1e22] bg-[#0a0a0b] group-hover:border-[#c8a45e] transition-colors z-10">
-                      <div className="absolute inset-1 rounded-full bg-[#2a2a2e] group-hover:bg-[#c8a45e] transition-colors" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                        <h4 className="font-serif text-lg sm:text-xl font-normal text-[#e8e6e3] group-hover:text-[#c8a45e] transition-colors">
-                          {edu.degree}
-                        </h4>
-                        <span className="text-[10px] font-mono text-[#6b6966] tracking-wider">
-                          {edu.startDate} — {edu.endDate}
-                        </span>
-                      </div>
-                      <p className="text-xs font-mono text-[#c8a45e]/70">
-                        {edu.institution}
-                        {edu.rankOrGrade && (
-                          <span className="ml-2 text-[#4ade80] font-semibold">
-                            [{edu.rankOrGrade}]
-                          </span>
-                        )}
-                      </p>
-                      {edu.details && (
-                        <p className="text-sm text-[#a3a1a0] leading-relaxed">
-                          {edu.details}
-                        </p>
-                      )}
-                      {edu.capstone && (
-                        <p className="text-xs font-mono text-[#6b6966] pt-1">
-                          <span className="text-[#c8a45e]">Capstone:</span> {edu.capstone}
-                        </p>
-                      )}
-                    </div>
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+                    <h4 className="font-serif text-lg sm:text-xl font-normal text-[#1a1917] group-hover:text-[#8c6d46] transition-colors">
+                      {edu.degree}
+                    </h4>
+                    <span className="text-xs font-sans text-[#6e6a62]">
+                      {edu.startDate} — {edu.endDate}
+                    </span>
                   </div>
-                </AnimateIn>
-              ))}
-            </div>
+
+                  <p className="text-xs font-sans text-[#6e6a62]">
+                    {edu.institution}
+                    {edu.rankOrGrade && (
+                      <span className="ml-2 text-[#5e6653] font-medium">
+                        [{edu.rankOrGrade}]
+                      </span>
+                    )}
+                  </p>
+
+                  {edu.details && (
+                    <p className="text-sm text-[#57544e] font-sans leading-relaxed">
+                      {edu.details}
+                    </p>
+                  )}
+
+                  {edu.capstone && (
+                    <p className="text-xs font-sans text-[#6e6a62] pt-1">
+                      <span className="text-[#8c6d46] font-medium">Capstone Project:</span> {edu.capstone}
+                    </p>
+                  )}
+                </div>
+              </AnimateIn>
+            ))}
           </div>
         </div>
       )}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'accent' | 'muted' | 'outline' | 'success';
+  variant?: 'accent' | 'muted' | 'outline' | 'success' | 'sage';
   size?: 'sm' | 'md';
   icon?: React.ReactNode;
   children: React.ReactNode;
@@ -17,22 +17,24 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center font-mono font-normal rounded-full tracking-normal backdrop-blur-md transition-colors duration-200 select-none';
+    'inline-flex items-center font-mono font-normal rounded-md tracking-normal transition-colors duration-150 select-none';
 
   const variantStyles = {
     accent:
-      'bg-[rgba(200,164,94,0.12)] text-[#c8a45e] border border-[rgba(200,164,94,0.25)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]',
+      'bg-[rgba(140,109,70,0.08)] text-[#8c6d46] border border-[rgba(140,109,70,0.2)]',
     muted:
-      'bg-white/[0.04] text-[#a8a5a0] border border-white/10 hover:border-white/20',
+      'bg-[#f4f1ea] text-[#57544e] border border-[#e6e2da]',
     outline:
-      'bg-transparent text-[#a8a5a0] border border-white/10 hover:border-white/30',
+      'bg-transparent text-[#57544e] border border-[#e6e2da] hover:border-[#c9c4b7]',
     success:
-      'bg-[rgba(74,222,128,0.1)] text-[#4ade80] border border-[rgba(74,222,128,0.25)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]',
+      'bg-[rgba(94,102,83,0.1)] text-[#5e6653] border border-[rgba(94,102,83,0.25)]',
+    sage:
+      'bg-[rgba(94,102,83,0.1)] text-[#5e6653] border border-[rgba(94,102,83,0.25)]',
   };
 
   const sizeStyles = {
-    sm: 'text-[10px] px-2.5 py-0.5 gap-1',
-    md: 'text-[11px] px-3 py-1 gap-1.5',
+    sm: 'text-[10px] px-2 py-0.5 gap-1',
+    md: 'text-[11px] px-2.5 py-1 gap-1.5',
   };
 
   return (

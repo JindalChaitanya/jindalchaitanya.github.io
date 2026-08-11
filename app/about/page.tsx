@@ -1,39 +1,48 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
 import { AnimateIn } from '@/components/ui/AnimateIn';
 import { Experience } from '@/components/sections/Experience';
 import { Skills } from '@/components/sections/Skills';
 import { extracurricularData } from '@/data/experience';
 import { profileData } from '@/data/profile';
-import { FileText, ArrowRight, Mail, Compass, Cpu, Layers } from 'lucide-react';
+import { FileText, Mail, Compass, Cpu, Layers } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About — Chaitanya Jindal',
   description:
-    'Background, engineering journey, CDAC PGCP-AI specialization, Droisys work history, and technical skill taxonomy of Chaitanya Jindal.',
+    'Background, engineering journey, CDAC PGCP-AI specialization, Droisys work history, and technical focus areas of Chaitanya Jindal.',
 };
 
 export default function AboutPage() {
   return (
     <div>
-      {/* ─── 1. Header & Introduction ─── */}
-      <Section
-        label="Background & Narrative"
-        heading="About & Engineering Journey"
-        description="Engineering background, career progression at Droisys, CDAC PGCP-AI specialization, and core technical competencies."
-      >
-        <div className="space-y-16">
+      {/* ─── Header & Introduction ─── */}
+      <Section className="pb-8 pt-10 sm:pt-16">
+        <div className="space-y-12">
+          {/* Main Page Title (Single h1 for WCAG accessibility) */}
+          <div className="space-y-3 max-w-3xl">
+            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+              Background & Experience
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-serif text-[#1a1917] tracking-tight">
+              About Chaitanya Jindal
+            </h1>
+            <p className="text-base sm:text-lg text-[#57544e] leading-relaxed font-sans">
+              AI Systems Engineer specializing in GraphRAG retrieval platforms, computer vision pipelines, and production ML infrastructure.
+            </p>
+          </div>
+
           {/* Resume Banner CTA */}
           <AnimateIn variant="fadeUp">
-            <div className="relative rounded-xl border border-[rgba(200,164,94,0.15)] bg-[rgba(200,164,94,0.03)] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <Card variant="paper" className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
-                <h2 className="text-lg font-semibold text-[#e8e6e3]">
-                  Official Curriculum Vitae
+                <h2 className="text-lg font-sans font-semibold text-[#1a1917]">
+                  Curriculum Vitae / Resume
                 </h2>
-                <p className="text-xs text-[#6b6966] font-mono">
-                  Verified career history and source material documented in standard format.
+                <p className="text-xs text-[#6e6a62] font-sans">
+                  Complete career history, education, and technical experience.
                 </p>
               </div>
               <Button
@@ -43,152 +52,126 @@ export default function AboutPage() {
               >
                 View Resume
               </Button>
-            </div>
+            </Card>
           </AnimateIn>
 
-          {/* Editorial Narrative Section */}
-          <div className="space-y-8 max-w-4xl">
+          {/* Core Focus Cards */}
+          <div className="space-y-6 max-w-4xl">
             <AnimateIn variant="fadeUp">
-              <div className="space-y-4">
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#c8a45e]">
-                  // Narrative
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-serif text-[#e8e6e3] leading-snug">
-                  Bridging computer vision automation, grounded retrieval systems, and production ML infrastructure.
-                </h2>
-              </div>
+              <h2 className="text-2xl font-serif text-[#1a1917]">
+                Computer Vision, Retrieval Systems & ML Infrastructure
+              </h2>
             </AnimateIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-              <AnimateIn variant="fadeUp" delay={100}>
-                <div className="rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-3 h-full">
-                  <div className="p-2.5 rounded-lg bg-[rgba(200,164,94,0.08)] text-[#c8a45e] w-fit">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <AnimateIn variant="fadeUp" delay={80}>
+                <Card variant="default" className="p-6 space-y-3 h-full">
+                  <div className="p-2.5 rounded-lg bg-[rgba(140,109,70,0.08)] text-[#8c6d46] w-fit">
                     <Compass className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-semibold text-[#e8e6e3]">
+                  <h3 className="text-base font-sans font-semibold text-[#1a1917]">
                     Foundational Engineering
                   </h3>
-                  <p className="text-xs text-[#a3a1a0] leading-relaxed">
-                    Graduated with B.Tech in CSE from JSSATE Noida (78.1% aggregate). Developed computer science fundamentals in algorithms, systems engineering, and software design.
+                  <p className="text-xs text-[#57544e] font-sans leading-relaxed">
+                    B.Tech in CSE from JSSATE Noida (78.1% aggregate). Solid foundation in algorithms, operating systems, software architecture, and computer science theory.
                   </p>
-                </div>
+                </Card>
               </AnimateIn>
 
-              <AnimateIn variant="fadeUp" delay={200}>
-                <div className="rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-3 h-full">
-                  <div className="p-2.5 rounded-lg bg-[rgba(200,164,94,0.08)] text-[#c8a45e] w-fit">
+              <AnimateIn variant="fadeUp" delay={160}>
+                <Card variant="default" className="p-6 space-y-3 h-full">
+                  <div className="p-2.5 rounded-lg bg-[rgba(140,109,70,0.08)] text-[#8c6d46] w-fit">
                     <Cpu className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-semibold text-[#e8e6e3]">
-                    Droisys Work History
+                  <h3 className="text-base font-sans font-semibold text-[#1a1917]">
+                    Droisys Experience
                   </h3>
-                  <p className="text-xs text-[#a3a1a0] leading-relaxed">
-                    Engineered automated image cropping pipelines (YOLO/OpenCV) cutting turnaround by 40–50%, and an Auto-Annotator toolkit reducing manual labeling labor by 60%.
+                  <p className="text-xs text-[#57544e] font-sans leading-relaxed">
+                    Engineered automated image cropping pipelines (YOLO/OpenCV) cutting turnaround by 40–50%, and localized Auto-Annotator tools reducing labeling labor by 60%.
                   </p>
-                </div>
+                </Card>
               </AnimateIn>
 
-              <AnimateIn variant="fadeUp" delay={300}>
-                <div className="rounded-xl border border-[#1e1e22] bg-[#111113] p-6 space-y-3 h-full">
-                  <div className="p-2.5 rounded-lg bg-[rgba(200,164,94,0.08)] text-[#c8a45e] w-fit">
+              <AnimateIn variant="fadeUp" delay={240}>
+                <Card variant="default" className="p-6 space-y-3 h-full">
+                  <div className="p-2.5 rounded-lg bg-[rgba(140,109,70,0.08)] text-[#8c6d46] w-fit">
                     <Layers className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-semibold text-[#e8e6e3]">
+                  <h3 className="text-base font-sans font-semibold text-[#1a1917]">
                     CDAC PGCP-AI & GraphRAG
                   </h3>
-                  <p className="text-xs text-[#a3a1a0] leading-relaxed">
-                    Secured CCAT AIR 286 for full-time CDAC PGCP-AI program. Building GraphReg — a hybrid GraphRAG regulatory compliance platform.
+                  <p className="text-xs text-[#57544e] font-sans leading-relaxed">
+                    AIR 286 in CCAT for full-time CDAC PGCP-AI program. Building GraphReg — a hybrid Graph + Vector RAG regulatory compliance platform.
                   </p>
-                </div>
+                </Card>
               </AnimateIn>
             </div>
           </div>
 
-          {/* ─── 2. Career Experience & Education Timeline ─── */}
-          <div className="space-y-6">
-            <AnimateIn variant="fadeUp">
-              <div className="flex items-center justify-between border-b border-[#1e1e22] pb-4">
-                <div>
-                  <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#c8a45e] block mb-1">
-                    Timeline
-                  </span>
-                  <h2 className="text-2xl font-serif text-[#e8e6e3]">
-                    Career History & Academic Credentials
-                  </h2>
-                </div>
-              </div>
-            </AnimateIn>
-
+          {/* ─── Experience Section ─── */}
+          <div className="space-y-6 pt-4 border-t border-[#e6e2da]">
             <Experience />
           </div>
 
-          {/* ─── 3. Skills & Capabilities Matrix ─── */}
-          <div className="space-y-6">
+          {/* ─── Skills Section ─── */}
+          <div className="space-y-6 pt-4 border-t border-[#e6e2da]">
             <AnimateIn variant="fadeUp">
-              <div className="flex items-center justify-between border-b border-[#1e1e22] pb-4">
-                <div>
-                  <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#c8a45e] block mb-1">
-                    Taxonomy
-                  </span>
-                  <h2 className="text-2xl font-serif text-[#e8e6e3]">
-                    Technical Skill Taxonomy
-                  </h2>
-                </div>
-              </div>
+              <h2 className="text-2xl font-serif text-[#1a1917] mb-6">
+                Technical Skills & Capabilities
+              </h2>
             </AnimateIn>
-
             <Skills />
           </div>
 
-          {/* ─── 4. Leadership & Extracurriculars ─── */}
-          <div className="space-y-6">
+          {/* ─── Leadership & Extracurriculars ─── */}
+          <div className="space-y-6 pt-4 border-t border-[#e6e2da]">
             <AnimateIn variant="fadeUp">
-              <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#6b6966] block mb-1">
+              <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#6e6a62] block mb-1">
                 Leadership
               </span>
-              <h2 className="text-xl font-serif text-[#e8e6e3]">
-                Leadership Roles & Specialized Training
+              <h2 className="text-xl font-serif text-[#1a1917]">
+                Leadership & Training Programs
               </h2>
             </AnimateIn>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {extracurricularData.map((extra, i) => (
-                <AnimateIn key={extra.organization} variant="fadeUp" delay={i * 100}>
-                  <div className="rounded-xl border border-[#1e1e22] bg-[#111113] p-5 space-y-2 hover:border-[#2a2a2e] transition-colors h-full flex flex-col justify-between">
+                <AnimateIn key={extra.organization} variant="fadeUp" delay={i * 80}>
+                  <Card variant="default" className="p-5 space-y-2 h-full flex flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <h3 className="font-semibold text-[#e8e6e3] text-sm">
+                        <h3 className="font-sans font-semibold text-[#1a1917] text-sm">
                           {extra.title}
                         </h3>
-                        <span className="text-[10px] font-mono text-[#6b6966]">
+                        <span className="text-xs font-sans text-[#6e6a62]">
                           {extra.period}
                         </span>
                       </div>
-                      <p className="text-xs font-mono text-[#c8a45e]/70">
+                      <p className="text-xs font-sans text-[#8c6d46] font-medium">
                         {extra.organization}
                       </p>
-                      <p className="text-xs text-[#a3a1a0] leading-relaxed pt-1">
+                      <p className="text-xs text-[#57544e] font-sans leading-relaxed pt-1">
                         {extra.description}
                       </p>
                     </div>
-                  </div>
+                  </Card>
                 </AnimateIn>
               ))}
             </div>
           </div>
 
-          {/* ─── 5. Contact CTA ─── */}
+          {/* ─── Contact CTA ─── */}
           <AnimateIn variant="fadeUp">
-            <div className="rounded-xl border border-[#1e1e22] bg-[#111113] p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <Card variant="paper" className="p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <div className="space-y-2 max-w-xl">
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#c8a45e]">
-                  Connect
+                <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+                  Reach Out
                 </span>
-                <h3 className="text-2xl font-serif text-[#e8e6e3]">
+                <h3 className="text-2xl font-serif text-[#1a1917]">
                   Interested in discussing AI engineering projects or roles?
                 </h3>
-                <p className="text-sm text-[#a3a1a0]">
-                  Open to discussions regarding GraphRAG platforms, computer vision automation pipelines, or ML infrastructure.
+                <p className="text-sm text-[#57544e] font-sans">
+                  Open to discussions regarding GraphRAG platforms, computer vision pipelines, or ML infrastructure.
                 </p>
               </div>
 
@@ -201,10 +184,10 @@ export default function AboutPage() {
                   Send Email
                 </Button>
                 <Button href="/contact" variant="secondary">
-                  Contact Hub
+                  Contact Info
                 </Button>
               </div>
-            </div>
+            </Card>
           </AnimateIn>
         </div>
       </Section>

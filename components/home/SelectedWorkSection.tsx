@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
+import { Card } from '@/components/ui/Card';
 import { AnimateIn } from '@/components/ui/AnimateIn';
 import { projectsData, Project } from '@/data/projects';
 
@@ -14,14 +15,14 @@ interface SelectedWorkSectionProps {
 export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({
   highlightedSlugs,
 }) => {
-  const selectedProjects: (Project & { number: string })[] = [
-    { ...projectsData.find((p) => p.slug === 'graphreg')!, number: '01' },
-    { ...projectsData.find((p) => p.slug === 'quickdraw')!, number: '02' },
-    { ...projectsData.find((p) => p.slug === 'cropvision')!, number: '03' },
+  const selectedProjects: Project[] = [
+    projectsData.find((p) => p.slug === 'graphreg')!,
+    projectsData.find((p) => p.slug === 'quickdraw')!,
+    projectsData.find((p) => p.slug === 'cropvision')!,
   ];
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-6">
       {selectedProjects.map((project, i) => {
         const isFlagship = project.tier === 1;
         const isHighlighted =
@@ -30,73 +31,77 @@ export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({
           highlightedSlugs && highlightedSlugs.length > 0 && !isHighlighted;
 
         return (
-          <AnimateIn key={project.slug} variant="fadeUp" delay={i * 100}>
+          <AnimateIn key={project.slug} variant="fadeUp" delay={i * 80}>
             <Link
               href={`/projects/${project.slug}`}
-              className={`block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8a45e] rounded-xl transition-all duration-300 ${
-                isMuted ? 'opacity-30 grayscale-[40%]' : 'opacity-100'
+              className={`block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] rounded-xl transition-all duration-300 ${
+                isMuted ? 'opacity-40' : 'opacity-100'
               }`}
             >
-              <div
-                className={`relative rounded-xl border p-6 sm:p-8 transition-all duration-300 ${
+              <Card
+                variant={isFlagship ? 'interactive' : 'default'}
+                className={`p-6 sm:p-8 transition-all duration-200 ${
                   isFlagship
-                    ? 'border-[rgba(200,164,94,0.15)] bg-[rgba(200,164,94,0.02)] group-hover:border-[rgba(200,164,94,0.35)] group-hover:bg-[rgba(200,164,94,0.04)]'
-                    : 'border-[#1e1e22] bg-[#111113] group-hover:border-[#2a2a2e] group-hover:bg-[#151517]'
+                    ? 'border-[rgba(140,109,70,0.3)] bg-[#ffffff] shadow-[0_2px_12px_rgba(26,25,23,0.04)] group-hover:border-[#8c6d46]'
+                    : 'border-[#e6e2da] bg-[#ffffff] group-hover:border-[#c9c4b7]'
                 } ${
-                  isHighlighted
-                    ? 'ring-1 ring-[#c8a45e] border-[#c8a45e]'
-                    : ''
+                  isHighlighted ? 'ring-1 ring-[#8c6d46] border-[#8c6d46]' : ''
                 }`}
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="flex items-start gap-5 sm:gap-7">
-                    {/* Number */}
-                    <span className="font-mono text-2xl sm:text-3xl font-light text-[#2a2a2e] group-hover:text-[#c8a45e]/40 transition-colors pt-1 select-none shrink-0">
-                      {project.number}
-                    </span>
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                  <div className="space-y-3 flex-1 min-w-0">
+                    <div className="flex items-center gap-2.5 flex-wrap">
+                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#1a1917] group-hover:text-[#8c6d46] transition-colors">
+                        {project.title}
+                      </h3>
+                      {isFlagship && (
+                        <Badge
+                          variant="accent"
+                          size="sm"
+                          icon={<Sparkles className="w-3 h-3 text-[#8c6d46]" />}
+                        >
+                          Flagship Capstone
+                        </Badge>
+                      )}
+                      <span className="text-xs font-sans text-[#6e6a62]">
+                        {project.category}
+                      </span>
+                    </div>
 
-                    {/* Project Info */}
-                    <div className="space-y-2.5 min-w-0">
-                      <div className="flex items-center gap-2.5 flex-wrap">
-                        <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#e8e6e3] group-hover:text-[#c8a45e] transition-colors">
-                          {project.title}
-                        </h3>
-                        {isFlagship && (
-                          <Badge
-                            variant="accent"
-                            size="sm"
-                            icon={
-                              <Sparkles className="w-3 h-3 text-[#c8a45e]" />
-                            }
-                          >
-                            Flagship
-                          </Badge>
-                        )}
-                      </div>
+                    <p className="text-sm sm:text-base text-[#1a1917] font-sans font-medium">
+                      {project.tagline}
+                    </p>
 
-                      <p className="text-sm text-[#a3a1a0] font-sans leading-relaxed">
-                        {project.tagline}
-                      </p>
+                    <p className="text-sm text-[#57544e] font-sans leading-relaxed max-w-3xl">
+                      {project.description}
+                    </p>
 
-                      <div className="flex flex-wrap gap-1.5 pt-0.5">
-                        {project.techStack.slice(0, 5).map((tech) => (
-                          <Badge key={tech} variant="muted" size="sm">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
+                    {/* Metrics preview */}
+                    <div className="pt-1 flex flex-wrap gap-2">
+                      {project.metrics.slice(0, 2).map((m, idx) => (
+                        <span key={idx} className="text-xs font-sans text-[#6e6a62] bg-[#f4f1ea] px-2.5 py-1 rounded border border-[#e6e2da]">
+                          • {m}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {project.techStack.slice(0, 6).map((tech) => (
+                        <Badge key={tech} variant="muted" size="sm">
+                          {tech}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
 
-                  {/* Arrow */}
-                  <div className="self-end sm:self-center shrink-0 flex items-center gap-2 text-[#6b6966] group-hover:text-[#c8a45e] transition-all duration-300">
-                    <span className="hidden sm:inline text-[10px] font-mono uppercase tracking-[0.15em]">
-                      View
+                  <div className="shrink-0 flex items-center gap-2 text-[#6e6a62] group-hover:text-[#8c6d46] transition-colors self-end md:self-center">
+                    <span className="text-xs font-sans font-medium">
+                      View Case Study
                     </span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </div>
-              </div>
+              </Card>
             </Link>
           </AnimateIn>
         );

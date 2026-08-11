@@ -1,89 +1,50 @@
-# Visual Direction & Design System Architecture
+# Visual Direction & Design System Architecture — Light Editorial Reset
 **Target Identity:** Chaitanya Jindal — AI Systems Engineer
 
 ---
 
-## 1. Visual Directions Evaluation
+## 1. Visual Direction Overview
 
-We evaluated **THREE distinct visual directions** to determine the optimal aesthetic identity for Chaitanya Jindal's portfolio:
+The portfolio aesthetic follows a **Warm Editorial Light Theme** inspired by personal design-engineer websites (such as Mitchell Sparrow). It emphasizes typography, whitespace, clarity, and human authenticity over dark SaaS landing page templates or glassmorphic operating system demos.
 
-### Direction 1: Cyberpunk Neon Operator *(Rejected)*
-- **Aesthetic:** High-contrast pitch black background, vivid magenta/neon-pink and cyan neon glows, heavy scanline overlays, glitch text effects, and terminal-heavy styling.
-- **Why Evaluated:** Gives an immediate "hacker" visual impact.
-- **Why Rejected:** Feels like a generic cyberpunk template; lacks professional engineering credibility for enterprise recruiters and ML leads; high visual fatigue.
-
-### Direction 2: Minimalist Academic Paper *(Rejected)*
-- **Aesthetic:** Stark white background, pure black text, serif headlines (Playfair / Computer Modern), static LaTeX equations, and minimal spacing.
-- **Why Evaluated:** Conveys academic research focus.
-- **Why Rejected:** Lacks the "WOW factor" and frontend engineering excellence required by Objective 2; feels dry and unengaging for recruiters.
-
-### Direction 3 (RECOMMENDED): Deep Synthetic Laboratory *(Linear / Vercel AI Aesthetic)*
-- **Aesthetic:** Deep slate/obsidian background (`#0A0D14`), subtle high-tech background grid patterns, glassmorphic card overlays with micro-borders (`border-slate-800/80`), luminous electric cyan (`#00F0FF`) and emerald status (`#00E676`) accents, crisp technical typography pairing (Inter/Outfit headers + JetBrains Mono code/telemetry).
-- **Why Recommended:** Strikes the precise balance: **FLASHY + TECHNICAL + PROFESSIONAL + MEMORABLE**. Communicates production-scale AI engineering, high precision, and state-of-the-art web design standards.
+### Aesthetic Principles
+- **Paper Canvas:** Soft warm off-white background (`#fbf9f5`) providing a calm, non-glare surface.
+- **Near-Black Typography:** High contrast, ultra-readable typography (`#1a1917`) utilizing `Lora` for serif titles/quotes, `Space Grotesk` for sans-serif body text, and `JetBrains Mono` for metadata.
+- **Muted Accents:** Muted coffee / warm amber (`#8c6d46`) for key highlights and subtle active indicators, paired with muted sage (`#5e6653`) for secondary status elements.
+- **Restrained Dividers & Cards:** Subtle warm gray borders (`#e6e2da`) and solid off-white card surfaces (`#f4f1ea`).
+- **No Vanity Tropes:** Zero dark glassmorphism, zero floating mesh gradients, zero cyan neon glows, zero progress bars, and zero fake telemetry badges.
 
 ---
 
-## 2. Design System Tokens & Specifications
-
-### Color Palette Strategy
+## 2. Design System Tokens (`app/globals.css`)
 
 ```css
-/* Color Tokens — Deep Synthetic Laboratory */
 :root {
-  /* Background Layers */
-  --bg-dark-base: #0a0d14;       /* Base Canvas */
-  --bg-dark-surface: #121723;    /* Card & Container Surface */
-  --bg-dark-elevated: #1a2234;   /* Hover & Active Surface */
-  
-  /* Text & Content */
-  --text-primary: #f8fafc;       /* Pure Slate White for Headings */
-  --text-secondary: #94a3b8;     /* Muted Slate for Body Text */
-  --text-tertiary: #64748b;      /* Metadata & Captions */
+  --bg-base: #fbf9f5;          /* Base paper canvas */
+  --bg-surface: #f4f1ea;       /* Card & container surface */
+  --bg-elevated: #ede8df;      /* Hover & active surface */
 
-  /* Accents & Status Telemetry */
-  --accent-cyan: #00f0ff;        /* Primary Tech Accent (GraphRAG, Highlights) */
-  --accent-cyan-glow: rgba(0, 240, 255, 0.15);
-  --accent-emerald: #00e676;     /* System Active Status / Metrics */
-  --accent-emerald-glow: rgba(0, 230, 118, 0.15);
-  --accent-blue: #3b82f6;        /* Secondary Engineering Links */
+  --text-primary: #1a1917;     /* Soft near-black for headings & body */
+  --text-secondary: #57544e;   /* Warm gray for subtitles & secondary text */
+  --text-muted: #8c8880;       /* Muted metadata */
 
-  /* Borders & Grid Overlays */
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-active: rgba(0, 240, 255, 0.3);
-  --grid-line: rgba(255, 255, 255, 0.03);
+  --accent-primary: #8c6d46;   /* Muted coffee / warm amber accent */
+  --accent-secondary: #5e6653; /* Muted olive / sage green secondary accent */
+
+  --border-subtle: #e6e2da;    /* Delicate warm gray dividers */
+  --border-hover: #d1cbbd;     /* Active border state */
 }
 ```
 
 ---
 
-### Typography Strategy
-- **Primary Body & Display Font:** `Inter` or `Outfit` (sans-serif) — Clean, ultra-readable, modern geometric sans.
-- **Technical & Code Font:** `JetBrains Mono` or `Fira Code` (monospace) — Used for metrics, tech stack tags, code blocks, and system telemetry indicators.
-- **Hierarchy:**
-  - `H1 (Hero Display)`: `text-4xl md:text-6xl font-extrabold tracking-tight`
-  - `H2 (Section Header)`: `text-2xl md:text-3xl font-bold tracking-tight text-slate-100`
-  - `H3 (Card Title)`: `text-lg md:text-xl font-semibold text-slate-200`
-  - `Mono Tag / Telemetry`: `font-mono text-xs text-cyan-400 uppercase tracking-widest`
+## 3. Typography Strategy
+- **Display & Section Titles:** `Lora` (serif) — Warm, human, elegant.
+- **Body & Controls:** `Space Grotesk` (sans-serif) — Clean, modern geometric readability.
+- **Metadata & Code:** `JetBrains Mono` (monospace) — Used for numbers, dates, tags, and URLs.
 
 ---
 
-### Background, Grid & Card Treatment
-- **Background Grid:** Subtle background vector grid rendered via CSS linear gradients (`linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px)`).
-- **Glassmorphism:** Cards use subtle backdrop blur (`backdrop-blur-md bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/40 transition-all duration-300`).
-- **Interactive Card Glow:** Subtle mouse-following radial gradient glow on project card hover.
-
----
-
-### Motion & Micro-Animations
-- **Scroll Animations:** Fade-and-slide up transitions (`y: 20 -> 0`, `opacity: 0 -> 1`) using Framer Motion / Motion.
-- **Hover Micro-Interactions:** Subtle scale shift (`scale: 1.02`), smooth border color transitions, and icon translations (`x: +4px`).
-- **System Telemetry Pulsing:** Emerald indicator pulse (`animate-ping`) next to "Available for AI Engineering Roles".
-
----
-
-### 3D Philosophy (React Three Fiber / Three.js)
-- **Selective & Purposeful:** 3D graphics are used **ONLY** where they directly illustrate an AI engineering concept.
-- **Flagship Implementation:** An interactive **Graph & Vector Node Network** canvas component for the GraphReg case study, representing Neo4j graph nodes and Qdrant vector clusters in 3D space.
-- **Performance Safeguards:**
-  - Disabled or simplified on touch devices and screen widths $<768\text{px}$.
-  - Framerate locked to 60fps with automatic WebGL context fallback to static SVG diagram.
+## 4. Mobile & Motion Strategy
+- **Mobile First Composition:** All grids collapse smoothly to single columns on small viewports (`<640px`). Touch targets adhere to minimum 44px boundaries. Zero horizontal scroll overflow.
+- **Subtle Interactions:** Scroll reveals (`AnimateIn`), hero typewriter, and smooth accordion transitions. Respects `prefers-reduced-motion: reduce`.

@@ -8,7 +8,7 @@ import { AnimateIn } from '@/components/ui/AnimateIn';
 import { HeroIntro } from '@/components/home/HeroIntro';
 import { CapabilitiesSection } from '@/components/home/CapabilitiesSection';
 import { SelectedWorkSection } from '@/components/home/SelectedWorkSection';
-import { ExperienceSection } from '@/components/home/ExperienceSection';
+import { Experience } from '@/components/sections/Experience';
 import { ArrowRight, Mail, FileText } from 'lucide-react';
 import { IconGithub, IconLinkedin } from '@/components/ui/Icons';
 import { profileData } from '@/data/profile';
@@ -21,12 +21,12 @@ export const HomeContent: React.FC = () => {
   return (
     <div>
       {/* ─── 1. Hero ─── */}
-      <Section className="pt-16 sm:pt-28 pb-16 border-b border-[#1e1e22]">
+      <Section className="pt-16 sm:pt-24 pb-16 border-b border-[#e6e2da]">
         <div className="space-y-10">
           <HeroIntro />
 
           {/* CTA Buttons */}
-          <AnimateIn variant="fadeUp" delay={400}>
+          <AnimateIn variant="fadeUp" delay={300}>
             <div className="flex flex-wrap items-center gap-4">
               <Button
                 href="/resume"
@@ -42,13 +42,13 @@ export const HomeContent: React.FC = () => {
               >
                 Get In Touch
               </Button>
-              <div className="flex items-center gap-2 border-l border-[#1e1e22] pl-4 ml-1">
+              <div className="flex items-center gap-2 border-l border-[#e6e2da] pl-4 ml-1">
                 <a
                   href={profileData.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
-                  className="p-2 text-[#6b6966] hover:text-[#e8e6e3] transition-colors rounded-lg hover:bg-[#1e1e22]"
+                  className="p-2 text-[#57544e] hover:text-[#1a1917] transition-colors rounded-lg hover:bg-[#f4f1ea]"
                 >
                   <IconGithub className="w-5 h-5" />
                 </a>
@@ -57,7 +57,7 @@ export const HomeContent: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
-                  className="p-2 text-[#6b6966] hover:text-[#e8e6e3] transition-colors rounded-lg hover:bg-[#1e1e22]"
+                  className="p-2 text-[#57544e] hover:text-[#1a1917] transition-colors rounded-lg hover:bg-[#f4f1ea]"
                 >
                   <IconLinkedin className="w-5 h-5" />
                 </a>
@@ -67,39 +67,22 @@ export const HomeContent: React.FC = () => {
         </div>
       </Section>
 
-      {/* ─── 2. Statement ─── */}
-      <Section className="py-16 sm:py-24 border-b border-[#1e1e22]">
-        <AnimateIn variant="fadeUp">
-          <div className="max-w-3xl space-y-4">
-            <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#c8a45e]">
-              Philosophy
-            </span>
-            <blockquote className="text-xl sm:text-2xl md:text-3xl font-serif text-[#e8e6e3] leading-relaxed font-normal">
-              &ldquo;{profileData.philosophyQuote}&rdquo;
-            </blockquote>
-            <p className="text-sm text-[#6b6966] font-mono">
-              — Focus: GraphRAG retrieval platforms, CV automation, production MLOps
-            </p>
-          </div>
-        </AnimateIn>
-      </Section>
-
-      {/* ─── 3. Background Preview ─── */}
+      {/* ─── 2. Background Overview ─── */}
       <Section
         label="Background"
-        heading="Engineering Journey"
-        className="border-b border-[#1e1e22]"
+        heading="Engineering Focus"
+        className="border-b border-[#e6e2da]"
       >
         <AnimateIn variant="fadeUp">
-          <div className="max-w-3xl space-y-5 text-base sm:text-lg text-[#a3a1a0] leading-relaxed">
+          <div className="max-w-3xl space-y-5 text-base sm:text-lg text-[#57544e] leading-relaxed">
             <p>{profileData.bioNarrative.foundation}</p>
             <p>{profileData.bioNarrative.specialization}</p>
             <div className="pt-2">
               <Link
                 href="/about"
-                className="inline-flex items-center gap-1.5 text-sm font-mono font-medium text-[#c8a45e] hover:underline group"
+                className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#8c6d46] hover:underline group"
               >
-                <span>More about me</span>
+                <span>Read full background & experience</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -107,64 +90,62 @@ export const HomeContent: React.FC = () => {
         </AnimateIn>
       </Section>
 
-      {/* ─── 4. Capabilities Preview ─── */}
+      {/* ─── 3. Capabilities ─── */}
       <Section
-        label="Capabilities"
-        heading="What I Do"
-        description="Core technical focus areas spanning AI systems, computer vision tools, grounded retrieval architectures, and ML data pipelines."
-        className="border-b border-[#1e1e22]"
+        label="Focus Areas"
+        heading="What I Work On"
+        description="Core technical capabilities across GraphRAG retrieval platforms, computer vision tools, and production ML infrastructure."
+        className="border-b border-[#e6e2da]"
       >
         <CapabilitiesSection onHoverCategory={setHighlightedSlugs} />
       </Section>
 
-      {/* ─── 5. Selected Work ─── */}
+      {/* ─── 4. Selected Work ─── */}
       <Section
-        label="Selected Work"
-        heading="Featured Projects"
-        description="Flagship and strong engineering projects demonstrating retrieval mechanics, classical computer vision, and dataset tooling."
-        className="border-b border-[#1e1e22]"
+        label="Projects"
+        heading="Featured Work"
+        description="Production AI platforms, desktop CV applications, and dataset engineering tools."
+        className="border-b border-[#e6e2da]"
       >
         <SelectedWorkSection highlightedSlugs={highlightedSlugs} />
-        <AnimateIn variant="fadeUp" delay={300}>
+        <AnimateIn variant="fadeUp" delay={250}>
           <div className="mt-10 text-center sm:text-left">
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 text-sm font-mono font-medium text-[#c8a45e] hover:underline group"
+              className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#8c6d46] hover:underline group"
             >
-              <span>View complete project catalog</span>
+              <span>Explore all projects</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </AnimateIn>
       </Section>
 
-      {/* ─── 6. Experience Preview ─── */}
+      {/* ─── 5. Timeline ─── */}
       <Section
         label="Timeline"
-        heading="Experience & Credentials"
-        className="border-b border-[#1e1e22]"
+        heading="Work & Credentials"
+        className="border-b border-[#e6e2da]"
       >
-        <ExperienceSection />
+        <Experience />
       </Section>
 
-      {/* ─── 7. Contact CTA ─── */}
-      <Section className="py-20 sm:py-32">
+      {/* ─── 6. Contact CTA ─── */}
+      <Section className="py-20 sm:py-28">
         <AnimateIn variant="fadeUp">
           <div className="max-w-2xl space-y-6">
             <div className="space-y-3">
-              <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#c8a45e]">
-                Get In Touch
+              <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+                Reach Out
               </span>
-              <h2 className="text-3xl sm:text-5xl font-serif font-normal text-[#e8e6e3] leading-tight">
-                Have an interesting problem?{' '}
-                <span className="text-[#c8a45e]">Let&apos;s talk.</span>
+              <h2 className="text-3xl sm:text-5xl font-serif font-normal text-[#1a1917] leading-tight">
+                Interested in working together?{' '}
+                <span className="text-[#8c6d46]">Let&apos;s talk.</span>
               </h2>
             </div>
 
-            <p className="text-base sm:text-lg text-[#a3a1a0] leading-relaxed font-sans">
-              Open to discussing AI/ML engineering roles, GraphRAG platform
-              architectures, computer vision pipelines, or production ML
-              infrastructure.
+            <p className="text-base sm:text-lg text-[#57544e] leading-relaxed font-sans">
+              Open to discussing AI/ML engineering roles, GraphRAG platform architectures, computer vision pipelines, or production ML infrastructure.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -176,7 +157,7 @@ export const HomeContent: React.FC = () => {
                 {profileData.email}
               </Button>
               <Button href="/contact" variant="secondary">
-                All Contact Channels
+                Contact Information
               </Button>
             </div>
           </div>
