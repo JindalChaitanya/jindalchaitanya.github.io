@@ -29,24 +29,24 @@ export const Section: React.FC<SectionProps> = ({
   return (
     <section
       id={id}
-      className={`py-14 sm:py-20 md:py-24 ${className}`}
+      className={`py-4 sm:py-6 md:py-8 ${className}`}
       {...props}
     >
       <Container size={containerSize}>
         {(label || heading || description) && (
-          <header className={`mb-10 sm:mb-14 max-w-3xl ${alignClasses}`}>
+          <header className={`mb-3 sm:mb-4 max-w-3xl ${alignClasses}`}>
             {label && (
-              <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-[#8c6d46] block mb-3">
+              <span className="text-sm font-sans font-medium uppercase tracking-wider text-[#8c6d46] block mb-1.5">
                 {label}
               </span>
             )}
             {heading && (
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-normal tracking-tight text-[#1a1917] mb-4 leading-tight">
+              <h2 className="text-[2rem] sm:text-[2.75rem] font-serif font-normal tracking-tight text-[#181816] mb-2 leading-tight">
                 {heading}
               </h2>
             )}
             {description && (
-              <p className="text-[#57544e] text-base sm:text-lg leading-relaxed">
+              <p className="text-[#5c5954] text-lg sm:text-xl leading-relaxed font-sans">
                 {description}
               </p>
             )}

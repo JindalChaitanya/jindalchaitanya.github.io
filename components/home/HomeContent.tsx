@@ -1,167 +1,104 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
-import { AnimateIn } from '@/components/ui/AnimateIn';
 import { HeroIntro } from '@/components/home/HeroIntro';
-import { CapabilitiesSection } from '@/components/home/CapabilitiesSection';
 import { SelectedWorkSection } from '@/components/home/SelectedWorkSection';
-import { Experience } from '@/components/sections/Experience';
+import { CapabilitiesSection } from '@/components/home/CapabilitiesSection';
 import { ArrowRight, Mail, FileText } from 'lucide-react';
-import { IconGithub, IconLinkedin } from '@/components/ui/Icons';
 import { profileData } from '@/data/profile';
 
 export const HomeContent: React.FC = () => {
-  const [highlightedSlugs, setHighlightedSlugs] = useState<string[] | null>(
-    null
-  );
-
   return (
-    <div>
-      {/* ─── 1. Hero ─── */}
-      <Section className="pt-16 sm:pt-24 pb-16 border-b border-[#e6e2da]">
-        <div className="space-y-10">
-          <HeroIntro />
+    <div className="space-y-3 sm:space-y-6">
+      {/* 1. Hero Viewport */}
+      <Section className="pt-4 sm:pt-8 pb-0">
+        <HeroIntro />
+      </Section>
 
-          {/* CTA Buttons */}
-          <AnimateIn variant="fadeUp" delay={300}>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button
-                href="/resume"
-                variant="primary"
-                icon={<FileText className="w-4 h-4" />}
-              >
-                View Resume
-              </Button>
-              <Button
-                href="/contact"
-                variant="secondary"
-                icon={<Mail className="w-4 h-4" />}
-              >
-                Get In Touch
-              </Button>
-              <div className="flex items-center gap-2 border-l border-[#e6e2da] pl-4 ml-1">
-                <a
-                  href={profileData.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="p-2 text-[#57544e] hover:text-[#1a1917] transition-colors rounded-lg hover:bg-[#f4f1ea]"
-                >
-                  <IconGithub className="w-5 h-5" />
-                </a>
-                <a
-                  href={profileData.linkedinUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="p-2 text-[#57544e] hover:text-[#1a1917] transition-colors rounded-lg hover:bg-[#f4f1ea]"
-                >
-                  <IconLinkedin className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-          </AnimateIn>
+      {/* 2. Flagship Selected Work */}
+      <Section
+        label="Selected Work"
+        heading="Featured Projects"
+        description="GraphRAG retrieval systems and desktop computer vision applications."
+        className="pt-0"
+      >
+        <SelectedWorkSection />
+        <div className="pt-4 text-left">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 text-base font-sans font-semibold text-[#8c6d46] hover:underline group"
+          >
+            <span>Explore more work</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
+          </Link>
         </div>
       </Section>
 
-      {/* ─── 2. Background Overview ─── */}
+      {/* 3. Skills / Technical Focus Areas */}
       <Section
-        label="Background"
-        heading="Engineering Focus"
-        className="border-b border-[#e6e2da]"
+        label="Skills"
+        heading="Technical Focus Areas"
+        description="Building practical machine learning models, deep learning architectures, and production-oriented pipelines."
+        className="pt-0"
       >
-        <AnimateIn variant="fadeUp">
-          <div className="max-w-3xl space-y-5 text-base sm:text-lg text-[#57544e] leading-relaxed">
-            <p>{profileData.bioNarrative.foundation}</p>
-            <p>{profileData.bioNarrative.specialization}</p>
-            <div className="pt-2">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-1.5 text-sm font-sans font-medium text-[#8c6d46] hover:underline group"
-              >
-                <span>Read full background & experience</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </div>
-        </AnimateIn>
+        <CapabilitiesSection />
       </Section>
 
-      {/* ─── 3. Capabilities ─── */}
+      {/* 4. Streamlined Focus & Credentials Summary */}
       <Section
-        label="Focus Areas"
-        heading="What I Work On"
-        description="Core technical capabilities across GraphRAG retrieval platforms, computer vision tools, and production ML infrastructure."
-        className="border-b border-[#e6e2da]"
+        label="Credentials"
+        heading="Background Summary"
+        className="pt-0"
       >
-        <CapabilitiesSection onHoverCategory={setHighlightedSlugs} />
-      </Section>
-
-      {/* ─── 4. Selected Work ─── */}
-      <Section
-        label="Projects"
-        heading="Featured Work"
-        description="Production AI platforms, desktop CV applications, and dataset engineering tools."
-        className="border-b border-[#e6e2da]"
-      >
-        <SelectedWorkSection highlightedSlugs={highlightedSlugs} />
-        <AnimateIn variant="fadeUp" delay={250}>
-          <div className="mt-10 text-center sm:text-left">
+        <div className="max-w-2xl space-y-3 text-lg text-[#4a4843] font-sans leading-relaxed">
+          <p>
+            Former Python AI Intern and Associate Data Analyst at Droisys; currently specializing in AI systems at CDAC Noida (CCAT AIR 286).
+          </p>
+          <div className="pt-1 flex flex-wrap items-center gap-4">
             <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#8c6d46] hover:underline group"
+              href="/about"
+              className="inline-flex items-center gap-1.5 text-base font-sans font-semibold text-[#8c6d46] hover:underline group"
             >
-              <span>Explore all projects</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span>Read complete career history</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
             </Link>
+            <Button
+              href="/resume"
+              variant="secondary"
+              size="sm"
+              icon={<FileText className="w-4 h-4" />}
+            >
+              View Resume
+            </Button>
           </div>
-        </AnimateIn>
+        </div>
       </Section>
 
-      {/* ─── 5. Timeline ─── */}
-      <Section
-        label="Timeline"
-        heading="Work & Credentials"
-        className="border-b border-[#e6e2da]"
-      >
-        <Experience />
-      </Section>
-
-      {/* ─── 6. Contact CTA ─── */}
-      <Section className="py-20 sm:py-28">
-        <AnimateIn variant="fadeUp">
-          <div className="max-w-2xl space-y-6">
-            <div className="space-y-3">
-              <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
-                Reach Out
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-serif font-normal text-[#1a1917] leading-tight">
-                Interested in working together?{' '}
-                <span className="text-[#8c6d46]">Let&apos;s talk.</span>
-              </h2>
-            </div>
-
-            <p className="text-base sm:text-lg text-[#57544e] leading-relaxed font-sans">
-              Open to discussing AI/ML engineering roles, GraphRAG platform architectures, computer vision pipelines, or production ML infrastructure.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Button
-                href={`mailto:${profileData.email}`}
-                variant="primary"
-                icon={<Mail className="w-4 h-4" />}
-              >
-                {profileData.email}
-              </Button>
-              <Button href="/contact" variant="secondary">
-                Contact Information
-              </Button>
-            </div>
+      {/* 5. Quiet Contact Line */}
+      <Section className="pt-0 pb-3 sm:pb-6">
+        <div className="max-w-2xl space-y-3">
+          <h2 className="text-[1.75rem] sm:text-[2.5rem] font-heading font-bold text-[#181816] leading-tight">
+            Interested in working together?
+          </h2>
+          <p className="text-lg text-[#4a4843] font-sans leading-relaxed">
+            Open to discussions regarding AI/ML engineering roles, regulatory compliance retrieval, and computer vision pipelines.
+          </p>
+          <div className="flex flex-wrap items-center gap-4 pt-1">
+            <Button
+              href={`mailto:${profileData.email}`}
+              variant="primary"
+              icon={<Mail className="w-4 h-4" />}
+            >
+              {profileData.email}
+            </Button>
+            <Button href="/contact" variant="secondary">
+              Contact Details
+            </Button>
           </div>
-        </AnimateIn>
+        </div>
       </Section>
     </div>
   );

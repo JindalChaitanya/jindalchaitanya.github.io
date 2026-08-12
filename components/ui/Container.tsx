@@ -13,10 +13,10 @@ export const Container: React.FC<ContainerProps> = ({
   ...props
 }) => {
   const sizeClasses = {
-    sm: 'max-w-3xl',
-    md: 'max-w-5xl',
-    lg: 'max-w-6xl',
-    xl: 'max-w-7xl',
+    sm: 'max-w-2xl',
+    md: 'max-w-3xl',
+    lg: 'max-w-4xl',
+    xl: 'max-w-5xl',
     full: 'max-w-full',
   };
 

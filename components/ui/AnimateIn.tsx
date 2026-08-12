@@ -13,17 +13,8 @@ interface AnimateInProps {
   threshold?: number;
 }
 
-const variantClasses: Record<AnimateVariant, string> = {
-  fadeUp: 'reveal-hidden',
-  fadeLeft: 'reveal-left',
-  fadeRight: 'reveal-right',
-  scaleIn: 'reveal-scale',
-  blur: 'reveal-blur',
-};
-
 export const AnimateIn: React.FC<AnimateInProps> = ({
   children,
-  variant = 'fadeUp',
   delay = 0,
   className = '',
   threshold = 0.1,
@@ -33,8 +24,8 @@ export const AnimateIn: React.FC<AnimateInProps> = ({
   return (
     <div
       ref={ref}
-      className={`${variantClasses[variant]} ${
-        isVisible ? 'reveal-visible' : ''
+      className={`transition-opacity duration-300 ease-out ${
+        isVisible ? 'opacity-100' : 'opacity-0'
       } ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >

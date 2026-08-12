@@ -72,7 +72,7 @@ This document establishes the single source of truth extracted exclusively from 
 ### Project 1: GraphReg (Tier 1 Flagship Capstone)
 - **Primary Project Name:** **GraphReg** *(Source alternate: GraphRegAI)*
 - **Full Title:** GraphReg: Hybrid GraphRAG Platform for Regulatory Compliance
-- **Domain & Context:** Capstone project for CDAC PGCP-AI program targeting SEBI / RBI regulatory circulars.
+- **Domain & Context:** CDAC PGCP-AI capstone project targeting SEBI regulatory circulars as the compliance domain.
 - **Key Technical Architecture & Features:**
   - **Layout-Aware Document Parsing:** Utilizes **IBM Docling** to parse multi-page regulatory documents while preserving schedules, tables, and visual structure.
   - **Zero-Shot Legal Entity Extraction:** Employs **GLiNER** neural zero-shot entity extraction to identify regulatory entities and legal clauses.

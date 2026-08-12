@@ -1,43 +1,39 @@
 import type { Metadata, Viewport } from 'next';
-import { Lora, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { DM_Sans, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 
-const lora = Lora({
+const dmSans = DM_Sans({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-body',
   display: 'swap',
+  weight: ['400', '500', '700'],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-heading-fallback',
   display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
+  weight: ['500', '600', '700'],
 });
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#fbf9f5',
+  themeColor: '#faf9f5',
 };
 
 export const metadata: Metadata = {
-  title: 'Chaitanya Jindal — AI Systems Engineer',
+  title: 'Chaitanya Jindal | AI Systems Engineer',
   description:
-    'Portfolio of Chaitanya Jindal: AI Systems Engineer building production-oriented AI systems across GraphRAG, computer vision, and ML infrastructure.',
+    'AI Systems Engineer specializing in regulatory compliance retrieval and computer vision pipelines.',
   metadataBase: new URL('https://jindalchaitanya.github.io'),
   openGraph: {
-    title: 'Chaitanya Jindal — AI Systems Engineer',
+    title: 'Chaitanya Jindal | AI Systems Engineer',
     description:
-      'Production-oriented AI systems across GraphRAG, computer vision, and ML infrastructure.',
+      'AI Systems Engineer specializing in regulatory compliance retrieval and computer vision pipelines.',
     type: 'website',
   },
 };
@@ -50,10 +46,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
-      className={`${lora.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} overflow-x-hidden`}
+      className={`${dmSans.variable} ${plusJakartaSans.variable} overflow-x-hidden`}
     >
-      <body className="bg-[#fbf9f5] text-[#1a1917] antialiased min-h-screen flex flex-col relative selection:bg-[rgba(140,109,70,0.2)] selection:text-[#1a1917] overflow-x-hidden">
+      <body className="bg-[#faf9f5] text-[#181816] antialiased min-h-screen flex flex-col relative selection:bg-[rgba(140,109,70,0.15)] selection:text-[#181816] overflow-x-hidden font-sans">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

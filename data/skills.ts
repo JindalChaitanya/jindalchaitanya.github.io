@@ -30,6 +30,7 @@ export const skillsData: SkillGroup[] = [
       'Combining property knowledge graphs, dense vector search, neural entity extraction, and cross-encoder reranking.',
     technologies: [
       'GraphRAG',
+      'LangChain',
       'Neo4j (Cypher)',
       'Qdrant',
       'ChromaDB',

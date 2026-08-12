@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'interactive' | 'paper' | 'bordered';
+  variant?: 'default' | 'interactive' | 'paper' | 'bordered' | 'ghost';
   children: React.ReactNode;
   className?: string;
   as?: 'div' | 'article' | 'section';
@@ -14,18 +14,19 @@ export const Card: React.FC<CardProps> = ({
   as: Component = 'div',
   ...props
 }) => {
-  const baseStyles =
-    'rounded-xl transition-all duration-200 relative overflow-hidden';
+  const baseStyles = 'rounded-lg transition-all duration-200 relative';
 
   const variantStyles = {
     default:
-      'bg-[#ffffff] border border-[#e6e2da] shadow-[0_2px_8px_rgba(26,25,23,0.04)]',
+      'bg-[#ffffff] border border-[#e6e2da]',
     interactive:
-      'bg-[#ffffff] border border-[#e6e2da] shadow-[0_2px_8px_rgba(26,25,23,0.04)] hover:border-[#c9c4b7] hover:shadow-[0_6px_16px_rgba(26,25,23,0.08)] cursor-pointer group',
+      'bg-[#ffffff] border border-[#e6e2da] hover:border-[#8c6d46] cursor-pointer group',
     paper:
-      'bg-[#f4f1ea] border border-[#e6e2da]',
+      'bg-[#f4f2eb] border border-[#e6e2da]',
     bordered:
       'bg-transparent border border-[#e6e2da] hover:border-[#c9c4b7]',
+    ghost:
+      'bg-transparent border-0',
   };
 
   return (

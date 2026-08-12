@@ -33,22 +33,22 @@ export const Button = React.forwardRef<
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[44px] rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fbf9f5] disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none select-none active:scale-[0.98]';
+      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[40px] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf9f5] disabled:opacity-50 disabled:cursor-not-allowed select-none';
 
     const variantStyles = {
       primary:
-        'bg-[#1a1917] text-[#fbf9f5] font-semibold hover:bg-[#33312e] active:bg-[#000000] border border-[#1a1917] shadow-sm',
+        'bg-[#181816] text-[#faf9f5] hover:bg-[#33312e] active:bg-[#000000]',
       secondary:
-        'bg-[#ffffff] text-[#1a1917] border border-[#e6e2da] hover:border-[#8c6d46]/40 hover:text-[#8c6d46] active:bg-[#f4f1ea] shadow-sm',
+        'bg-[#ffffff] text-[#181816] border border-[#e6e2da] hover:border-[#8c6d46] hover:text-[#8c6d46]',
       ghost:
-        'bg-transparent text-[#57544e] hover:text-[#1a1917] hover:bg-[#f4f1ea]',
-      link: 'bg-transparent text-[#8c6d46] hover:text-[#705534] hover:underline p-0 min-h-0 h-auto font-sans tracking-normal border-0',
+        'bg-transparent text-[#5c5954] hover:text-[#181816] hover:bg-[#f4f2eb]',
+      link: 'bg-transparent text-[#8c6d46] hover:text-[#705534] hover:underline p-0 min-h-0 h-auto font-sans border-0',
     };
 
     const sizeStyles = {
-      sm: 'text-xs px-3.5 py-2 gap-1.5',
-      md: 'text-sm px-5 py-2.5 gap-2',
-      lg: 'text-base px-6 py-3 gap-2.5',
+      sm: 'text-xs px-3 py-1.5 gap-1.5',
+      md: 'text-sm px-4 py-2 gap-2',
+      lg: 'text-base px-5 py-2.5 gap-2.5',
     };
 
     const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${

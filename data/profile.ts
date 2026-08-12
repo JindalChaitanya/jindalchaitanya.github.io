@@ -10,6 +10,7 @@ export interface Profile {
   email: string;
   githubUrl: string;
   linkedinUrl: string;
+  instagramUrl: string;
   resumePreviewUrl: string;
   resumeExportUrl: string;
   statusText: string;
@@ -18,24 +19,25 @@ export interface Profile {
 
 export const profileData: Profile = {
   name: 'Chaitanya Jindal',
-  headline: 'AI Systems Engineer | GraphRAG · Agentic AI · Computer Vision · MLOps',
+  headline: 'AI Systems Engineer',
   shortSummary:
-    'Building production-oriented AI systems across GraphRAG retrieval, computer vision pipelines, and ML infrastructure — not notebooks that score well in isolation.',
+    'AI systems for regulatory compliance retrieval and computer vision pipelines.',
   bioNarrative: {
     foundation:
-      'My engineering foundation began during my B.Tech in Computer Science & Engineering at JSSATE Noida (78.1% aggregate). At Droisys, I worked hands-on as a Python AI Intern and later as an Associate Data Analyst, engineering automated image cropping pipelines and Python template-matching tools that cut dataset preparation turnaround by 40–50%.',
+      'I earned my B.Tech in Computer Science & Engineering from JSSATE Noida (78.1% aggregate). At Droisys, I worked as a Python AI Intern and later as an Associate Data Analyst, engineering OpenCV and YOLO image pipelines that reduced dataset preparation turnaround time by 40–50% and built localized annotation tools cutting labeling labor by 60%.',
     specialization:
-      'Currently completing the 6-month full-time PGCP-AI program at CDAC Noida (CCAT AIR 286), I am deepening my specialization in Agentic AI design patterns, LLMOps, and cloud-native ML deployments while building GraphReg — a hybrid GraphRAG platform for complex SEBI and RBI regulatory compliance text.',
+      'Currently completing the full-time PGCP-AI program at CDAC Noida (CCAT AIR 286), my capstone project is GraphReg, a hybrid Graph + Vector RAG platform that applies structured retrieval to SEBI regulatory compliance text.',
   },
   location: 'Noida, Uttar Pradesh, India',
-  email: 'chaitanya.jindal2002@gmail.com',
+  email: 'jindalchaitanya@icloud.com',
   githubUrl: 'https://github.com/JindalChaitanya',
   linkedinUrl: 'https://linkedin.com/in/jindalchaitanya',
+  instagramUrl: 'https://instagram.com/jindalchaitanya',
   resumePreviewUrl:
     'https://docs.google.com/document/d/1vskU7Fbv3I7aGXUTeFwndJ_giZTD8VEs/preview',
   resumeExportUrl:
     'https://docs.google.com/document/d/1vskU7Fbv3I7aGXUTeFwndJ_giZTD8VEs/export?format=pdf',
-  statusText: 'Available for opportunities',
+  statusText: 'Available for AI/ML engineering roles',
   philosophyQuote:
-    'I build AI systems that ship — not notebooks that score well in isolation and never see production.',
+    'Building practical AI systems designed for real-world deployment.',
 };

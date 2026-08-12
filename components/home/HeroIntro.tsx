@@ -1,20 +1,22 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import { IconGithub, IconLinkedin, IconInstagram } from '@/components/ui/Icons';
 import { profileData } from '@/data/profile';
 
 const HERO_PHRASES = [
-  'retrieval platforms.',
-  'computer vision tools.',
-  'dataset pipelines.',
   'production AI systems.',
   'useful software.',
+  'retrieval platforms.',
+  'computer vision tools.',
 ];
 
-const TYPING_SPEED_MS = 75;
-const PAUSE_TYPED_MS = 2200;
-const DELETING_SPEED_MS = 40;
-const PAUSE_DELETED_MS = 350;
+const TYPING_SPEED_MS = 85;
+const PAUSE_TYPED_MS = 3200;
+const DELETING_SPEED_MS = 45;
+const PAUSE_DELETED_MS = 400;
 
 export const HeroIntro: React.FC = () => {
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -26,10 +28,6 @@ export const HeroIntro: React.FC = () => {
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const firstName = profileData.name.split(' ')[0];
-  const currentPhrase = HERO_PHRASES[phraseIndex];
-
-  // 1. Detect mounted state & reduced motion preference
   useEffect(() => {
     setMounted(true);
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -43,7 +41,6 @@ export const HeroIntro: React.FC = () => {
     return () => mediaQuery.removeEventListener('change', handleMotionChange);
   }, []);
 
-  // 2. Typewriter State Machine logic
   useEffect(() => {
     if (isReducedMotion || !mounted) return;
 
@@ -86,58 +83,81 @@ export const HeroIntro: React.FC = () => {
 
   const displayedText = isReducedMotion
     ? HERO_PHRASES[0]
-    : currentPhrase.substring(0, charIndex);
+    : HERO_PHRASES[phraseIndex].substring(0, charIndex);
 
   return (
-    <div className="relative">
-      <div className="relative space-y-6 max-w-3xl">
-        {/* Contextual Status Tag */}
-        <div
-          className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#e6e2da] bg-[#f4f1ea] text-xs font-sans text-[#57544e] transition-all duration-500 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-          }`}
-        >
-          <span className="w-2 h-2 rounded-full bg-[#5e6653] inline-block" />
-          <span>{profileData.statusText}</span>
-        </div>
+    <div className="space-y-4 max-w-3xl pt-4 sm:pt-8 pb-3">
+      {/* Greeting */}
+      <h1 className="text-[3.25rem] sm:text-[5.25rem] md:text-[6.75rem] font-heading font-bold text-[#181816] tracking-tight leading-[1.05]">
+        Hi, I&apos;m <span className="text-[#8c6d46]">Chaitanya</span>
+      </h1>
 
-        {/* Main Title (Lora serif) */}
-        <h1
-          className={`text-4xl sm:text-6xl md:text-7xl font-serif font-normal tracking-tight text-[#1a1917] leading-[1.1] transition-all duration-500 delay-100 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-          }`}
-        >
-          Hi, I&apos;m <span className="text-[#8c6d46]">{firstName}</span>.
-        </h1>
-
-        {/* Typewriter Hero Sentence */}
-        <div
-          className={`text-2xl sm:text-4xl md:text-5xl font-serif font-normal text-[#1a1917] leading-snug tracking-tight min-h-[1.4em] flex flex-wrap items-baseline transition-all duration-500 delay-200 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-          }`}
-        >
+      {/* Rotating text - fixed height, no wrap, font size 25% larger than supporting sentence */}
+      <div className="text-[1.5625rem] sm:text-[1.875rem] font-heading font-bold text-[#181816] leading-snug h-[2.2rem] sm:h-[2.75rem] overflow-hidden">
+        <span className="whitespace-nowrap">
           <span className="mr-2">I build</span>
-          {/* Animated Visual Layer (Hidden from screen reader repetition) */}
-          <span className="font-sans font-normal text-[#8c6d46] inline-flex items-baseline" aria-hidden="true">
-            <span>{displayedText}</span>
+          <span className="text-[#8c6d46]" aria-hidden="true">
+            {displayedText}
             {!isReducedMotion && (
-              <span className="inline-block w-[2.5px] h-[0.85em] bg-[#8c6d46] ml-1.5 align-baseline animate-pulse rounded-full" />
+              <span className="inline-block w-[2px] h-[0.8em] bg-[#8c6d46] ml-1 align-baseline opacity-70 animate-pulse" />
             )}
           </span>
-          {/* Accessible Screen Reader Static Summary */}
-          <span className="sr-only">
-            I build retrieval platforms, computer vision tools, dataset pipelines, and production AI systems.
-          </span>
-        </div>
+        </span>
+        <span className="sr-only">
+          I build production AI systems, useful software, retrieval platforms, and computer vision tools.
+        </span>
+      </div>
 
-        {/* Supporting Detail Statement (Space Grotesk sans) */}
-        <p
-          className={`text-base sm:text-lg text-[#57544e] max-w-2xl leading-relaxed font-sans transition-all duration-500 delay-300 ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-          }`}
+      {/* Supporting credential line */}
+      <p className="text-xl sm:text-2xl text-[#4a4843] font-sans leading-relaxed font-normal">
+        CDAC PGCP-AI Specialist (AIR 286) with hands-on industry experience at Droisys engineering automated dataset pipelines and object detection tools.
+      </p>
+
+      {/* CTA Row: GitHub + LinkedIn icons, email, resume */}
+      <div className="flex flex-wrap items-center gap-4 sm:gap-5 pt-2 text-base sm:text-lg font-sans">
+        <a
+          href={profileData.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-[#4a4843] hover:text-[#181816] transition-colors"
+          aria-label="GitHub"
         >
-          CDAC PGCP-AI Specialist (AIR 286) with hands-on industry experience at Droisys engineering automated dataset pipelines and object detection tools.
-        </p>
+          <IconGithub className="w-5 h-5" />
+          <span className="text-sm font-medium">GitHub</span>
+        </a>
+        <a
+          href={profileData.linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-[#4a4843] hover:text-[#181816] transition-colors"
+          aria-label="LinkedIn"
+        >
+          <IconLinkedin className="w-5 h-5" />
+          <span className="text-sm font-medium">LinkedIn</span>
+        </a>
+        <a
+          href={profileData.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-[#4a4843] hover:text-[#181816] transition-colors"
+          aria-label="Instagram"
+        >
+          <IconInstagram className="w-5 h-5 text-[#8c6d46]" />
+          <span className="text-sm font-medium">Instagram</span>
+        </a>
+        <a
+          href={`mailto:${profileData.email}`}
+          className="inline-flex items-center gap-1.5 text-[#4a4843] hover:text-[#181816] transition-colors"
+        >
+          <Mail className="w-4 h-4 text-[#8c6d46]" />
+          <span className="text-sm font-medium">{profileData.email}</span>
+        </a>
+        <Link
+          href="/resume"
+          className="text-[#4a4843] hover:text-[#181816] transition-colors font-medium text-sm"
+        >
+          Resume →
+        </Link>
       </div>
     </div>
   );

@@ -1,58 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Warm Editorial Light Foundations ── */
-  --color-bg-base: #fbf9f5;
-  --color-bg-surface: #f4f1ea;
-  --color-bg-elevated: #ede8df;
-  --color-bg-subtle: #f0ebe1;
+  /* ── Warm Editorial Foundations ── */
+  --color-bg-base: #faf9f5;
+  --color-bg-surface: #f4f2eb;
+  --color-bg-elevated: #ede9e0;
 
-  /* ── Text Hierarchy (Improved contrast: --color-text-muted meets WCAG AA 4.5:1) ── */
-  --color-text-primary: #1a1917;
-  --color-text-secondary: #57544e;
-  --color-text-muted: #6e6a62;
-  --color-text-faint: #9c978e;
+  /* ── High Contrast Typography ── */
+  --color-text-primary: #181816;
+  --color-text-secondary: #4a4843;
+  --color-text-muted: #737067;
 
-  /* ── Accent: Muted Coffee & Warm Amber ── */
+  /* ── Warm Coffee Accent ── */
   --color-accent: #8c6d46;
   --color-accent-dim: #705534;
-  --color-accent-glow: rgba(140, 109, 70, 0.12);
-  --color-accent-surface: rgba(140, 109, 70, 0.06);
 
-  /* ── Secondary Accent: Muted Sage ── */
-  --color-sage: #5e6653;
-  --color-sage-surface: rgba(94, 102, 83, 0.08);
-
-  /* ── Borders & Dividers ── */
+  /* ── Structural Lines ── */
   --color-border-primary: #e6e2da;
-  --color-border-subtle: #efece4;
-  --color-border-hover: #c9c4b7;
-  --color-border-accent: rgba(140, 109, 70, 0.3);
+  --color-border-hover: #8c6d46;
 
-  /* ── Fonts ── */
-  --font-serif: var(--font-serif), Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-sans: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  /* ── Typography Stack ── */
+  --font-heading: 'Sk-Modernist', var(--font-heading-fallback), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-body), 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-wordmark: 'Pulchella', 'Georgia', 'Times New Roman', serif;
 }
 
 @layer base {
   :root {
-    --bg-base: #fbf9f5;
-    --bg-surface: #f4f1ea;
-    --bg-elevated: #ede8df;
-
-    --text-primary: #1a1917;
-    --text-secondary: #57544e;
-    --text-muted: #6e6a62;
-
+    --bg-base: #faf9f5;
+    --bg-surface: #f4f2eb;
+    --text-primary: #181816;
+    --text-secondary: #4a4843;
+    --text-muted: #737067;
     --accent: #8c6d46;
-    --accent-dim: #705534;
-
     --border: #e6e2da;
-    --border-hover: #c9c4b7;
   }
 
-  *, ::before, ::after {
+  *,
+  ::before,
+  ::after {
     box-sizing: border-box;
   }
 
@@ -71,17 +57,32 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    position: relative;
   }
 
-  h1, h2, h3, .font-serif {
-    font-family: var(--font-serif);
+  /* Headings use Sk-Modernist geometric typeface */
+  h1,
+  h2,
+  h3,
+  .font-heading {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  /* Navbar wordmark uses Pulchella serif typeface */
+  .font-wordmark {
+    font-family: var(--font-wordmark);
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
   }
 
   /* ── Selection ── */
   ::selection {
-    background-color: rgba(140, 109, 70, 0.2);
-    color: #1a1917;
+    background-color: rgba(140, 109, 70, 0.15);
+    color: #181816;
   }
 
   /* ── Accessibility Focus Ring ── */
@@ -90,20 +91,19 @@
     outline-offset: 2px;
   }
 
-  /* ── Skip Link for Keyboard Accessibility ── */
+  /* ── Skip Link ── */
   .skip-link {
     position: absolute;
     top: -100px;
     left: 1rem;
     z-index: 100;
     padding: 0.75rem 1.25rem;
-    background-color: #1a1917;
-    color: #fbf9f5;
+    background-color: #181816;
+    color: #faf9f5;
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 600;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 0.375rem;
     transition: top 0.2s ease-in-out;
   }
 
@@ -111,25 +111,11 @@
     top: 1rem;
   }
 
-  /* ── Custom WebKit Scrollbar ── */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(140, 109, 70, 0.2);
-    border-radius: 9999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(140, 109, 70, 0.4);
-  }
-
   /* ── Reduced Motion Support ── */
   @media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after {
+    *,
+    ::before,
+    ::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -138,89 +124,33 @@
   }
 }
 
-/* ── Editorial Utility Classes ── */
+/* ── Restrained Signature Motion Moments (Rule 4) ── */
 @layer utilities {
-  .paper-panel {
-    background-color: #f4f1ea;
-    border: 1px solid #e6e2da;
+  .hero-reveal {
+    animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .paper-card {
-    background-color: #ffffff;
-    border: 1px solid #e6e2da;
-    box-shadow: 0 2px 8px rgba(26, 25, 23, 0.04);
-    transition: all 0.25s ease-out;
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .paper-card-interactive {
-    background-color: #ffffff;
-    border: 1px solid #e6e2da;
-    box-shadow: 0 2px 8px rgba(26, 25, 23, 0.04);
-    transition: all 0.25s ease-out;
+  .accent-bar-grow {
+    animation: barGrow 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  .paper-card-interactive:hover {
-    background-color: #ffffff;
-    border-color: #c9c4b7;
-    box-shadow: 0 6px 16px rgba(26, 25, 23, 0.08);
-    transform: translateY(-1px);
-  }
-
-  /* ── Scroll Reveal Animation Classes ── */
-  .reveal-hidden {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .reveal-left {
-    opacity: 0;
-    transform: translateX(-16px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-right {
-    opacity: 0;
-    transform: translateX(16px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-scale {
-    opacity: 0;
-    transform: scale(0.98);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-blur {
-    opacity: 0;
-    filter: blur(4px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal-left.reveal-visible,
-  .reveal-right.reveal-visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .reveal-scale.reveal-visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .reveal-blur.reveal-visible {
-    opacity: 1;
-    filter: blur(0);
+  @keyframes barGrow {
+    from {
+      width: 0;
+    }
+    to {
+      width: 48px;
+    }
   }
 }
-

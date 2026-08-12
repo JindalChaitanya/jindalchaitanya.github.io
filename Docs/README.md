@@ -63,7 +63,7 @@ Currently completing the **PGCP-AI program at CDAC** (AIR 286, CCAT Feb'26), bui
 ## Featured Projects
 
 ### [🌐 GraphReg](https://github.com/JindalChaitanya/GraphReg)
-Enterprise-grade, hybrid Graph + Vector RAG platform engineered specifically for complex regulatory compliance text (e.g., SEBI, RBI circulars).
+Enterprise-grade, hybrid Graph + Vector RAG platform engineered specifically for complex regulatory compliance text (e.g., SEBI circulars).
 
 - **Layout-aware parsing** with IBM Docling to preserve schedules and tables
 - **Neural zero-shot entity extraction** with GLiNER for precise legal entities

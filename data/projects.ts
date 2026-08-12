@@ -1,7 +1,6 @@
 export interface Project {
   slug: string;
   title: string;
-  tier: 1 | 2 | 3;
   tagline: string;
   description: string;
   techStack: string[];
@@ -17,9 +16,8 @@ export const projectsData: Project[] = [
   {
     slug: 'graphreg',
     title: 'GraphReg',
-    tier: 1,
-    tagline: 'Hybrid GraphRAG Platform for Regulatory Compliance',
-    description: 'Enterprise-grade hybrid Graph + Vector RAG platform engineered specifically for complex SEBI and RBI regulatory compliance text.',
+    tagline: 'Graph + Vector Retrieval Targeting SEBI Regulations',
+    description: 'CDAC PGCP-AI capstone: a hybrid Neo4j and Qdrant retrieval platform that parses and queries complex SEBI regulatory circulars using layout-aware parsing and cross-encoder context reranking.',
     techStack: [
       'Neo4j (Cypher)',
       'Qdrant',
@@ -34,22 +32,20 @@ export const projectsData: Project[] = [
     ],
     metrics: [
       'Layout-aware parsing with IBM Docling',
-      'Neural zero-shot entity extraction with GLiNER',
-      '2-hop property graph traversal + top-k vector search',
-      'Cross-encoder reranking context precision'
+      'Zero-shot legal entity extraction with GLiNER',
+      '2-hop Neo4j property graph traversal + Qdrant dense vector search',
+      'ms-marco-MiniLM cross-encoder reranking'
     ],
     category: 'GraphRAG & GenAI',
     featured: true,
     githubUrl: 'https://github.com/JindalChaitanya/GraphReg',
     hasCaseStudy: true,
-    frameworkNote: 'RAG orchestration: LlamaIndex / LangChain — verify implementation'
   },
   {
     slug: 'quickdraw',
     title: 'QuickDraw',
-    tier: 2,
-    tagline: 'Smart Reference Annotation Tool',
-    description: 'Semi-automatic desktop image annotation application integrating classical computer vision and persistent feature descriptors.',
+    tagline: 'Reference-Based Dataset Annotation',
+    description: 'A PyQt desktop annotation application using SIFT feature matching and FLANN indexing to auto-label image datasets from just 10 manual reference samples, cutting review time by over 70%.',
     techStack: [
       'PyQt6',
       'Python',
@@ -61,8 +57,8 @@ export const projectsData: Project[] = [
     ],
     metrics: [
       '>70% human review time reduction',
-      'Functional with only 10 manual examples',
-      'HDF5 persistent feature descriptor database'
+      'Functional with 10 manual reference examples',
+      'HDF5 persistent feature descriptor storage'
     ],
     category: 'Computer Vision',
     featured: true,
@@ -72,9 +68,8 @@ export const projectsData: Project[] = [
   {
     slug: 'cropvision',
     title: 'CropVision',
-    tier: 2,
-    tagline: 'Object Detection & Dataset Preparation Application',
-    description: 'Desktop application for large-scale object detection and automated image cropping.',
+    tagline: 'Automated Dataset Cropping',
+    description: 'A desktop batch processing tool combining YOLO object detection with OpenCV to validate bounding boxes and crop dataset images 40–50% faster than manual workflows.',
     techStack: [
       'PyQt6',
       'Python',
@@ -83,22 +78,20 @@ export const projectsData: Project[] = [
       'NumPy'
     ],
     metrics: [
-      '40–50% faster crop workflows vs manual annotation',
+      '40–50% faster dataset cropping workflows',
       'Batch processing with visual bounding-box validation',
-      'Adjustable confidence thresholds and class filtering'
+      'Custom class filtering and confidence thresholds'
     ],
     category: 'Computer Vision',
     featured: true,
     githubUrl: 'https://github.com/JindalChaitanya/CropVision',
     hasCaseStudy: true,
-    frameworkNote: 'YOLOv8 / YOLO11 — verify per project'
   },
   {
     slug: 'ai-cutout-pro',
     title: 'AI Cutout Pro',
-    tier: 3,
-    tagline: 'Background Removal & Object Extraction',
-    description: 'Desktop application combining YOLO detection with U²-Net segmentation for clean edge object extraction.',
+    tagline: 'Background Removal & Segmentation',
+    description: 'A desktop application combining YOLO detection with U²-Net segmentation on ONNX Runtime for portable, high-precision edge object extraction.',
     techStack: [
       'Python',
       'YOLO',
@@ -107,8 +100,8 @@ export const projectsData: Project[] = [
       'PyQt'
     ],
     metrics: [
-      'Fast portable edge inference with ONNX Runtime',
-      'YOLO detection + U²-Net segmentation integration'
+      'ONNX Runtime portable edge inference',
+      'Combined detection and segmentation pipeline'
     ],
     category: 'Computer Vision',
     featured: false,
@@ -118,9 +111,8 @@ export const projectsData: Project[] = [
   {
     slug: 'image-processing-toolkit',
     title: 'Image Processing Toolkit',
-    tier: 3,
-    tagline: 'Dataset Engineering & Preprocessing Suite',
-    description: 'Computer vision preprocessing toolkit for scaling dataset cleaning, duplicate detection, and augmentation.',
+    tagline: 'Dataset Engineering Suite',
+    description: 'A Python dataset preprocessing library that automates duplicate image detection, data augmentation, and annotation format conversions between YOLO, COCO, and Pascal VOC.',
     techStack: [
       'Python',
       'OpenCV',
@@ -129,8 +121,8 @@ export const projectsData: Project[] = [
       'NumPy'
     ],
     metrics: [
-      'Dataset validation, cleaning, and duplicate detection',
-      'Augmentation and annotation format conversion'
+      'Automated dataset cleaning and deduplication',
+      'Annotation format conversion (YOLO, Pascal VOC, COCO)'
     ],
     category: 'ML Tooling',
     featured: false,
@@ -139,10 +131,9 @@ export const projectsData: Project[] = [
   },
   {
     slug: 'django-recommendation-engine',
-    title: 'Collaborative Recommendation Engine',
-    tier: 3,
-    tagline: 'Django Movie Recommendation Platform',
-    description: 'Collaborative filtering web application providing scoring algorithms, RESTful APIs, and analytics dashboards.',
+    title: 'Collaborative Recommendation Platform',
+    tagline: 'Django Recommendation Platform',
+    description: 'A Django web application providing collaborative filtering recommendation scoring algorithms and RESTful API ingestion endpoints.',
     techStack: [
       'Django',
       'Python',
@@ -150,8 +141,8 @@ export const projectsData: Project[] = [
       'Collaborative Filtering'
     ],
     metrics: [
-      'Collaborative filtering scoring engine',
-      'RESTful APIs for real-time ingestion'
+      'User item scoring matrix engine',
+      'RESTful API endpoints for interaction logging'
     ],
     category: 'Web & Backend',
     featured: false,
@@ -159,10 +150,9 @@ export const projectsData: Project[] = [
   },
   {
     slug: 'home-lab-private-cloud',
-    title: 'Self-Hosted Home Lab',
-    tier: 3,
-    tagline: 'Private Cloud Infrastructure & Media Server',
-    description: 'Self-hosted home lab centered on Raspberry Pi handling NAS storage, data ingestion, and local media streaming.',
+    title: 'Self-Hosted Private Cloud',
+    tagline: 'Private Cloud Infrastructure',
+    description: 'A Raspberry Pi home lab handling NAS storage, local network services, and containerized ingestion workloads.',
     techStack: [
       'Raspberry Pi',
       'Linux',
@@ -171,8 +161,8 @@ export const projectsData: Project[] = [
       'Networking'
     ],
     metrics: [
-      'Central node private cloud NAS',
-      'Real-time data ingestion and streaming'
+      'Central NAS node on Raspberry Pi',
+      'Containerized background ingestion service'
     ],
     category: 'DevOps & Infra',
     featured: false,

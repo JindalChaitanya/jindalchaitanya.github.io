@@ -2,110 +2,67 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/Badge';
-import { Card } from '@/components/ui/Card';
-import { AnimateIn } from '@/components/ui/AnimateIn';
-import { projectsData, Project } from '@/data/projects';
+import { projectsData } from '@/data/projects';
 
-interface SelectedWorkSectionProps {
-  highlightedSlugs?: string[] | null;
-}
-
-export const SelectedWorkSection: React.FC<SelectedWorkSectionProps> = ({
-  highlightedSlugs,
-}) => {
-  const selectedProjects: Project[] = [
-    projectsData.find((p) => p.slug === 'graphreg')!,
-    projectsData.find((p) => p.slug === 'quickdraw')!,
-    projectsData.find((p) => p.slug === 'cropvision')!,
-  ];
+export const SelectedWorkSection: React.FC = () => {
+  // Show 2 flagship capstone projects on homepage per Rule 10 (progressive depth)
+  const selectedProjects = projectsData.filter(
+    (p) => p.slug === 'graphreg' || p.slug === 'quickdraw'
+  );
 
   return (
-    <div className="space-y-6">
-      {selectedProjects.map((project, i) => {
-        const isFlagship = project.tier === 1;
-        const isHighlighted =
-          highlightedSlugs && highlightedSlugs.includes(project.slug);
-        const isMuted =
-          highlightedSlugs && highlightedSlugs.length > 0 && !isHighlighted;
-
-        return (
-          <AnimateIn key={project.slug} variant="fadeUp" delay={i * 80}>
+    <div id="selected-work" className="space-y-4">
+      {selectedProjects.map((project) => (
+        <article
+          key={project.slug}
+          className="group space-y-2 pb-4 border-b border-[#e6e2da] last:border-b-0 last:pb-0"
+        >
+          {/* Header: Title & Category */}
+          <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+            <div className="flex items-baseline gap-3 flex-wrap">
+              <Link
+                href={`/projects/${project.slug}`}
+                className="group-hover:text-[#8c6d46] transition-colors"
+              >
+                <h3 className="text-[1.75rem] sm:text-[2.15rem] font-heading font-bold text-[#181816]">
+                  {project.title}
+                </h3>
+              </Link>
+              <span className="text-sm font-sans text-[#737067] font-medium">
+                {project.category}
+              </span>
+            </div>
             <Link
               href={`/projects/${project.slug}`}
-              className={`block group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] rounded-xl transition-all duration-300 ${
-                isMuted ? 'opacity-40' : 'opacity-100'
-              }`}
+              className="inline-flex items-center gap-1.5 text-sm font-sans font-semibold text-[#8c6d46] hover:underline shrink-0"
             >
-              <Card
-                variant={isFlagship ? 'interactive' : 'default'}
-                className={`p-6 sm:p-8 transition-all duration-200 ${
-                  isFlagship
-                    ? 'border-[rgba(140,109,70,0.3)] bg-[#ffffff] shadow-[0_2px_12px_rgba(26,25,23,0.04)] group-hover:border-[#8c6d46]'
-                    : 'border-[#e6e2da] bg-[#ffffff] group-hover:border-[#c9c4b7]'
-                } ${
-                  isHighlighted ? 'ring-1 ring-[#8c6d46] border-[#8c6d46]' : ''
-                }`}
-              >
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                  <div className="space-y-3 flex-1 min-w-0">
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <h3 className="text-xl sm:text-2xl font-serif font-normal text-[#1a1917] group-hover:text-[#8c6d46] transition-colors">
-                        {project.title}
-                      </h3>
-                      {isFlagship && (
-                        <Badge
-                          variant="accent"
-                          size="sm"
-                          icon={<Sparkles className="w-3 h-3 text-[#8c6d46]" />}
-                        >
-                          Flagship Capstone
-                        </Badge>
-                      )}
-                      <span className="text-xs font-sans text-[#6e6a62]">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <p className="text-sm sm:text-base text-[#1a1917] font-sans font-medium">
-                      {project.tagline}
-                    </p>
-
-                    <p className="text-sm text-[#57544e] font-sans leading-relaxed max-w-3xl">
-                      {project.description}
-                    </p>
-
-                    {/* Metrics preview */}
-                    <div className="pt-1 flex flex-wrap gap-2">
-                      {project.metrics.slice(0, 2).map((m, idx) => (
-                        <span key={idx} className="text-xs font-sans text-[#6e6a62] bg-[#f4f1ea] px-2.5 py-1 rounded border border-[#e6e2da]">
-                          • {m}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5 pt-2">
-                      {project.techStack.slice(0, 6).map((tech) => (
-                        <Badge key={tech} variant="muted" size="sm">
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="shrink-0 flex items-center gap-2 text-[#6e6a62] group-hover:text-[#8c6d46] transition-colors self-end md:self-center">
-                    <span className="text-xs font-sans font-medium">
-                      View Case Study
-                    </span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
-                </div>
-              </Card>
+              <span>Read Case Study</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
             </Link>
-          </AnimateIn>
-        );
-      })}
+          </div>
+
+          {/* Tagline */}
+          <p className="text-sm font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+            {project.tagline}
+          </p>
+
+          {/* Integrated Description Folding Concrete Results (No Bullet Clutter) */}
+          <p className="text-lg text-[#4a4843] font-sans leading-relaxed max-w-3xl">
+            {project.description}
+          </p>
+
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-1.5 pt-2">
+            {project.techStack.map((tech) => (
+              <Badge key={tech} variant="muted" size="sm">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        </article>
+      ))}
     </div>
   );
 };

@@ -20,39 +20,39 @@ export const Experience: React.FC<ExperienceProps> = ({
     <div className={`space-y-12 ${className}`}>
       {/* Work History */}
       {showWork && (
-        <div className="space-y-6">
-          <AnimateIn variant="fadeUp">
-            <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46] px-1">
-              Work Experience
+        <div className="space-y-8">
+          <AnimateIn>
+            <h3 className="text-xs font-sans font-medium uppercase tracking-wider text-[#8c6d46]">
+              Work History
             </h3>
           </AnimateIn>
 
-          <div className="relative pl-6 border-l border-[#e6e2da] space-y-8 ml-2">
+          <div className="space-y-10 border-l border-[#e6e2da] pl-6 ml-1">
             {workExperienceData.map((exp, i) => (
-              <AnimateIn key={`${exp.company}-${exp.role}`} variant="fadeUp" delay={i * 80}>
-                <div className="relative group space-y-2">
-                  {/* Timeline dot */}
-                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[#e6e2da] bg-[#fbf9f5] group-hover:border-[#8c6d46] transition-colors" />
+              <AnimateIn key={`${exp.company}-${exp.role}`} delay={i * 60}>
+                <div className="space-y-2 relative">
+                  {/* Subtle Timeline Dot */}
+                  <div className="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-[#8c6d46]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h4 className="font-serif text-lg sm:text-xl font-normal text-[#1a1917] group-hover:text-[#8c6d46] transition-colors">
+                    <h4 className="font-serif text-xl font-normal text-[#181816]">
                       {exp.role} <span className="text-[#8c6d46]">@ {exp.company}</span>
                     </h4>
-                    <span className="text-xs font-sans text-[#6e6a62]">
-                      {exp.startDate} — {exp.endDate}
+                    <span className="text-xs font-sans text-[#737067]">
+                      {exp.startDate} - {exp.endDate}
                     </span>
                   </div>
 
-                  <p className="text-xs font-sans text-[#6e6a62]">
+                  <p className="text-xs font-sans text-[#737067]">
                     {exp.location}
                   </p>
 
                   {exp.highlights && exp.highlights.length > 0 && (
-                    <ul className="space-y-2 pt-1">
+                    <ul className="space-y-1.5 pt-1 max-w-3xl">
                       {exp.highlights.map((highlight, hi) => (
                         <li
                           key={hi}
-                          className="flex items-start gap-2 text-sm text-[#57544e] font-sans leading-relaxed"
+                          className="flex items-start gap-2 text-sm text-[#5c5954] font-sans leading-relaxed"
                         >
                           <span className="text-[#8c6d46] shrink-0 pt-0.5">•</span>
                           <span>{highlight}</span>
@@ -79,30 +79,29 @@ export const Experience: React.FC<ExperienceProps> = ({
 
       {/* Education */}
       {showEducation && (
-        <div className="space-y-6">
-          <AnimateIn variant="fadeUp">
-            <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46] px-1">
+        <div className="space-y-8">
+          <AnimateIn>
+            <h3 className="text-xs font-sans font-medium uppercase tracking-wider text-[#8c6d46]">
               Education & Specialization
             </h3>
           </AnimateIn>
 
-          <div className="relative pl-6 border-l border-[#e6e2da] space-y-8 ml-2">
+          <div className="space-y-10 border-l border-[#e6e2da] pl-6 ml-1">
             {educationData.map((edu, i) => (
-              <AnimateIn key={edu.institution} variant="fadeUp" delay={i * 80}>
-                <div className="relative group space-y-2">
-                  {/* Timeline dot */}
-                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-[#e6e2da] bg-[#fbf9f5] group-hover:border-[#8c6d46] transition-colors" />
+              <AnimateIn key={edu.institution} delay={i * 60}>
+                <div className="space-y-2 relative">
+                  <div className="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-[#8c6d46]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h4 className="font-serif text-lg sm:text-xl font-normal text-[#1a1917] group-hover:text-[#8c6d46] transition-colors">
+                    <h4 className="font-serif text-xl font-normal text-[#181816]">
                       {edu.degree}
                     </h4>
-                    <span className="text-xs font-sans text-[#6e6a62]">
-                      {edu.startDate} — {edu.endDate}
+                    <span className="text-xs font-sans text-[#737067]">
+                      {edu.startDate} - {edu.endDate}
                     </span>
                   </div>
 
-                  <p className="text-xs font-sans text-[#6e6a62]">
+                  <p className="text-xs font-sans text-[#737067]">
                     {edu.institution}
                     {edu.rankOrGrade && (
                       <span className="ml-2 text-[#5e6653] font-medium">
@@ -112,13 +111,13 @@ export const Experience: React.FC<ExperienceProps> = ({
                   </p>
 
                   {edu.details && (
-                    <p className="text-sm text-[#57544e] font-sans leading-relaxed">
+                    <p className="text-sm text-[#5c5954] font-sans leading-relaxed max-w-3xl">
                       {edu.details}
                     </p>
                   )}
 
                   {edu.capstone && (
-                    <p className="text-xs font-sans text-[#6e6a62] pt-1">
+                    <p className="text-xs font-sans text-[#737067] pt-1">
                       <span className="text-[#8c6d46] font-medium">Capstone Project:</span> {edu.capstone}
                     </p>
                   )}
