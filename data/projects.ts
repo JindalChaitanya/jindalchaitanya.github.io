@@ -69,7 +69,7 @@ export const projectsData: Project[] = [
     slug: 'cropvision',
     title: 'CropVision',
     tagline: 'Automated Dataset Cropping',
-    description: 'A desktop batch processing tool combining YOLO object detection with OpenCV to validate bounding boxes and crop dataset images 40–50% faster than manual workflows.',
+    description: 'A desktop batch processing tool combining YOLO object detection with OpenCV to validate bounding boxes and crop dataset images 40-50% faster than manual workflows.',
     techStack: [
       'PyQt6',
       'Python',
@@ -78,7 +78,7 @@ export const projectsData: Project[] = [
       'NumPy'
     ],
     metrics: [
-      '40–50% faster dataset cropping workflows',
+      '40-50% faster dataset cropping workflows',
       'Batch processing with visual bounding-box validation',
       'Custom class filtering and confidence thresholds'
     ],

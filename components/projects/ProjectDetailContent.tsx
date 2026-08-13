@@ -40,75 +40,75 @@ export const ProjectDetailContent: React.FC<ProjectDetailContentProps> = ({
       <Section className="pt-0">
         <article className="space-y-10 max-w-3xl">
           {/* Header */}
-          <header className="space-y-3 border-b border-[#e6e2da] pb-8">
+          <header className="space-y-3 border-b border-[#d6dba0] pb-8">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="accent">{project.category}</Badge>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-[#181816] tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-[#23241a] tracking-tight">
               {project.title}
             </h1>
-            <p className="text-sm font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+            <p className="text-sm font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               {project.tagline}
             </p>
           </header>
 
           {/* Overview Section */}
           <div className="space-y-3">
-            <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+            <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Overview
             </h2>
-            <p className="text-[#4a4843] font-sans text-base sm:text-lg leading-relaxed">
+            <p className="text-[#54563f] font-sans text-base sm:text-lg leading-relaxed">
               {project.description}
             </p>
           </div>
 
           {/* GraphReg Case Study */}
           {isGraphReg && (
-            <div className="space-y-8 pt-4 border-t border-[#e6e2da]">
+            <div className="space-y-8 pt-4 border-t border-[#d6dba0]">
               {/* Problem */}
               <div className="space-y-3">
-                <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+                <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
                   Problem & Motivation
                 </h2>
-                <h3 className="text-xl sm:text-2xl font-heading font-bold text-[#181816]">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-[#23241a]">
                   Why Standard Vector RAG Struggles with Regulatory Text
                 </h3>
-                <p className="text-[#4a4843] font-sans text-base leading-relaxed">
+                <p className="text-[#54563f] font-sans text-base leading-relaxed">
                   SEBI circulars contain nested legal structures, cross-referenced clause hierarchies, and complex financial tables. Standard dense vector chunking breaks these cross-document dependencies, resulting in hallucinated context or missed regulatory constraints.
                 </p>
               </div>
 
               {/* Architecture Breakdown */}
               <div className="space-y-4">
-                <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+                <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
                   Technical Architecture
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="p-4 rounded-lg bg-[#f4f2eb] border border-[#e6e2da] space-y-1">
-                    <h4 className="font-sans font-bold text-sm text-[#181816]">1. Layout-Aware Parsing</h4>
-                    <p className="text-xs text-[#4a4843] font-sans leading-relaxed">
+                  <div className="p-4 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-1 transition-transform hover:-translate-y-0.5">
+                    <h4 className="font-sans font-bold text-sm text-[#23241a]">1. Layout-Aware Parsing</h4>
+                    <p className="text-xs text-[#54563f] font-sans leading-relaxed">
                       IBM Docling preserves structured tables, multi-page schedules, and section headers.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-lg bg-[#f4f2eb] border border-[#e6e2da] space-y-1">
-                    <h4 className="font-sans font-bold text-sm text-[#181816]">2. Zero-Shot Extraction</h4>
-                    <p className="text-xs text-[#4a4843] font-sans leading-relaxed">
+                  <div className="p-4 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-1 transition-transform hover:-translate-y-0.5">
+                    <h4 className="font-sans font-bold text-sm text-[#23241a]">2. Zero-Shot Extraction</h4>
+                    <p className="text-xs text-[#54563f] font-sans leading-relaxed">
                       GLiNER extracts legal entities, regulatory terms, and clause relationships dynamically.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-lg bg-[#f4f2eb] border border-[#e6e2da] space-y-1">
-                    <h4 className="font-sans font-bold text-sm text-[#181816]">3. Hybrid Graph + Vector</h4>
-                    <p className="text-xs text-[#4a4843] font-sans leading-relaxed">
+                  <div className="p-4 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-1 transition-transform hover:-translate-y-0.5">
+                    <h4 className="font-sans font-bold text-sm text-[#23241a]">3. Hybrid Graph + Vector</h4>
+                    <p className="text-xs text-[#54563f] font-sans leading-relaxed">
                       Neo4j property graph (2-hop traversal) merged with Qdrant vector semantic search (BGE-M3).
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-lg bg-[#f4f2eb] border border-[#e6e2da] space-y-1">
-                    <h4 className="font-sans font-bold text-sm text-[#181816]">4. Context Reranking</h4>
-                    <p className="text-xs text-[#4a4843] font-sans leading-relaxed">
+                  <div className="p-4 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-1 transition-transform hover:-translate-y-0.5">
+                    <h4 className="font-sans font-bold text-sm text-[#23241a]">4. Context Reranking</h4>
+                    <p className="text-xs text-[#54563f] font-sans leading-relaxed">
                       ms-marco-MiniLM cross-encoder reranks retrieved nodes to optimize prompt precision.
                     </p>
                   </div>
@@ -118,14 +118,14 @@ export const ProjectDetailContent: React.FC<ProjectDetailContentProps> = ({
           )}
 
           {/* Key Technical Outcomes */}
-          <div className="space-y-4 pt-4 border-t border-[#e6e2da]">
-            <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+          <div className="space-y-4 pt-4 border-t border-[#d6dba0]">
+            <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Key Engineering Features
             </h2>
             <div className="space-y-2">
               {project.metrics.map((metric, i) => (
-                <div key={i} className="flex items-start gap-2.5 text-sm text-[#4a4843] font-sans">
-                  <CheckCircle className="w-4 h-4 text-[#8c6d46] shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start gap-2.5 text-sm text-[#54563f] font-sans">
+                  <CheckCircle className="w-4 h-4 text-[#5c6b2f] shrink-0 mt-0.5" />
                   <span>{metric}</span>
                 </div>
               ))}
@@ -133,8 +133,8 @@ export const ProjectDetailContent: React.FC<ProjectDetailContentProps> = ({
           </div>
 
           {/* Technology Stack */}
-          <div className="space-y-3 pt-4 border-t border-[#e6e2da]">
-            <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+          <div className="space-y-3 pt-4 border-t border-[#d6dba0]">
+            <h2 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Technology Stack
             </h2>
             <div className="flex flex-wrap gap-1.5">
@@ -148,7 +148,7 @@ export const ProjectDetailContent: React.FC<ProjectDetailContentProps> = ({
 
           {/* GitHub Link */}
           {project.githubUrl && (
-            <div className="pt-6 border-t border-[#e6e2da]">
+            <div className="pt-6 border-t border-[#d6dba0]">
               <Button
                 href={project.githubUrl}
                 isExternal

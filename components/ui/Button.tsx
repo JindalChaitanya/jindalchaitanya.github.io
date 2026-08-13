@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'link';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'link' | 'pop';
   size?: 'sm' | 'md' | 'lg';
   href?: string;
   isExternal?: boolean;
@@ -33,16 +33,18 @@ export const Button = React.forwardRef<
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[40px] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf9f5] disabled:opacity-50 disabled:cursor-not-allowed select-none';
+      'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 min-h-[40px] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c6b2f] focus-visible:ring-offset-2 focus-visible:ring-offset-[#e1e6b8] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100 select-none';
 
     const variantStyles = {
       primary:
-        'bg-[#181816] text-[#faf9f5] hover:bg-[#33312e] active:bg-[#000000]',
+        'bg-[#5c6b2f] text-[#fdfdf5] hover:bg-[#485424] active:bg-[#39421c] shadow-xs',
       secondary:
-        'bg-[#ffffff] text-[#181816] border border-[#e6e2da] hover:border-[#8c6d46] hover:text-[#8c6d46]',
+        'bg-[#f7f8e8] text-[#23241a] border border-[#d6dba0] hover:border-[#5c6b2f] hover:text-[#5c6b2f]',
       ghost:
-        'bg-transparent text-[#5c5954] hover:text-[#181816] hover:bg-[#f4f2eb]',
-      link: 'bg-transparent text-[#8c6d46] hover:text-[#705534] hover:underline p-0 min-h-0 h-auto font-sans border-0',
+        'bg-transparent text-[#54563f] hover:text-[#23241a] hover:bg-[#f7f8e8]',
+      pop:
+        'bg-[#b34716] text-[#fdfdf5] hover:bg-[#963b12] active:bg-[#7a2f0e] shadow-xs',
+      link: 'bg-transparent text-[#5c6b2f] hover:text-[#485424] hover:underline p-0 min-h-0 h-auto font-sans border-0',
     };
 
     const sizeStyles = {

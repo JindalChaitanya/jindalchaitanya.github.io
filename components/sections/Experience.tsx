@@ -21,29 +21,29 @@ export const Experience: React.FC<ExperienceProps> = ({
       {/* Work History */}
       {showWork && (
         <div className="space-y-8">
-          <AnimateIn>
-            <h3 className="text-xs font-sans font-medium uppercase tracking-wider text-[#8c6d46]">
+          <AnimateIn duration={300}>
+            <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Work History
             </h3>
           </AnimateIn>
 
-          <div className="space-y-10 border-l border-[#e6e2da] pl-6 ml-1">
+          <div className="space-y-10 border-l border-[#d6dba0] pl-6 ml-1">
             {workExperienceData.map((exp, i) => (
-              <AnimateIn key={`${exp.company}-${exp.role}`} delay={i * 60}>
+              <AnimateIn key={`${exp.company}-${exp.role}`} delay={i * 60} duration={350}>
                 <div className="space-y-2 relative">
                   {/* Subtle Timeline Dot */}
-                  <div className="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-[#8c6d46]" />
+                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#5c6b2f] border-2 border-[#e1e6b8]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h4 className="font-serif text-xl font-normal text-[#181816]">
-                      {exp.role} <span className="text-[#8c6d46]">@ {exp.company}</span>
+                    <h4 className="font-heading text-xl font-bold text-[#23241a]">
+                      {exp.role} <span className="text-[#5c6b2f]">@ {exp.company}</span>
                     </h4>
-                    <span className="text-xs font-sans text-[#737067]">
+                    <span className="text-xs font-sans text-[#6b6e50]">
                       {exp.startDate} - {exp.endDate}
                     </span>
                   </div>
 
-                  <p className="text-xs font-sans text-[#737067]">
+                  <p className="text-xs font-sans text-[#6b6e50]">
                     {exp.location}
                   </p>
 
@@ -52,9 +52,9 @@ export const Experience: React.FC<ExperienceProps> = ({
                       {exp.highlights.map((highlight, hi) => (
                         <li
                           key={hi}
-                          className="flex items-start gap-2 text-sm text-[#5c5954] font-sans leading-relaxed"
+                          className="flex items-start gap-2 text-sm text-[#54563f] font-sans leading-relaxed"
                         >
-                          <span className="text-[#8c6d46] shrink-0 pt-0.5">•</span>
+                          <span className="text-[#5c6b2f] shrink-0 pt-0.5">•</span>
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -80,45 +80,45 @@ export const Experience: React.FC<ExperienceProps> = ({
       {/* Education */}
       {showEducation && (
         <div className="space-y-8">
-          <AnimateIn>
-            <h3 className="text-xs font-sans font-medium uppercase tracking-wider text-[#8c6d46]">
+          <AnimateIn duration={300}>
+            <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Education & Specialization
             </h3>
           </AnimateIn>
 
-          <div className="space-y-10 border-l border-[#e6e2da] pl-6 ml-1">
+          <div className="space-y-10 border-l border-[#d6dba0] pl-6 ml-1">
             {educationData.map((edu, i) => (
-              <AnimateIn key={edu.institution} delay={i * 60}>
+              <AnimateIn key={edu.institution} delay={i * 60} duration={350}>
                 <div className="space-y-2 relative">
-                  <div className="absolute -left-[31px] top-1.5 w-2 h-2 rounded-full bg-[#8c6d46]" />
+                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#5c6b2f] border-2 border-[#e1e6b8]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                    <h4 className="font-serif text-xl font-normal text-[#181816]">
+                    <h4 className="font-heading text-xl font-bold text-[#23241a]">
                       {edu.degree}
                     </h4>
-                    <span className="text-xs font-sans text-[#737067]">
+                    <span className="text-xs font-sans text-[#6b6e50]">
                       {edu.startDate} - {edu.endDate}
                     </span>
                   </div>
 
-                  <p className="text-xs font-sans text-[#737067]">
+                  <p className="text-xs font-sans text-[#6b6e50]">
                     {edu.institution}
                     {edu.rankOrGrade && (
-                      <span className="ml-2 text-[#5e6653] font-medium">
-                        [{edu.rankOrGrade}]
+                      <span className="ml-2 text-[#23241a] font-medium bg-[#e2e8a7] px-1.5 py-0.5 rounded-xs border border-[#d6dba0]">
+                        {edu.rankOrGrade}
                       </span>
                     )}
                   </p>
 
                   {edu.details && (
-                    <p className="text-sm text-[#5c5954] font-sans leading-relaxed max-w-3xl">
+                    <p className="text-sm text-[#54563f] font-sans leading-relaxed max-w-3xl">
                       {edu.details}
                     </p>
                   )}
 
                   {edu.capstone && (
-                    <p className="text-xs font-sans text-[#737067] pt-1">
-                      <span className="text-[#8c6d46] font-medium">Capstone Project:</span> {edu.capstone}
+                    <p className="text-xs font-sans text-[#6b6e50] pt-1">
+                      <span className="text-[#5c6b2f] font-semibold">Capstone Project:</span> {edu.capstone}
                     </p>
                   )}
                 </div>

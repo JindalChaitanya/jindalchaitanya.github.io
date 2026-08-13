@@ -35,7 +35,7 @@ export const workExperienceData: WorkExperience[] = [
     endDate: 'February 2026',
     highlights: [
       'Developed custom "Auto-Annotator" toolkit using Python, localized template matching, and SIFT/FLANN feature matching, cutting manual labeling labor by 60%.',
-      'Engineered an automated image cropping pipeline utilizing YOLO (v8/11) and OpenCV, reducing dataset preparation turnaround time by 40–50%.',
+      'Engineered an automated image cropping pipeline utilizing YOLO (v8/11) and OpenCV, reducing dataset preparation turnaround time by 40-50%.',
       'Designed and deployed automated data validation scripts using Pandas to sanitize preproduction datasets, ensuring production-grade data quality for downstream Computer Vision models.'
     ],
     technologies: ['Python', 'YOLO', 'OpenCV', 'Pandas', 'SIFT/FLANN', 'PyQt']
@@ -81,13 +81,13 @@ export const extracurricularData: Extracurricular[] = [
   {
     title: 'General Secretary',
     organization: 'Tenacious Technical Club',
-    period: 'April 2023 – May 2024',
+    period: 'April 2023 - May 2024',
     description: 'Led technical club operations, coordinated workshops, hackathons, and inter-departmental technical events.'
   },
   {
     title: 'Mentee',
     organization: 'Amazon ML Summer School India',
-    period: 'July 2023 – October 2023',
+    period: 'July 2023 - October 2023',
     description: 'Selected for intensive training program covering deep learning, reinforcement learning, GANs, NLP, and AWS SageMaker.'
   }
 ];

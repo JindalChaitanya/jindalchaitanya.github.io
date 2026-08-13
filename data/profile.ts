@@ -24,7 +24,7 @@ export const profileData: Profile = {
     'AI systems for regulatory compliance retrieval and computer vision pipelines.',
   bioNarrative: {
     foundation:
-      'I earned my B.Tech in Computer Science & Engineering from JSSATE Noida (78.1% aggregate). At Droisys, I worked as a Python AI Intern and later as an Associate Data Analyst, engineering OpenCV and YOLO image pipelines that reduced dataset preparation turnaround time by 40–50% and built localized annotation tools cutting labeling labor by 60%.',
+      'I earned my B.Tech in Computer Science & Engineering from JSSATE Noida (78.1% aggregate). At Droisys, I worked as a Python AI Intern and later as an Associate Data Analyst, engineering OpenCV and YOLO image pipelines that reduced dataset preparation turnaround time by 40-50% and built localized annotation tools cutting labeling labor by 60%.',
     specialization:
       'Currently completing the full-time PGCP-AI program at CDAC Noida (CCAT AIR 286), my capstone project is GraphReg, a hybrid Graph + Vector RAG platform that applies structured retrieval to SEBI regulatory compliance text.',
   },

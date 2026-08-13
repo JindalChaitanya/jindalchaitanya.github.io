@@ -19,23 +19,23 @@ export default function ProjectsPage() {
         <div className="space-y-8 max-w-4xl">
           {/* Main Title */}
           <div className="space-y-3">
-            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Portfolio Catalog
             </span>
-            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-[#181816] tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-[#23241a] tracking-tight">
               Projects & Work
             </h1>
-            <p className="text-base sm:text-lg text-[#4a4843] font-sans leading-relaxed max-w-3xl">
+            <p className="text-base sm:text-lg text-[#54563f] font-sans leading-relaxed max-w-3xl">
               GraphRAG retrieval systems targeting regulatory compliance, desktop computer vision applications, and dataset engineering pipelines.
             </p>
           </div>
 
-          {/* Project List — Clean Unboxed Entries */}
+          {/* Project List - Clean Unboxed Entries */}
           <div className="space-y-4">
             {projectsData.map((project) => (
               <article
                 key={project.slug}
-                className="space-y-2 pb-4 border-b border-[#e6e2da] last:border-b-0 last:pb-0"
+                className="group space-y-2 pb-5 border-b border-[#d6dba0] last:border-b-0 last:pb-0 transition-transform duration-200 hover:translate-x-1"
               >
                 {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3">
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
                     <div className="flex items-center gap-2 flex-wrap">
                       <Badge variant="accent">{project.category}</Badge>
                     </div>
-                    <h2 className="text-2xl font-heading font-bold text-[#181816]">
+                    <h2 className="text-2xl font-heading font-bold text-[#23241a] group-hover:text-[#5c6b2f] transition-colors">
                       {project.title}
                     </h2>
                   </div>
@@ -75,12 +75,12 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Tagline */}
-                <p className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+                <p className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
                   {project.tagline}
                 </p>
 
-                {/* Integrated Description Folding Concrete Results */}
-                <p className="text-[#4a4843] font-sans text-base leading-relaxed max-w-3xl">
+                {/* Integrated Description */}
+                <p className="text-[#54563f] font-sans text-base leading-relaxed max-w-3xl">
                   {project.description}
                 </p>
 

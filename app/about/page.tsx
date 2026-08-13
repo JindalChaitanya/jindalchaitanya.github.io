@@ -20,24 +20,24 @@ export default function AboutPage() {
         <div className="space-y-6 max-w-3xl">
           {/* Header */}
           <div className="space-y-3">
-            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#8c6d46]">
+            <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Background & Experience
             </span>
-            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-[#181816] tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-heading font-bold text-[#23241a] tracking-tight">
               About Chaitanya Jindal
             </h1>
-            <p className="text-base sm:text-lg text-[#4a4843] leading-relaxed font-sans">
+            <p className="text-base sm:text-lg text-[#54563f] leading-relaxed font-sans">
               AI Systems Engineer specializing in hybrid GraphRAG retrieval and desktop computer vision tools.
             </p>
           </div>
 
           {/* Quick Resume Link */}
-          <div className="p-5 rounded-lg bg-[#f4f2eb] border border-[#e6e2da] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-5 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-transform hover:-translate-y-0.5">
             <div className="space-y-1">
-              <h2 className="text-base font-sans font-semibold text-[#181816]">
+              <h2 className="text-base font-sans font-semibold text-[#23241a]">
                 My Resume
               </h2>
-              <p className="text-xs text-[#737067] font-sans">
+              <p className="text-xs text-[#6b6e50] font-sans">
                 Complete career history, education, and technical experience.
               </p>
             </div>
@@ -52,8 +52,8 @@ export default function AboutPage() {
           </div>
 
           {/* Narrative Summary */}
-          <div className="space-y-4 text-base text-[#4a4843] font-sans leading-relaxed pt-2">
-            <h2 className="text-2xl font-heading font-bold text-[#181816]">
+          <div className="space-y-4 text-base text-[#54563f] font-sans leading-relaxed pt-2">
+            <h2 className="text-2xl font-heading font-bold text-[#23241a]">
               Engineering Journey
             </h2>
             <p>{profileData.bioNarrative.foundation}</p>
@@ -74,16 +74,16 @@ export default function AboutPage() {
 
       {/* Leadership Section */}
       <Section label="Leadership" heading="Leadership & Training">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {extracurricularData.map((extra) => (
-            <div key={extra.organization} className="space-y-1">
-              <h3 className="font-sans font-semibold text-[#181816] text-sm">
-                {extra.title} - <span className="text-[#8c6d46] font-normal">{extra.organization}</span>
+            <div key={extra.organization} className="p-4 sm:p-5 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-1.5 transition-transform hover:-translate-y-0.5">
+              <h3 className="font-sans font-semibold text-[#23241a] text-sm">
+                {extra.title} - <span className="text-[#5c6b2f] font-normal">{extra.organization}</span>
               </h3>
-              <span className="text-xs font-sans text-[#737067] block">
+              <span className="text-xs font-sans text-[#6b6e50] block">
                 {extra.period}
               </span>
-              <p className="text-xs text-[#4a4843] font-sans leading-relaxed pt-1">
+              <p className="text-xs text-[#54563f] font-sans leading-relaxed pt-1">
                 {extra.description}
               </p>
             </div>
@@ -93,11 +93,11 @@ export default function AboutPage() {
 
       {/* Contact Callout */}
       <Section className="pb-16 pt-4">
-        <div className="p-8 rounded-lg bg-[#f4f2eb] border border-[#e6e2da] space-y-4 max-w-3xl">
-          <h3 className="text-2xl font-heading font-bold text-[#181816]">
+        <div className="p-6 sm:p-8 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-4 max-w-3xl">
+          <h3 className="text-2xl font-heading font-bold text-[#23241a]">
             Interested in discussing AI engineering projects or roles?
           </h3>
-          <p className="text-sm text-[#4a4843] font-sans">
+          <p className="text-sm text-[#54563f] font-sans">
             Open to discussions regarding GraphRAG retrieval platforms, regulatory compliance systems, or computer vision pipelines.
           </p>
           <div className="flex flex-wrap items-center gap-3 pt-2">

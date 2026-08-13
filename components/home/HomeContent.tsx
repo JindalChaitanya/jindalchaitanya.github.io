@@ -29,7 +29,7 @@ export const HomeContent: React.FC = () => {
         <div className="pt-4 text-left">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-base font-sans font-semibold text-[#8c6d46] hover:underline group"
+            className="inline-flex items-center gap-2 text-base font-sans font-semibold text-[#5c6b2f] hover:text-[#485424] link-draw group active:scale-[0.98]"
           >
             <span>Explore more work</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
@@ -53,14 +53,14 @@ export const HomeContent: React.FC = () => {
         heading="Background Summary"
         className="pt-0"
       >
-        <div className="max-w-2xl space-y-3 text-lg text-[#4a4843] font-sans leading-relaxed">
+        <div className="max-w-2xl space-y-3 text-lg text-[#54563f] font-sans leading-relaxed">
           <p>
             Former Python AI Intern and Associate Data Analyst at Droisys; currently specializing in AI systems at CDAC Noida (CCAT AIR 286).
           </p>
           <div className="pt-1 flex flex-wrap items-center gap-4">
             <Link
               href="/about"
-              className="inline-flex items-center gap-1.5 text-base font-sans font-semibold text-[#8c6d46] hover:underline group"
+              className="inline-flex items-center gap-1.5 text-base font-sans font-semibold text-[#5c6b2f] hover:text-[#485424] link-draw group active:scale-[0.98]"
             >
               <span>Read complete career history</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300 ease-out" />
@@ -77,16 +77,16 @@ export const HomeContent: React.FC = () => {
         </div>
       </Section>
 
-      {/* 5. Quiet Contact Line */}
+      {/* 5. Contact Callout Line */}
       <Section className="pt-0 pb-3 sm:pb-6">
-        <div className="max-w-2xl space-y-3">
-          <h2 className="text-[1.75rem] sm:text-[2.5rem] font-heading font-bold text-[#181816] leading-tight">
+        <div className="p-6 sm:p-8 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] max-w-2xl space-y-3">
+          <h2 className="text-[1.75rem] sm:text-[2.25rem] font-heading font-bold text-[#23241a] leading-tight">
             Interested in working together?
           </h2>
-          <p className="text-lg text-[#4a4843] font-sans leading-relaxed">
+          <p className="text-base sm:text-lg text-[#54563f] font-sans leading-relaxed">
             Open to discussions regarding AI/ML engineering roles, regulatory compliance retrieval, and computer vision pipelines.
           </p>
-          <div className="flex flex-wrap items-center gap-4 pt-1">
+          <div className="flex flex-wrap items-center gap-3 pt-2">
             <Button
               href={`mailto:${profileData.email}`}
               variant="primary"

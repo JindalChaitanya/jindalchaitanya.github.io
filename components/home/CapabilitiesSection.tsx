@@ -7,14 +7,14 @@ import { skillsData } from '@/data/skills';
 
 export const CapabilitiesSection: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
       {skillsData.map((group, i) => (
-        <AnimateIn key={group.id} delay={i * 50}>
-          <div className="space-y-3">
-            <h3 className="text-lg font-sans font-semibold text-[#181816] tracking-tight">
+        <AnimateIn key={group.id} delay={i * 60} duration={300}>
+          <div className="p-4 sm:p-5 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-3 transition-all duration-200 hover:border-[#5c6b2f] hover:-translate-y-0.5">
+            <h3 className="text-base font-sans font-bold text-[#23241a] tracking-tight">
               {group.category}
             </h3>
-            <p className="text-base text-[#5c5954] font-sans leading-relaxed">
+            <p className="text-sm text-[#54563f] font-sans leading-relaxed">
               {group.description}
             </p>
             <div className="flex flex-wrap gap-1.5 pt-1">

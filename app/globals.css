@@ -1,39 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Warm Editorial Foundations ── */
-  --color-bg-base: #faf9f5;
-  --color-bg-surface: #f4f2eb;
-  --color-bg-elevated: #ede9e0;
+  /* ── Chartreuse & Earthy Olive Foundations ── */
+  --color-bg-base: #e1e6b8;
+  --color-bg-surface: #f7f8e8;
+  --color-bg-elevated: #e2e8a7;
 
   /* ── High Contrast Typography ── */
-  --color-text-primary: #181816;
-  --color-text-secondary: #4a4843;
-  --color-text-muted: #737067;
+  --color-text-primary: #23241a;
+  --color-text-secondary: #54563f;
+  --color-text-muted: #6b6e50;
 
-  /* ── Warm Coffee Accent ── */
-  --color-accent: #8c6d46;
-  --color-accent-dim: #705534;
+  /* ── Olive & Pop Accents ── */
+  --color-accent: #5c6b2f;
+  --color-accent-hover: #485424;
+  --color-accent-pop: #b34716;
 
-  /* ── Structural Lines ── */
-  --color-border-primary: #e6e2da;
-  --color-border-hover: #8c6d46;
+  /* ── Structural Lines & Dividers ── */
+  --color-border: #d6dba0;
+  --color-border-primary: #d6dba0;
+  --color-border-hover: #5c6b2f;
+  --color-button-text: #fdfdf5;
 
-  /* ── Typography Stack ── */
+  /* ── Unified Typography Stack ── */
   --font-heading: 'Sk-Modernist', var(--font-heading-fallback), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-sans: var(--font-body), 'DM Sans', system-ui, -apple-system, sans-serif;
-  --font-wordmark: 'Pulchella', 'Georgia', 'Times New Roman', serif;
 }
 
 @layer base {
   :root {
-    --bg-base: #faf9f5;
-    --bg-surface: #f4f2eb;
-    --text-primary: #181816;
-    --text-secondary: #4a4843;
-    --text-muted: #737067;
-    --accent: #8c6d46;
-    --border: #e6e2da;
+    --bg-base: #e1e6b8;
+    --bg-surface: #f7f8e8;
+    --bg-elevated: #e2e8a7;
+    --text-primary: #23241a;
+    --text-secondary: #54563f;
+    --text-muted: #6b6e50;
+    --accent: #5c6b2f;
+    --accent-hover: #485424;
+    --accent-pop: #b34716;
+    --border: #d6dba0;
+    --button-text: #fdfdf5;
+    color-scheme: light;
   }
 
   *,
@@ -46,6 +53,7 @@
     color-scheme: light;
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    background-color: var(--bg-base);
   }
 
   body {
@@ -59,20 +67,17 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Headings use Sk-Modernist geometric typeface */
+  /* Headings strictly use unified font-heading */
   h1,
   h2,
   h3,
+  h4,
+  h5,
+  h6,
   .font-heading {
     font-family: var(--font-heading);
     font-weight: 700;
     letter-spacing: -0.025em;
-  }
-
-  /* Navbar wordmark uses Pulchella serif typeface */
-  .font-wordmark {
-    font-family: var(--font-wordmark);
-    letter-spacing: -0.01em;
   }
 
   h1 {
@@ -81,8 +86,8 @@
 
   /* ── Selection ── */
   ::selection {
-    background-color: rgba(140, 109, 70, 0.15);
-    color: #181816;
+    background-color: rgba(92, 107, 47, 0.25);
+    color: #23241a;
   }
 
   /* ── Accessibility Focus Ring ── */
@@ -98,8 +103,8 @@
     left: 1rem;
     z-index: 100;
     padding: 0.75rem 1.25rem;
-    background-color: #181816;
-    color: #faf9f5;
+    background-color: #23241a;
+    color: #fdfdf5;
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 600;
@@ -124,16 +129,52 @@
   }
 }
 
-/* ── Restrained Signature Motion Moments (Rule 4) ── */
+/* ── Motion & Signature Effects ── */
 @layer utilities {
+  /* Sharp terminal blinking caret */
+  .terminal-caret {
+    animation: caretBlink 1.06s steps(1, end) infinite;
+  }
+
+  @keyframes caretBlink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* Underline draw animation for links */
+  .link-draw {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .link-draw::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1.5px;
+    background-color: #5c6b2f;
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .link-draw:hover::after,
+  .link-draw.active::after {
+    width: 100%;
+  }
+
   .hero-reveal {
-    animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: heroFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   @keyframes heroFadeUp {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(8px);
     }
     to {
       opacity: 1;
@@ -141,16 +182,9 @@
     }
   }
 
-  .accent-bar-grow {
-    animation: barGrow 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes barGrow {
-    from {
-      width: 0;
-    }
-    to {
-      width: 48px;
-    }
+  /* Subtle background grain effect */
+  .bg-grain {
+    background-image: radial-gradient(rgba(35, 36, 26, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }

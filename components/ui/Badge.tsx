@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
-  variant?: 'accent' | 'muted' | 'outline' | 'success' | 'sage';
+  variant?: 'accent' | 'muted' | 'outline' | 'success' | 'sage' | 'pop';
   size?: 'sm' | 'md';
   icon?: React.ReactNode;
   children: React.ReactNode;
@@ -17,19 +17,21 @@ export const Badge: React.FC<BadgeProps> = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center font-sans font-medium rounded-md tracking-normal transition-colors duration-150 select-none';
+    'inline-flex items-center font-sans font-medium rounded-sm tracking-normal transition-colors duration-150 select-none';
 
   const variantStyles = {
     accent:
-      'bg-[#f4f2eb] text-[#8c6d46] border border-[#e6e2da]',
+      'bg-[#f7f8e8] text-[#5c6b2f] border border-[#d6dba0]',
     muted:
-      'bg-[#f4f2eb] text-[#5c5954] border border-[#e6e2da]',
+      'bg-[#f7f8e8] text-[#54563f] border border-[#d6dba0]',
     outline:
-      'bg-transparent text-[#5c5954] border border-[#e6e2da]',
+      'bg-transparent text-[#54563f] border border-[#d6dba0]',
     success:
-      'bg-[#f4f2eb] text-[#5e6653] border border-[#e6e2da]',
+      'bg-[#e2e8a7] text-[#39421c] border border-[#d6dba0]',
     sage:
-      'bg-[#f4f2eb] text-[#5e6653] border border-[#e6e2da]',
+      'bg-[#e2e8a7] text-[#39421c] border border-[#d6dba0]',
+    pop:
+      'bg-[#f7f8e8] text-[#b34716] border border-[#d6dba0]',
   };
 
   const sizeStyles = {

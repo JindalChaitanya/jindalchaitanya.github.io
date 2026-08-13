@@ -36,17 +36,17 @@ export const Section: React.FC<SectionProps> = ({
         {(label || heading || description) && (
           <header className={`mb-3 sm:mb-4 max-w-3xl ${alignClasses}`}>
             {label && (
-              <span className="text-sm font-sans font-medium uppercase tracking-wider text-[#8c6d46] block mb-1.5">
+              <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f] block mb-1.5">
                 {label}
               </span>
             )}
             {heading && (
-              <h2 className="text-[2rem] sm:text-[2.75rem] font-serif font-normal tracking-tight text-[#181816] mb-2 leading-tight">
+              <h2 className="text-[2rem] sm:text-[2.75rem] font-heading font-bold tracking-tight text-[#23241a] mb-2 leading-tight">
                 {heading}
               </h2>
             )}
             {description && (
-              <p className="text-[#5c5954] text-lg sm:text-xl leading-relaxed font-sans">
+              <p className="text-[#54563f] text-lg sm:text-xl leading-relaxed font-sans">
                 {description}
               </p>
             )}

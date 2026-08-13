@@ -77,8 +77,8 @@ export const Navbar: React.FC = () => {
         isVisible || isOpen ? 'translate-y-0' : '-translate-y-full'
       } ${
         hasScrolled || isOpen
-          ? 'bg-[#faf9f5] border-b border-[#e6e2da] shadow-xs'
-          : 'bg-[#faf9f5]/90 backdrop-blur-md'
+          ? 'bg-[#e1e6b8] border-b border-[#d6dba0] shadow-xs'
+          : 'bg-[#e1e6b8]/90 backdrop-blur-md border-b border-[#d6dba0]/50'
       }`}
     >
       <Container size="lg">
@@ -86,7 +86,7 @@ export const Navbar: React.FC = () => {
           {/* Brand */}
           <Link
             href="/"
-            className="font-heading text-xl sm:text-2xl font-bold text-[#181816] hover:text-[#8c6d46] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46] rounded-md tracking-tight"
+            className="font-heading text-xl sm:text-2xl font-bold text-[#23241a] hover:text-[#5c6b2f] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c6b2f] rounded-md tracking-tight active:scale-[0.98]"
           >
             JindalChaitanya
           </Link>
@@ -104,10 +104,10 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`transition-colors py-1 ${
+                  className={`py-1 link-draw transition-colors ${
                     isActive
-                      ? 'text-[#8c6d46] font-medium border-b border-[#8c6d46]'
-                      : 'text-[#5c5954] hover:text-[#181816]'
+                      ? 'text-[#5c6b2f] font-semibold active'
+                      : 'text-[#54563f] hover:text-[#23241a]'
                   }`}
                 >
                   {link.name}
@@ -120,7 +120,7 @@ export const Navbar: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[#5c5954] hover:text-[#181816] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8c6d46]"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-[#54563f] hover:text-[#23241a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5c6b2f] active:scale-[0.95]"
             aria-expanded={isOpen}
             aria-controls="mobile-navigation-drawer"
             aria-label={isOpen ? 'Close menu' : 'Open navigation menu'}
@@ -130,22 +130,22 @@ export const Navbar: React.FC = () => {
         </div>
       </Container>
 
-      {/* Mobile Menu Drawer — Solid background to prevent transparency bleed */}
+      {/* Mobile Menu Drawer */}
       <div
         id="mobile-navigation-drawer"
-        className={`fixed inset-x-0 top-16 bottom-0 z-40 bg-[#faf9f5] md:hidden flex flex-col justify-between transition-opacity duration-200 ${
+        className={`fixed inset-x-0 top-16 bottom-0 z-40 bg-[#e1e6b8] md:hidden flex flex-col justify-between transition-opacity duration-200 ${
           isOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}
         aria-label="Mobile Menu"
       >
-        <div className="flex-1 flex flex-col justify-center px-8 py-6 bg-[#faf9f5]">
+        <div className="flex-1 flex flex-col justify-center px-8 py-6 bg-[#e1e6b8]">
           <nav className="flex flex-col space-y-4">
             <Link
               href="/"
-              className={`text-2xl font-serif py-2 border-b border-[#e6e2da] ${
-                pathname === '/' ? 'text-[#8c6d46]' : 'text-[#181816]'
+              className={`text-2xl font-heading font-bold py-2 border-b border-[#d6dba0] ${
+                pathname === '/' ? 'text-[#5c6b2f]' : 'text-[#23241a]'
               }`}
             >
               Home
@@ -158,8 +158,8 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-2xl font-serif py-2 border-b border-[#e6e2da] ${
-                    isActive ? 'text-[#8c6d46]' : 'text-[#181816]'
+                  className={`text-2xl font-heading font-bold py-2 border-b border-[#d6dba0] ${
+                    isActive ? 'text-[#5c6b2f]' : 'text-[#23241a]'
                   }`}
                 >
                   {link.name}
