@@ -14,7 +14,7 @@ export const HomeContent: React.FC = () => {
   return (
     <div className="space-y-6 sm:space-y-12">
       {/* 1. Hero Viewport */}
-      <Section className="pt-4 sm:pt-8 pb-2 sm:pb-4">
+      <Section className="pt-4 sm:pt-8 pb-4 sm:pb-4">
         <HeroIntro />
       </Section>
 
@@ -23,7 +23,7 @@ export const HomeContent: React.FC = () => {
         label="Selected Work"
         heading="Featured Projects"
         description="GraphRAG retrieval systems and desktop computer vision applications."
-        className="py-4 sm:py-6"
+        className="pt-10 sm:pt-8 pb-4 sm:pb-6"
       >
         <SelectedWorkSection />
         <div className="pt-4 text-left">
