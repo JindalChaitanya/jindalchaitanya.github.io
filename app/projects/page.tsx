@@ -15,10 +15,10 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div>
-      <Section className="py-6 sm:py-10">
-        <div className="space-y-8 max-w-4xl">
+      <Section className="py-4 sm:py-10">
+        <div className="space-y-6 sm:space-y-8 max-w-4xl">
           {/* Main Title */}
-          <div className="space-y-3">
+          <div className="space-y-2.5 sm:space-y-3">
             <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Portfolio Catalog
             </span>

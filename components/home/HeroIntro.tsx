@@ -102,21 +102,21 @@ export const HeroIntro: React.FC = () => {
     : HERO_PHRASES[phraseIndex].substring(0, charIndex);
 
   return (
-    <div className="space-y-4 max-w-3xl pt-4 sm:pt-8 pb-3">
+    <div className="space-y-3.5 sm:space-y-4 max-w-3xl">
 
       {/* Greeting */}
-      <h1 className="text-[3.25rem] sm:text-[5.25rem] md:text-[6.75rem] font-heading font-bold text-[#23241a] tracking-tight leading-[1.05]">
+      <h1 className="text-[2.75rem] sm:text-[4.5rem] md:text-[6.5rem] font-heading font-bold text-[#23241a] tracking-tight leading-[1.05]">
         Hi, I&apos;m <span className="text-[#5c6b2f]">Chaitanya</span>
       </h1>
 
-      {/* Rotating text - fixed height, no wrap */}
-      <div className="text-[1.5625rem] sm:text-[1.875rem] font-heading font-bold text-[#23241a] leading-snug h-[2.2rem] sm:h-[2.75rem] overflow-hidden">
+      {/* Rotating text - responsive font size to prevent mobile clipping */}
+      <div className="text-xl sm:text-[1.875rem] font-heading font-bold text-[#23241a] leading-tight sm:leading-snug min-h-[1.75rem] sm:min-h-[2.5rem] overflow-hidden">
         <span className="whitespace-nowrap">
-          <span className="mr-2">I build</span>
+          <span className="mr-1.5 sm:mr-2">I build</span>
           <span className="text-[#5c6b2f]" aria-hidden="true">
             {displayedText}
             {!isReducedMotion && (
-              <span className="inline-block w-[3px] h-[0.9em] bg-[#5c6b2f] ml-1 align-baseline terminal-caret" />
+              <span className="inline-block w-[2.5px] sm:w-[3px] h-[0.9em] bg-[#5c6b2f] ml-1 align-baseline terminal-caret" />
             )}
           </span>
         </span>
@@ -131,51 +131,57 @@ export const HeroIntro: React.FC = () => {
       </p>
 
       {/* CTA Row */}
-      <div className="flex flex-wrap items-center gap-4 sm:gap-5 pt-2 text-base sm:text-lg font-sans">
-        <a
-          href={profileData.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#23241a] transition-all active:scale-[0.97]"
-          aria-label="GitHub"
-        >
-          <IconGithub className="w-5 h-5" />
-          <span className="text-sm font-medium">GitHub</span>
-        </a>
-        <a
-          href={profileData.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#23241a] transition-all active:scale-[0.97]"
-          aria-label="LinkedIn"
-        >
-          <IconLinkedin className="w-5 h-5" />
-          <span className="text-sm font-medium">LinkedIn</span>
-        </a>
-        <a
-          href={profileData.instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#b34716] transition-all active:scale-[0.97]"
-          aria-label="Instagram"
-        >
-          <IconInstagram className="w-5 h-5 text-[#b34716]" />
-          <span className="text-sm font-medium">Instagram</span>
-        </a>
-        <a
-          href={`mailto:${profileData.email}`}
-          className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#5c6b2f] transition-all active:scale-[0.97]"
-        >
-          <Mail className="w-4 h-4 text-[#5c6b2f]" />
-          <span className="text-sm font-medium">{profileData.email}</span>
-        </a>
-        <Link
-          href="/resume"
-          className="inline-flex items-center gap-1 text-[#5c6b2f] hover:text-[#485424] font-semibold text-sm link-draw active:scale-[0.97] transition-all"
-        >
-          <span>Resume</span>
-          <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+      <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-5 gap-y-2.5 pt-2 text-sm sm:text-base font-sans">
+        <div className="flex items-center gap-3.5 sm:gap-5">
+          <a
+            href={profileData.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#23241a] transition-all active:scale-[0.97]"
+            aria-label="GitHub"
+          >
+            <IconGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-xs sm:text-sm font-medium">GitHub</span>
+          </a>
+          <a
+            href={profileData.linkedinUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#23241a] transition-all active:scale-[0.97]"
+            aria-label="LinkedIn"
+          >
+            <IconLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-xs sm:text-sm font-medium">LinkedIn</span>
+          </a>
+          <a
+            href={profileData.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#b34716] transition-all active:scale-[0.97]"
+            aria-label="Instagram"
+          >
+            <IconInstagram className="w-4 h-4 sm:w-5 sm:h-5 text-[#b34716]" />
+            <span className="text-xs sm:text-sm font-medium">Instagram</span>
+          </a>
+        </div>
+
+        <div className="flex items-center gap-3.5 sm:gap-5">
+          <a
+            href={`mailto:${profileData.email}`}
+            className="inline-flex items-center gap-1.5 text-[#54563f] hover:text-[#5c6b2f] transition-all active:scale-[0.97]"
+          >
+            <Mail className="w-4 h-4 text-[#5c6b2f]" />
+            <span className="text-xs sm:text-sm font-medium sm:hidden">Email</span>
+            <span className="text-xs sm:text-sm font-medium hidden sm:inline">{profileData.email}</span>
+          </a>
+          <Link
+            href="/resume"
+            className="inline-flex items-center gap-1 text-[#5c6b2f] hover:text-[#485424] font-semibold text-xs sm:text-sm link-draw active:scale-[0.97] transition-all"
+          >
+            <span>Resume</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </div>
     </div>
   );

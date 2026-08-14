@@ -12,9 +12,9 @@ import { profileData } from '@/data/profile';
 
 export const HomeContent: React.FC = () => {
   return (
-    <div className="space-y-3 sm:space-y-6">
+    <div className="space-y-6 sm:space-y-12">
       {/* 1. Hero Viewport */}
-      <Section className="pt-4 sm:pt-8 pb-0">
+      <Section className="pt-4 sm:pt-8 pb-2 sm:pb-4">
         <HeroIntro />
       </Section>
 
@@ -23,7 +23,7 @@ export const HomeContent: React.FC = () => {
         label="Selected Work"
         heading="Featured Projects"
         description="GraphRAG retrieval systems and desktop computer vision applications."
-        className="pt-0"
+        className="py-4 sm:py-6"
       >
         <SelectedWorkSection />
         <div className="pt-4 text-left">
@@ -42,7 +42,7 @@ export const HomeContent: React.FC = () => {
         label="Skills"
         heading="Technical Focus Areas"
         description="Building practical machine learning models, deep learning architectures, and production-oriented pipelines."
-        className="pt-0"
+        className="py-4 sm:py-6"
       >
         <CapabilitiesSection />
       </Section>
@@ -51,7 +51,7 @@ export const HomeContent: React.FC = () => {
       <Section
         label="Credentials"
         heading="Background Summary"
-        className="pt-0"
+        className="py-4 sm:py-6"
       >
         <div className="max-w-2xl space-y-3 text-lg text-[#54563f] font-sans leading-relaxed">
           <p>
@@ -78,8 +78,8 @@ export const HomeContent: React.FC = () => {
       </Section>
 
       {/* 5. Contact Callout Line */}
-      <Section className="pt-0 pb-3 sm:pb-6">
-        <div className="p-6 sm:p-8 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] max-w-2xl space-y-3">
+      <Section className="pt-2 sm:pt-4 pb-6 sm:pb-10">
+        <div className="p-5 sm:p-8 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] max-w-2xl space-y-3">
           <h2 className="text-[1.75rem] sm:text-[2.25rem] font-heading font-bold text-[#23241a] leading-tight">
             Interested in working together?
           </h2>

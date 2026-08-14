@@ -3,8 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { IconGithub, IconLinkedin, IconInstagram } from '@/components/ui/Icons';
+import { profileData } from '@/data/profile';
 
 export const navLinks = [
   { name: 'About', href: '/about' },
@@ -133,22 +135,25 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu Drawer */}
       <div
         id="mobile-navigation-drawer"
-        className={`fixed inset-x-0 top-16 bottom-0 z-40 bg-[#e1e6b8] md:hidden flex flex-col justify-between transition-opacity duration-200 ${
+        className={`fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] z-40 bg-[#e1e6b8] md:hidden flex flex-col justify-between overflow-y-auto transition-opacity duration-200 ${
           isOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
         }`}
         aria-label="Mobile Menu"
       >
-        <div className="flex-1 flex flex-col justify-center px-8 py-6 bg-[#e1e6b8]">
-          <nav className="flex flex-col space-y-4">
+        <div className="flex-1 flex flex-col justify-between px-6 pt-4 pb-8 bg-[#e1e6b8]">
+          <nav className="flex flex-col">
             <Link
               href="/"
-              className={`text-2xl font-heading font-bold py-2 border-b border-[#d6dba0] ${
+              className={`text-xl font-heading font-bold py-3.5 border-b border-[#d6dba0] flex items-center justify-between ${
                 pathname === '/' ? 'text-[#5c6b2f]' : 'text-[#23241a]'
               }`}
             >
-              Home
+              <span>Home</span>
+              {pathname === '/' && (
+                <span className="w-1.5 h-1.5 rounded-full bg-[#5c6b2f]" />
+              )}
             </Link>
             {navLinks.map((link) => {
               const isActive =
@@ -158,15 +163,59 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-2xl font-heading font-bold py-2 border-b border-[#d6dba0] ${
+                  className={`text-xl font-heading font-bold py-3.5 border-b border-[#d6dba0] flex items-center justify-between ${
                     isActive ? 'text-[#5c6b2f]' : 'text-[#23241a]'
                   }`}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#5c6b2f]" />
+                  )}
                 </Link>
               );
             })}
           </nav>
+
+          {/* Drawer Bottom Quick Actions & Socials */}
+          <div className="pt-6 mt-4 border-t border-[#d6dba0] space-y-4">
+            <a
+              href={`mailto:${profileData.email}`}
+              className="flex items-center gap-2 text-xs font-sans font-medium text-[#54563f] hover:text-[#5c6b2f]"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#5c6b2f]" />
+              <span>{profileData.email}</span>
+            </a>
+
+            <div className="flex items-center gap-4 text-[#54563f]">
+              <a
+                href={profileData.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="hover:text-[#23241a] p-1"
+              >
+                <IconGithub className="w-4 h-4" />
+              </a>
+              <a
+                href={profileData.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="hover:text-[#23241a] p-1"
+              >
+                <IconLinkedin className="w-4 h-4" />
+              </a>
+              <a
+                href={profileData.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="hover:text-[#b34716] p-1"
+              >
+                <IconInstagram className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </header>

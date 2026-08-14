@@ -17,22 +17,22 @@ export const Experience: React.FC<ExperienceProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`space-y-12 ${className}`}>
+    <div className={`space-y-8 sm:space-y-12 ${className}`}>
       {/* Work History */}
       {showWork && (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <AnimateIn duration={300}>
             <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Work History
             </h3>
           </AnimateIn>
 
-          <div className="space-y-10 border-l border-[#d6dba0] pl-6 ml-1">
+          <div className="space-y-6 sm:space-y-10 border-l border-[#d6dba0] pl-5 sm:pl-6 ml-1">
             {workExperienceData.map((exp, i) => (
               <AnimateIn key={`${exp.company}-${exp.role}`} delay={i * 60} duration={350}>
                 <div className="space-y-2 relative">
                   {/* Subtle Timeline Dot */}
-                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#5c6b2f] border-2 border-[#e1e6b8]" />
+                  <div className="absolute -left-[27px] sm:-left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#5c6b2f] border-2 border-[#e1e6b8]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <h4 className="font-heading text-xl font-bold text-[#23241a]">
@@ -79,18 +79,18 @@ export const Experience: React.FC<ExperienceProps> = ({
 
       {/* Education */}
       {showEducation && (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <AnimateIn duration={300}>
             <h3 className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Education & Specialization
             </h3>
           </AnimateIn>
 
-          <div className="space-y-10 border-l border-[#d6dba0] pl-6 ml-1">
+          <div className="space-y-6 sm:space-y-10 border-l border-[#d6dba0] pl-5 sm:pl-6 ml-1">
             {educationData.map((edu, i) => (
               <AnimateIn key={edu.institution} delay={i * 60} duration={350}>
                 <div className="space-y-2 relative">
-                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#5c6b2f] border-2 border-[#e1e6b8]" />
+                  <div className="absolute -left-[27px] sm:-left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#5c6b2f] border-2 border-[#e1e6b8]" />
 
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                     <h4 className="font-heading text-xl font-bold text-[#23241a]">

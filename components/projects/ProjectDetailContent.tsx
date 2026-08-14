@@ -26,19 +26,19 @@ export const ProjectDetailContent: React.FC<ProjectDetailContentProps> = ({
 
   return (
     <div>
-      <Section className="pb-4 pt-8 sm:pt-12">
-        <Button
-          href="/projects"
-          variant="ghost"
-          size="sm"
-          icon={<ArrowLeft className="w-4 h-4" />}
-        >
-          Back to Projects
-        </Button>
-      </Section>
+      <Section className="pt-4 sm:pt-8 pb-12">
+        <div className="mb-4 sm:mb-6">
+          <Button
+            href="/projects"
+            variant="ghost"
+            size="sm"
+            icon={<ArrowLeft className="w-4 h-4" />}
+          >
+            Back to Projects
+          </Button>
+        </div>
 
-      <Section className="pt-0">
-        <article className="space-y-10 max-w-3xl">
+        <article className="space-y-8 sm:space-y-10 max-w-3xl">
           {/* Header */}
           <header className="space-y-3 border-b border-[#d6dba0] pb-8">
             <div className="flex flex-wrap items-center gap-2">

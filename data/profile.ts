@@ -2,6 +2,8 @@ export interface Profile {
   name: string;
   headline: string;
   shortSummary: string;
+  phone?: string;
+  websiteUrl?: string;
   bioNarrative: {
     foundation: string;
     specialization: string;
@@ -20,6 +22,8 @@ export interface Profile {
 export const profileData: Profile = {
   name: 'Chaitanya Jindal',
   headline: 'AI Systems Engineer',
+  phone: '+917351531311',
+  websiteUrl: 'https://jindalchaitanya.github.io',
   shortSummary:
     'AI systems for regulatory compliance retrieval and computer vision pipelines.',
   bioNarrative: {

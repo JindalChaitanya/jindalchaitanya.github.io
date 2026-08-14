@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="space-y-6 sm:space-y-8">
-      <Section className="pb-2 pt-4 sm:pt-8">
-        <div className="space-y-6 max-w-3xl">
+    <div className="space-y-4 sm:space-y-8">
+      <Section className="pb-2 pt-2 sm:pt-6">
+        <div className="space-y-5 sm:space-y-6 max-w-3xl">
           {/* Header */}
-          <div className="space-y-3">
+          <div className="space-y-2.5 sm:space-y-3">
             <span className="text-xs font-sans font-semibold uppercase tracking-wider text-[#5c6b2f]">
               Background & Experience
             </span>
@@ -32,7 +32,7 @@ export default function AboutPage() {
           </div>
 
           {/* Quick Resume Link */}
-          <div className="p-5 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-transform hover:-translate-y-0.5">
+          <div className="p-4 sm:p-5 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-transform hover:-translate-y-0.5">
             <div className="space-y-1">
               <h2 className="text-base font-sans font-semibold text-[#23241a]">
                 My Resume
@@ -92,8 +92,8 @@ export default function AboutPage() {
       </Section>
 
       {/* Contact Callout */}
-      <Section className="pb-16 pt-4">
-        <div className="p-6 sm:p-8 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-4 max-w-3xl">
+      <Section className="pb-8 sm:pb-16 pt-2 sm:pt-4">
+        <div className="p-5 sm:p-8 rounded-xl bg-[#f7f8e8] border border-[#d6dba0] space-y-4 max-w-3xl">
           <h3 className="text-2xl font-heading font-bold text-[#23241a]">
             Interested in discussing AI engineering projects or roles?
           </h3>

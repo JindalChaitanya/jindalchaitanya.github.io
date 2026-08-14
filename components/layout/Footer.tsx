@@ -8,9 +8,9 @@ export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-[#d6dba0] bg-[#e1e6b8] py-8 mt-10">
+    <footer className="w-full border-t border-[#d6dba0] bg-[#e1e6b8] py-6 sm:py-8 mt-6 sm:mt-10">
       <Container size="lg">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-5 sm:gap-6">
           {/* Left Column: Social Icons above JindalChaitanya */}
           <div className="space-y-2 text-left">
             <div className="flex items-center gap-3">
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Center Column: Symmetrical Navigation */}
-          <nav className="flex flex-wrap items-center justify-start md:justify-center gap-5 sm:gap-6 text-sm text-[#54563f] font-sans font-medium">
+          <nav className="flex flex-wrap items-center justify-start md:justify-center gap-4 sm:gap-6 text-sm text-[#54563f] font-sans font-medium">
             <Link
               href="/about"
               className="hover:text-[#23241a] transition-colors"
